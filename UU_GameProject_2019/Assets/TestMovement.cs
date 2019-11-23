@@ -6,8 +6,6 @@ public class TestMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public float deltaZ;
-    public float smoothSpeed = 0.125f;
-    public Transform target;
 
     void Start()
     {
@@ -18,6 +16,6 @@ public class TestMovement : MonoBehaviour
     void LateUpdate()
     {
         Vector3 playerPosition = GameObject.Find("ThirdPersonController").transform.position;
-        Camera.main.transform.position = new Vector3(playerPosition.x, transform.position.y, playerPosition.z + deltaZ);
+        Camera.main.transform.position = new Vector3(playerPosition.x, transform.position.y, playerPosition.z - deltaZ);
     }
 }
