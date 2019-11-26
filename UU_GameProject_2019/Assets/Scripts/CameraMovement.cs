@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestMovement : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     public float deltaZ;
