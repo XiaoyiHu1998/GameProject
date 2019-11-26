@@ -12,7 +12,7 @@ public class CheckRightTile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.name == "ThirdPersonController")
+        if(collision.gameObject.name == "ThirdPersonController" || collision.gameObject.name == "AIThirdPersonController")
         { rightTilePressed = true; }
     }
 
