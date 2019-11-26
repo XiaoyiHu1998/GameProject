@@ -15,19 +15,20 @@ public class TempleMovement : MonoBehaviour
         delta = 8;
         speed = 1;
         tilesPressed = false;
-
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
+        if(CheckLeftTile.leftTilePressed) { tilesPressed = true; }
+
         if (tilesPressed) { SetToSpawnPosition(); }
         else { SetToHidePosition(); }
     }
 
     protected void SetToSpawnPosition()
     {
-        transform.position = Vector3.MoveTowards(hidePosition, spawnPosition, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, spawnPosition, speed * Time.deltaTime);
     }
 
     protected void SetToHidePosition()
