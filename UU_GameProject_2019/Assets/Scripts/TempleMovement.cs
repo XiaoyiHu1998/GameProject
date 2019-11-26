@@ -21,6 +21,7 @@ public class TempleMovement : MonoBehaviour
     void Update()
     {
         if(CheckLeftTile.leftTilePressed) { tilesPressed = true; }
+        if(CheckRightTile.rightTilePressed) { tilesPressed = true; }
 
         if (tilesPressed) { SetToSpawnPosition(); }
         else { SetToHidePosition(); }
