@@ -11,7 +11,7 @@ ModelImporter:
     second: Cube.002|CylinderAction
   - first:
       74: -3046756929770758134
-    second: Cube.002|sword swing
+    second: swordSwing
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -41,7 +41,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Cube.002|sword swing
+      name: swordSwing
       takeName: Cube.002|sword swng
       internalID: 0
       firstFrame: 0
