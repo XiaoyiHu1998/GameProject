@@ -20,10 +20,11 @@ public class TempleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CheckLeftTile.leftTilePressed && CheckRightTile.rightTilePressed) { tilesPressed = true; }
+        if (CheckLeftTile.leftTilePressed && CheckRightTile.rightTilePressed) { tilesPressed = true; }
+        if (tilesPressed) { SetToSpawnPosition(); SwitchCamera.activeCamera = "secondCamera"; ; }
+        else { SetToHidePosition(); SwitchCamera.activeCamera = "mainCamera"; }
 
-        if (tilesPressed) { SetToSpawnPosition(); }
-        else { SetToHidePosition(); }
+        if (Vector3.Distance(spawnPosition, transform.position) < 0.1f) { SwitchCamera.activeCamera = "mainCamera"; }
     }
 
     protected void SetToSpawnPosition()
