@@ -17,6 +17,7 @@ public class SwordSwing : MonoBehaviour
         if(Input.GetKey(KeyCode.E)){
             GetComponent<Renderer>().enabled = true;
             animation.Play("swordSwing");
+            animation.Stop();
             GetComponent<Renderer>().enabled = false;
             
         }
