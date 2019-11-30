@@ -5,6 +5,7 @@ using UnityEngine;
 public class TempleMovement : MonoBehaviour
 {
     protected Vector3 spawnPosition, hidePosition;
+    protected GameObject sand;
     protected float delta, speed;
     public bool tilesPressed;
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class TempleMovement : MonoBehaviour
         delta = 8;
         speed = 1;
         tilesPressed = false;
+        sand = GameObject.Find("EntranceSand");
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class TempleMovement : MonoBehaviour
     protected void SetToSpawnPosition()
     {
         transform.position = Vector3.MoveTowards(transform.position, spawnPosition, speed * Time.deltaTime);
+        sand.transform.position = Vector3.MoveTowards(sand.transform.position, new Vector3(sand.transform.position.x, 0, sand.transform.position.z), speed * Time.deltaTime);
     }
 
     protected void SetToHidePosition()
