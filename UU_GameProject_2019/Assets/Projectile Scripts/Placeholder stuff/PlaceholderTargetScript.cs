@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceholderTargetScript : MonoBehaviour, IExplodable
+public class PlaceholderTargetScript : MonoBehaviour, IExplodable, IShootable
 {
     public int health;
 
@@ -19,6 +19,11 @@ public class PlaceholderTargetScript : MonoBehaviour, IExplodable
     }
 
     public void getExploded()
+    {
+        getDamaged();
+    }
+
+    public void getShot()
     {
         getDamaged();
     }

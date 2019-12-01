@@ -9,15 +9,13 @@ public class BombScript : MonoBehaviour
 
     float remainingFuse;
     bool hasExpoded;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         remainingFuse = fuseLength;
         hasExpoded = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         remainingFuse -= Time.deltaTime;
@@ -41,14 +39,11 @@ public class BombScript : MonoBehaviour
                 if (explodable != null)
                     explodable.getExploded();
 
-                if (otherBomb != null)
+                if (otherBomb != null) //sympathetic explosion
                     otherBomb.Explode();
-
             }
 
             Destroy(gameObject);
         }
-
-        
     }
 }
