@@ -263,6 +263,7 @@ MonoBehaviour:
   arrowButton: e
   BombForce: {x: 500, y: 100, z: 0}
   ArrowForce: {x: 2500, y: 50, z: 0}
+  currentWeapon: 2
 --- !u!1001 &181608676
 PrefabInstance:
   m_ObjectHideFlags: 0
