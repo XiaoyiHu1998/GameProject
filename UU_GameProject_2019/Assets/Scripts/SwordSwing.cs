@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SwordSwing : MonoBehaviour
 {
+    private float attackTime = 0.33f;
+    private float stopTime = 0.0f;
+
     private Animation animation;
     // Start is called before the first frame update
     void Start()
@@ -14,12 +17,17 @@ public class SwordSwing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.E)){
+        if(Input.GetKey(KeyCode.E) && !GetComponent<Renderer>().enabled){
             GetComponent<Renderer>().enabled = true;
-            animation.Play("swordSwing");
-            animation.Stop();
-            GetComponent<Renderer>().enabled = false;
-            
+            updateTime();
+            animation.Play();
         }
+        else if(Time.time > stopTime){
+            GetComponent<Renderer>().enabled = false;
+        }
+    }
+
+    void updateTime(){
+        stopTime = Time.time + attackTime;
     }
 }
