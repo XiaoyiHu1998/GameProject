@@ -18,7 +18,7 @@ public class SwordSwing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.E) && !GetComponent<Renderer>().enabled){
+        if(Input.GetKey(attack_KeyBinding) && !GetComponent<Renderer>().enabled){
             GetComponent<Renderer>().enabled = true;
             updateTime();
             animation.Play();
