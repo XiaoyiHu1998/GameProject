@@ -5,7 +5,7 @@ using UnityStandardAssets.CrossPlatformInput;
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof (ThirdPersonCharacter))]
-    public class ThirdPersonUserControl : MonoBehaviour
+    public class ThirdPersonUserControl_Player_2 : MonoBehaviour
     {
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
@@ -37,7 +37,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         {
             if (!m_Jump)
             {
-                m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                m_Jump = Input.GetKey(KeyCode.Keypad0);
             }
         }
 
@@ -49,18 +49,18 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float h = 0;
             float v = 0;
 
-            if(Input.GetKey(KeyCode.A)){
+            if(Input.GetKey(KeyCode.LeftArrow)){
                 h = -1;
             }
-            else if (Input.GetKey(KeyCode.D))
+            else if (Input.GetKey(KeyCode.RightArrow))
             {
                 h = 1;
             }
 
-            if(Input.GetKey(KeyCode.W)){
+            if(Input.GetKey(KeyCode.UpArrow)){
                 v = 1;
             }
-            else if(Input.GetKey(KeyCode.S)){
+            else if(Input.GetKey(KeyCode.DownArrow)){
                 v = -1;
             }
 
