@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SwordSwing : MonoBehaviour
 {
+    [SerializeField] private string attack_KeyBinding;
     private float attackTime = 0.33f;
     private float stopTime = 0.0f;
 
