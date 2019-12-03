@@ -10,6 +10,7 @@ public class ManageInventory : MonoBehaviour
 
     void Start()
     {
+        SwitchItem(Selection);
     }
 
     void Update()
