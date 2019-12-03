@@ -1472,6 +1472,7 @@ GameObject:
   - component: {fileID: 13615390}
   - component: {fileID: 11444856}
   - component: {fileID: 11469404}
+  - component: {fileID: 3719836038125075230}
   m_Layer: 0
   m_Name: ThirdPersonController
   m_TagString: Untagged
@@ -1578,6 +1579,22 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.3
+--- !u!114 &3719836038125075230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22f9c669c71f1544853db6641b2a255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 6
+  HealthText: {fileID: 0}
+  player: {fileID: 0}
+  respawnPosition: {fileID: 0}
 --- !u!1 &150244
 GameObject:
   m_ObjectHideFlags: 0
