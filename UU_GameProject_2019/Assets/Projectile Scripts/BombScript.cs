@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombScript : MonoBehaviour
+public class BombScript : MonoBehaviour, IExplodable, IBurnable
 {
     public float fuseLength;
     public float blastRadius;
@@ -25,6 +25,16 @@ public class BombScript : MonoBehaviour
         }
     }
 
+    public void getBurned()
+    {
+        Explode();
+    }
+
+    public void getExploded()
+    {
+        Explode();
+    }
+
     public void Explode()
     {
         if(!hasExpoded)
@@ -34,13 +44,9 @@ public class BombScript : MonoBehaviour
             for (int i = 0; i < bombTargets.Length; i++)
             {
                 IExplodable explodable = bombTargets[i].gameObject.GetComponent<IExplodable>();
-                BombScript otherBomb = bombTargets[i].gameObject.GetComponent<BombScript>();
 
                 if (explodable != null)
                     explodable.getExploded();
-
-                if (otherBomb != null) //sympathetic explosion
-                    otherBomb.Explode();
             }
 
             Destroy(gameObject);
