@@ -14,7 +14,7 @@ public class FireScript : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision target)
+    void OnTriggerEnter(Collider target)
     {
         IBurnable burnable = target.gameObject.GetComponent<IBurnable>();
 
