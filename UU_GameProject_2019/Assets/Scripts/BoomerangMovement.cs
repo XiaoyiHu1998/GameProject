@@ -4,42 +4,43 @@ using UnityEngine;
 
 public class BoomerangMovement : MonoBehaviour
 {
-    public float delay = 0.2f;
-    Vector3 velocity;
-    float maxVelocity;
-    public float returnRate = 0.5f;
+    public float speed = 1f;
+    public float RotatingSpeed = 1024;
     public GameObject Player;
     bool returning = false;
+    
+    Vector3 Destination, playerRelativePos;
 
     void Start()
     {
-        Invoke("wait", delay);
+        Destination = BoomerangThrowing.Destination;
     }
 
-    void wait()
-    {
-        returning = true;
-    }
-
+    
     void Update()
     {
+        Vector3 playerPos = GameObject.Find("ThirdPersonController").transform.position;
+        playerRelativePos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
+
+        transform.Rotate(0, 0, RotatingSpeed * Time.deltaTime, Space.Self); //rotates 'RotatingSpeed' degrees per second around y axis
+        
+        if (Vector3.Distance(transform.position, Destination) < 5)
+        {
+            returning = true;
+        }
         if (returning)
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            rb.velocity = rb.velocity + (Player.transform.position - transform.position).normalized * returnRate;
+            transform.position = Vector3.MoveTowards(transform.position, playerRelativePos, speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, Destination, speed * Time.deltaTime);
         }
     }
-
     /*
     void Update()
     {
-        transform.position += vel; 
-        if (delay > 0) 
-            delay -= Time.deltaTime;
-        else
-        {
-            vel = vel + (followThis.transfom.position - transform.position).normalized * Time.deltaTime * returnRate);
-            vel = ve.normalized * Mathf.Clamp(vel.magnitude, 0, maxVel);
-        }
+        Vector3 playerPos = GameObject.Find("ThirdPersonController").transform.position;
+        transform.position = Vector3.MoveTowards(playerStartPos, new Vector3(10 * Mathf.Sin(playerRot.y), transform.position.y, 10 * Mathf.Cos(playerRot.y)), speed * Time.deltaTime);
     }*/
 }
