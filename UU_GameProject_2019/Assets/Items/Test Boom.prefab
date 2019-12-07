@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79614d4fb1da194dafa69a0ee59a442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.5
-  returnRate: 0.5
-  speed: 20
+  speed: 10
+  RotatingSpeed: 1024
   Player: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+  BendingSpeed: 10

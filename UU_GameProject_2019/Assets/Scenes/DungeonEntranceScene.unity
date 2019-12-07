@@ -7914,7 +7914,9 @@ MonoBehaviour:
   BoomerangPrefab: {fileID: 1007062918946686750, guid: 930d5bdc1c65e1442bdf5853c3a2378a,
     type: 3}
   Distance: 10
+  BendingDistance: 5
   boomerangButton: 4
+  throwing: 0
 --- !u!1001 &796998036
 PrefabInstance:
   m_ObjectHideFlags: 0

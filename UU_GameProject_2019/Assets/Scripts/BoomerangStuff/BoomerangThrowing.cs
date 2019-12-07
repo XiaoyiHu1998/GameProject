@@ -6,7 +6,7 @@ public class BoomerangThrowing : MonoBehaviour
 {
     public static Vector3 Destination;
     public GameObject BoomerangEmitter, BoomerangPrefab;
-    public float Distance;
+    public float Distance = 8;
     public string boomerangButton;
     public bool throwing = false;
 
@@ -23,9 +23,9 @@ public class BoomerangThrowing : MonoBehaviour
         {
             GameObject Boomerang = Instantiate(BoomerangPrefab, BoomerangEmitter.transform.position, BoomerangEmitter.transform.rotation) as GameObject;
             Boomerang.transform.rotation = BoomerangPrefab.transform.rotation;
-            throwing = true;
+            //throwing = true;
             Destination = BoomerangEmitter.transform.position + (transform.forward * Distance);
-            Destroy(Boomerang, 5);
+            Destroy(Boomerang, 8);
         }
     }
 }

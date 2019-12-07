@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5114278299950960443}
   - component: {fileID: 1568686910964708290}
   - component: {fileID: 68286265662612283}
+  - component: {fileID: 4307085581229261746}
   - component: {fileID: 4723341968787550315}
   m_Layer: 0
   m_Name: Boomerang
@@ -90,10 +91,26 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.010144994
-  m_Height: 0.12045887
+  m_Radius: 0.01
+  m_Height: 0.12
   m_Direction: 2
-  m_Center: {x: -0.0092840195, y: -0.00007632733, z: 0.000228405}
+  m_Center: {x: -0.00043888093, y: -0.000039771796, z: 0.00026818115}
+--- !u!54 &4307085581229261746
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007062918946686750}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
 --- !u!114 &4723341968787550315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +126,4 @@ MonoBehaviour:
   speed: 10
   RotatingSpeed: 1024
   Player: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
+  BendingSpeed: 10
