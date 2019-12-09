@@ -6,14 +6,16 @@ public class MetalonMovement : MonoBehaviour
 {
     private Animator m_animator;
     protected Vector2 zRange, xRange;
-    protected Vector3 targetPosition;
-    bool moving;
+    protected Vector3 playerPosition, relativePlayerPos;
+    bool moving, attacking;
     float idleTime, speed, timer;
+    Vector3 hornPosition;
+    string MyName;
 
     //Temporary viuals
     public float AngleDifference;
+    public Vector3 RelativePlayerPosition, targetPosition;
 
-    // Start is called before the first frame update
     void Start()
     {
         zRange = new Vector2(10, 23);
@@ -22,19 +24,43 @@ public class MetalonMovement : MonoBehaviour
         speed = 1;
         moving = true;
         m_animator = GetComponent<Animator>();
+        MyName = (this.gameObject).name;
         SetNewTargetPosition();
         m_animator.SetBool("Walk Forward", true);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, targetPosition) < 0.3f)
+        playerPosition = GameObject.Find("ThirdPersonController").transform.position;
+        hornPosition = GameObject.Find(MyName + "/AttackingArea").transform.position;
+        //relativePlayerPos = new Vector3(playerPosition.x, transform.position.y, playerPosition.z);
+        float hornDistanceX = hornPosition.x - transform.position.x;
+        float hornDistanceZ = hornPosition.z - transform.position.z;
+        relativePlayerPos = new Vector3(playerPosition.x - hornDistanceX, transform.position.y, playerPosition.z - hornDistanceZ);
+        RelativePlayerPosition = playerPosition;
+
+        if (Vector3.Distance(transform.position, relativePlayerPos) < 1)
+        {
+            m_animator.SetBool("Walk Forward", false);
+            m_animator.SetTrigger("Stab Attack");
+        }
+
+        //Moving to the player
+        else if (Vector3.Distance(transform.position, relativePlayerPos) < 8)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, relativePlayerPos, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - transform.position, Vector3.up).eulerAngles), Time.deltaTime * speed);
+            m_animator.SetBool("Walk Forward", true);
+        }
+
+        //Arriving at destination
+        else if (Vector3.Distance(transform.position, targetPosition) < 0.3f)
         {
             moving = false;
         }
 
-        if (!moving)
+        //Standing still
+        else if (!moving)
         {
             timer += Time.deltaTime;
             m_animator.SetBool("Walk Forward", false);
@@ -45,7 +71,8 @@ public class MetalonMovement : MonoBehaviour
                 moving = true;
             }
         }
-
+        
+        //Moving towards destination
         else
         {
             timer = 0;
