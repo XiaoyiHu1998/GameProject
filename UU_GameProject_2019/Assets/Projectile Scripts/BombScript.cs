@@ -8,8 +8,8 @@ public class BombScript : MonoBehaviour, IExplodable, IBurnable
     public float blastRadius;
 
     float remainingFuse;
-    bool hasExpoded;
-    
+    bool hasExpoded; //this prevents an infinite loop where two bombs will cause eachother to explode repeatedly
+
     void Start()
     {
         remainingFuse = fuseLength;
@@ -25,12 +25,12 @@ public class BombScript : MonoBehaviour, IExplodable, IBurnable
         }
     }
 
-    public void getBurned()
+    public void getBurned() //bombs will cook off if they enter fire, this method comes from IBurnable
     {
         Explode();
     }
 
-    public void getExploded()
+    public void getExploded() //bombs implement IExplodable to do sympathetic explosions
     {
         Explode();
     }
@@ -43,7 +43,7 @@ public class BombScript : MonoBehaviour, IExplodable, IBurnable
             Collider[] bombTargets = Physics.OverlapSphere(this.transform.position, blastRadius);
             for (int i = 0; i < bombTargets.Length; i++)
             {
-                IExplodable explodable = bombTargets[i].gameObject.GetComponent<IExplodable>();
+                IExplodable explodable = bombTargets[i].gameObject.GetComponent<IExplodable>(); //IExplodable is the interface that tracks if something can interact with bombs in a special way
 
                 if (explodable != null)
                     explodable.getExploded();

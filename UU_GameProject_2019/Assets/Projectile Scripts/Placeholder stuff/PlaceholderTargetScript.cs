@@ -6,16 +6,9 @@ public class PlaceholderTargetScript : MonoBehaviour, IExplodable, IShootable
 {
     public int health;
 
-    // Start is called before the first frame update
     void Start()
     {
         health = 3;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void getExploded()
@@ -28,7 +21,7 @@ public class PlaceholderTargetScript : MonoBehaviour, IExplodable, IShootable
         getDamaged();
     }
 
-    public void getDamaged() //placeholder tot health en zo klaar zijn 
+    public void getDamaged() //placeholder for Wietse's health system
     {
         health--;
         if (health <= 0)

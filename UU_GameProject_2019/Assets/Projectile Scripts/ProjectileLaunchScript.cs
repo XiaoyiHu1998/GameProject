@@ -10,21 +10,21 @@ public class ProjectileLaunchScript : MonoBehaviour
     public GameObject BoomerangObject;
     public GameObject SwordObject;
 
-    public string attackButton; //een hoop van dit is public om het in de unity inspector zichtbaar te maken, zet op private voor final build
+    public string attackButton; //some of these are public so they can be seen/edited in the Unity GUI, will be private in the final build
     public string switchButton;
     
-    public Vector3 BombForce; //X is forward motion, X upward and Z can correct for emitters being attached the wrong way around
+    public Vector3 BombForce; //X is forward, X is upward and Z is sideways(legacy boomerang implementation, here in case a problem crops up with the current system and we need to revert it)
     public Vector3 ArrowForce;
 
     Weapon currentWeapon;
 
-    //Stefan en Xiao Yi kunnen hier hun variabelen plaatsen voor boomerang en sword code
+    //Stefan and Xiao Yi can place their global variables for boomerang and sword code here
 
-    public int[] placeholderInventory; //placeholder tot Nout's code klaar is
+    public int[] placeholderInventory; //placeholder for Nout's inventory system
     public int[] placeholderInventoryCaps;
     public bool[] placeholderWeaponAcquired;
 
-    int placeholderHealth; //placeholder tot Wietse's code klaar is
+    int placeholderHealth; //placeholder for Wietse's health system
 
     void Start()
     {
@@ -32,14 +32,14 @@ public class ProjectileLaunchScript : MonoBehaviour
 
         placeholderInventoryCaps = new int[Enum.GetNames(typeof(Weapon)).Length];
 
-        placeholderInventoryCaps[(int)Weapon.Bow] = 50; //staat tijdelijk hier, later ergens een mooi script met constants zetten
+        placeholderInventoryCaps[(int)Weapon.Bow] = 50; //temporary place until finalized, to be moved to a script containing all constants for final build
         placeholderInventoryCaps[(int)Weapon.Bombs] = 8;
         placeholderInventoryCaps[(int)Weapon.Boomerang] = 1;
         placeholderInventoryCaps[(int)Weapon.Sword] = 1;
 
         placeholderWeaponAcquired = new bool[Enum.GetNames(typeof(Weapon)).Length];
 
-        placeholderWeaponAcquired[(int)Weapon.Bow] = true; //placeholder tot de shop/andere manieren om items te krijgen klaar zijn
+        placeholderWeaponAcquired[(int)Weapon.Bow] = true; //placeholder for the shop
         placeholderWeaponAcquired[(int)Weapon.Bombs] = true;
         placeholderWeaponAcquired[(int)Weapon.Boomerang] = true;
         placeholderWeaponAcquired[(int)Weapon.Sword] = true;
@@ -47,7 +47,7 @@ public class ProjectileLaunchScript : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(attackButton)) //aanvallen
+        if(Input.GetKeyDown(attackButton)) //attack action with the currently selected weapon
         {
             switch (currentWeapon)
             {
@@ -66,15 +66,15 @@ public class ProjectileLaunchScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(switchButton)) //van wapen wisselen
+        if (Input.GetKeyDown(switchButton)) //switch weapon selection
         {
             currentWeapon++;
-            if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop terug naar 0 als de index OOB gaat
+            if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
                 currentWeapon = (Weapon)0;
         }
     }
 
-    void OnCollisionEnter(Collision target) //health en ammo drops oppakken
+    void OnCollisionEnter(Collision target) //picking up health and ammo drops
     {
         ItemDropScript lootDrop = target.gameObject.GetComponent<ItemDropScript>();
 
@@ -82,7 +82,7 @@ public class ProjectileLaunchScript : MonoBehaviour
         {
             lootObject(lootDrop.weapon, lootDrop.amount);
             Destroy(lootDrop.gameObject);
-            return; //als de pickup een ammo item was kan het geen health zijn en is onderstaande if statement toch altijd false
+            return; //if the pickup was ammo, then the below can not be true
         }
 
         HealthDropScript healthDrop = target.gameObject.GetComponent<HealthDropScript>();
@@ -94,19 +94,19 @@ public class ProjectileLaunchScript : MonoBehaviour
         }
     }
 
-    public void lootObject(Weapon lootedObject, int amount) //placeholder voor code van Nout
+    public void lootObject(Weapon lootedObject, int amount) //placeholder for Nout's inventory system
     {
         placeholderInventory[(int)lootedObject] += amount;
         if (placeholderInventory[(int)lootedObject] > placeholderInventoryCaps[(int)lootedObject])
             placeholderInventory[(int)lootedObject] = placeholderInventoryCaps[(int)lootedObject];
     }
 
-    public void lootHealth(int amount) //placeholder voor code van Wietse
+    public void lootHealth(int amount) //placeholder for Wietse's health system
     {
         placeholderHealth += amount;
     }
 
-    void UseBow() //schiet een pijl
+    void UseBow() //shooting an arrow
     {
         if (placeholderInventory[(int)Weapon.Bow] > 0 && placeholderWeaponAcquired[(int)Weapon.Bow])
         {
@@ -117,7 +117,7 @@ public class ProjectileLaunchScript : MonoBehaviour
 
     }
 
-    void UseBombs() //gooi een bom
+    void UseBombs() //throwing a bomb
     {
         if(placeholderInventory[(int)Weapon.Bombs] > 0 && placeholderWeaponAcquired[(int)Weapon.Bombs])
         {
@@ -127,12 +127,12 @@ public class ProjectileLaunchScript : MonoBehaviour
         }
     }
 
-    void UseBoomerang() //gooi met de boomerang
+    void UseBoomerang() //throwing the boomerang
     {
         //Stefan's code
     }
 
-    void UseSword() //zwaai met het zwaard
+    void UseSword() //swinging the sword
     {
         //Xiao Yi's code
     }
