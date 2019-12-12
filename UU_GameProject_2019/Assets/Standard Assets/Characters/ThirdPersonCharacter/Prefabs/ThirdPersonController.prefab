@@ -3057,7 +3057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8abc34c2937a34cbd5c000b500769f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack_KeyBinding: 
+  attack_KeyBinding: e
 --- !u!1001 &4239818213982156426
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3244,7 +3244,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
