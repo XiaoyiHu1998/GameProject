@@ -1,7 +1,7 @@
 ﻿public enum Weapon
 {
+    Sword,
     Bow,
     Bombs,
-    Boomerang,
-    Sword
+    Boomerang
 }

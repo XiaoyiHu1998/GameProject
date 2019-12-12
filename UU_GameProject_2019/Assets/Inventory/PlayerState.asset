@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aaa7b22325c7b143acd80dea239edc7, type: 3}
+  m_Name: PlayerState
+  m_EditorClassIdentifier: 
+  Health: 3
+  InvetorySelection: 1
+  BowUnlock: 1
+  BombUnlock: 1
+  BoomerangUnlock: 1
+  SwordUnlock: 1
+  Arrows: 50
+  Bombs: 8
