@@ -1477,7 +1477,7 @@ GameObject:
   - component: {fileID: 2325204518182341301}
   m_Layer: 0
   m_Name: ThirdPersonController
-  m_TagString: Untagged
+  m_TagString: DoosTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2969,6 +2969,20 @@ Transform:
   m_Father: {fileID: 408730}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+--- !u!64 &3230039032427245311
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2599264853518866756}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 2534964839176971238, guid: bccec6ba3ec5b7a479482814f4ded144, type: 3}
 --- !u!1 &3091476516026400776
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,6 +3145,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: sword._anim
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1bd93717587e0304d8408f72521defb8,
+        type: 3}
+      propertyPath: m_TagString
+      value: DoosTag
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bd93717587e0304d8408f72521defb8, type: 3}
 --- !u!1 &5329782722534338435 stripped
@@ -3155,17 +3174,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.00000049829
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.46
+      value: 5.683
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.028776512
+      value: 0.028777
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
@@ -3215,7 +3234,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 99.999985
+      value: -1025.207
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
@@ -3225,10 +3244,21 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
+        type: 3}
+      propertyPath: m_TagString
+      value: DoosTag
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bccec6ba3ec5b7a479482814f4ded144, type: 3}
+--- !u!1 &2599264853518866756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
+    type: 3}
+  m_PrefabInstance: {fileID: 6283538024603648077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1317628639322352471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: bccec6ba3ec5b7a479482814f4ded144,
