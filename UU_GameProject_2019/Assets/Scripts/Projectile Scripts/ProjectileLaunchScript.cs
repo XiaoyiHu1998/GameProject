@@ -19,6 +19,10 @@ public class ProjectileLaunchScript : MonoBehaviour
     Weapon currentWeapon;
 
     //Stefan and Xiao Yi can place their global variables for boomerang and sword code here
+    //Stefan:
+    public static Vector3 Destination;
+    public float BoomerangTravelDistance = 8;
+    //Xiao Yi:
 
     public int[] placeholderInventory; //placeholder for Nout's inventory system
     public int[] placeholderInventoryCaps;
@@ -114,12 +118,11 @@ public class ProjectileLaunchScript : MonoBehaviour
             GameObject MyArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
             MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
         }
-
     }
 
     void UseBombs() //throwing a bomb
     {
-        if(placeholderInventory[(int)Weapon.Bombs] > 0 && placeholderWeaponAcquired[(int)Weapon.Bombs])
+        if (placeholderInventory[(int)Weapon.Bombs] > 0 && placeholderWeaponAcquired[(int)Weapon.Bombs])
         {
             placeholderInventory[(int)Weapon.Bombs]--;
             GameObject MyBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
@@ -129,7 +132,15 @@ public class ProjectileLaunchScript : MonoBehaviour
 
     void UseBoomerang() //throwing the boomerang
     {
-        //Stefan's code
+        if (placeholderInventory[(int)Weapon.Boomerang] > 0 && placeholderWeaponAcquired[(int)Weapon.Boomerang])
+        {
+            //Code below is inactive for testing purposes
+            //  placeholderInventory[(int)Weapon.Boomerang]--;
+            GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+            MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
+            Destination = ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance);
+            // REMINDER _ add the boomerang to inventory after it gets Destroyed (timer / catching)
+        }
     }
 
     void UseSword() //swinging the sword
