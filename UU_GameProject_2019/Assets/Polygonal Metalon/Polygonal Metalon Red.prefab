@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &538277730
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 538277731}
-  m_Layer: 0
-  m_Name: AttackingArea
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &538277731
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 538277730}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.732, z: 2.426}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4986370389096990481}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4987748681546042657
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984787932310269579}
+  - component: {fileID: 83579935682834822}
   m_Layer: 0
   m_Name: RigLLeg012
   m_TagString: Untagged
@@ -123,6 +94,20 @@ Transform:
   m_Father: {fileID: 4984489390037994913}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &83579935682834822
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987810346678621413}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1613205
+  m_Height: 0.7276733
+  m_Direction: 0
+  m_Center: {x: -0.26412672, y: -0.017480662, z: -0.0112482365}
 --- !u!1 &4987838971297348501
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,6 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986401613690405269}
+  - component: {fileID: 3009632917321390548}
   m_Layer: 0
   m_Name: RigLLeg033
   m_TagString: Untagged
@@ -183,6 +169,20 @@ Transform:
   m_Father: {fileID: 4984903794081946885}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3009632917321390548
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987841466368346359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.14761987
+  m_Height: 1.0440793
+  m_Direction: 0
+  m_Center: {x: -0.26532334, y: -0.061958645, z: -0.08533358}
 --- !u!1 &4987853532612338587
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986184949088731861}
+  - component: {fileID: 1867559093440232785}
   m_Layer: 0
   m_Name: RigTail3Gizmo
   m_TagString: Untagged
@@ -243,6 +244,20 @@ Transform:
   m_Father: {fileID: 4986370389096990481}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1867559093440232785
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987888435836233319}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25364372
+  m_Height: 1.061952
+  m_Direction: 0
+  m_Center: {x: -0.10735299, y: 0.06243555, z: 4.7474767e-17}
 --- !u!1 &4987894769224506709
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984588445287329767}
+  - component: {fileID: 7561312520219703737}
   m_Layer: 0
   m_Name: RigRLeg031
   m_TagString: Untagged
@@ -274,6 +290,20 @@ Transform:
   m_Father: {fileID: 4986347222008011569}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7561312520219703737
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987894769224506709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15744162
+  m_Height: 1.1822199
+  m_Direction: 0
+  m_Center: {x: -0.40441144, y: 0.007998892, z: -0.024762802}
 --- !u!1 &4987915716053673665
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986133290697486399}
+  - component: {fileID: 1867533597753589239}
   m_Layer: 0
   m_Name: RigHeadGizmo
   m_TagString: Untagged
@@ -297,13 +328,27 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4987915716053673665}
-  m_LocalRotation: {x: -0.7064338, y: -0.030843422, z: 0.7064338, w: 0.03084356}
+  m_LocalRotation: {x: -0.70441604, y: 0.06162845, z: 0.70441604, w: -0.06162845}
   m_LocalPosition: {x: -0.0000016040344, y: 0.97826356, z: 0.8153755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4986370389096990481}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: 190}
+--- !u!136 &1867533597753589239
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987915716053673665}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3010335
+  m_Height: 1.4637166
+  m_Direction: 0
+  m_Center: {x: -0.8237461, y: 0.40328053, z: 0}
 --- !u!1 &4987959305934206665
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +389,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984921570620856405}
+  - component: {fileID: 6070351369785932497}
   m_Layer: 0
   m_Name: RigRLeg013
   m_TagString: Untagged
@@ -365,6 +411,20 @@ Transform:
   m_Father: {fileID: 4984796604993288387}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6070351369785932497
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987995421601105957}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17802706
+  m_Height: 1.0623608
+  m_Direction: 0
+  m_Center: {x: -0.21735583, y: 0.032584894, z: 0.06891484}
 --- !u!1 &4987997753778706627
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,9 +435,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4986370389096990481}
   - component: {fileID: 4930726967103370181}
-  - component: {fileID: 4989125400251531233}
-  - component: {fileID: 4989125400251531232}
   - component: {fileID: 4989125400251531238}
+  - component: {fileID: 1110870049}
   m_Layer: 0
   m_Name: Polygonal Metalon Red
   m_TagString: Untagged
@@ -393,7 +452,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4987997753778706627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.68, y: -11.75508, z: 6.14}
+  m_LocalPosition: {x: 20.210667, y: 0.14715305, z: 13.662867}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4986198131341757519}
@@ -414,7 +473,7 @@ Transform:
   - {fileID: 4986184949088731861}
   - {fileID: 4984549641200948157}
   - {fileID: 4984440778092745857}
-  - {fileID: 538277731}
+  - {fileID: 6446933127501164413}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -437,34 +496,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &4989125400251531233
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4987997753778706627}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.86062217
-  m_Height: 2.8289642
-  m_Direction: 2
-  m_Center: {x: 0.01050806, y: 0.93900657, z: -0.034760475}
---- !u!136 &4989125400251531232
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4987997753778706627}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.24919581
-  m_Height: 1.2461777
-  m_Direction: 2
-  m_Center: {x: 0.0035877228, y: 0.65376735, z: 1.7304859}
 --- !u!114 &4989125400251531238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,9 +508,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c1bba93ff6510646a994fea04a436df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AngleDifference: 0
-  RelativePlayerPosition: {x: 0, y: 0, z: 0}
-  targetPosition: {x: 0, y: 0, z: 0}
+  health: 6
+--- !u!54 &1110870049
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987997753778706627}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &4988024537981382711
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984796604993288387}
+  - component: {fileID: 6882160258353985158}
   m_Layer: 0
   m_Name: RigRLeg012
   m_TagString: Untagged
@@ -511,6 +557,20 @@ Transform:
   m_Father: {fileID: 4984756081804874105}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6882160258353985158
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988024537981382711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1312531
+  m_Height: 0.77056736
+  m_Direction: 0
+  m_Center: {x: -0.31962058, y: -0.013327408, z: 0.029913526}
 --- !u!1 &4988034273975513643
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986197834556046567}
+  - component: {fileID: 1902322608679828262}
   m_Layer: 0
   m_Name: RigRLeg021
   m_TagString: Untagged
@@ -637,6 +698,20 @@ Transform:
   m_Father: {fileID: 4984529963052578225}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1902322608679828262
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988049686607840627}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17254362
+  m_Height: 1.117757
+  m_Direction: 0
+  m_Center: {x: -0.36079723, y: 0.049541883, z: 0.04282518}
 --- !u!1 &4988084371139564343
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +816,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986477481295580891}
+  - component: {fileID: 3096614702103378342}
   m_Layer: 0
   m_Name: RigRLeg022
   m_TagString: Untagged
@@ -763,6 +839,20 @@ Transform:
   m_Father: {fileID: 4986197834556046567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3096614702103378342
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988155263320707701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.14119542
+  m_Height: 0.70079505
+  m_Direction: 0
+  m_Center: {x: -0.22583184, y: -0.03622144, z: -0.022782085}
 --- !u!1 &4988160524756269399
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984854505899020365}
+  - component: {fileID: 2617987458285832426}
   m_Layer: 0
   m_Name: RigRibcageGizmo
   m_TagString: Untagged
@@ -823,6 +914,20 @@ Transform:
   m_Father: {fileID: 4986370389096990481}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2617987458285832426
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988171671823535689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.83386695
+  m_Height: 2.376821
+  m_Direction: 0
+  m_Center: {x: 0.45283166, y: 0.018562675, z: 5.8780508e-15}
 --- !u!1 &4988223294915838223
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,6 +967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984909880029050849}
+  - component: {fileID: 2302862830964841795}
   m_Layer: 0
   m_Name: RigLLeg023
   m_TagString: Untagged
@@ -883,6 +989,20 @@ Transform:
   m_Father: {fileID: 4986056306536741519}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &2302862830964841795
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988241702381879847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17611022
+  m_Height: 1.1900463
+  m_Direction: 0
+  m_Center: {x: -0.32044962, y: 0.107613124, z: -0.08564419}
 --- !u!1 &4988267459676181765
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +1073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984810735040261917}
+  - component: {fileID: 6854205099720389695}
   m_Layer: 0
   m_Name: RigLLeg013
   m_TagString: Untagged
@@ -974,6 +1095,20 @@ Transform:
   m_Father: {fileID: 4984787932310269579}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6854205099720389695
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988340518332215807}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17567658
+  m_Height: 1.213817
+  m_Direction: 0
+  m_Center: {x: -0.1537983, y: 0.020343548, z: -0.051162608}
 --- !u!1 &4988349694294861635
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986216258107341631}
+  - component: {fileID: 7592413998189849799}
   m_Layer: 0
   m_Name: RigLLeg031
   m_TagString: Untagged
@@ -1005,6 +1141,20 @@ Transform:
   m_Father: {fileID: 4986347222008011569}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7592413998189849799
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988349694294861635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.168102
+  m_Height: 1.2453327
+  m_Direction: 0
+  m_Center: {x: -0.3573021, y: 0.012167646, z: 0.035015356}
 --- !u!1 &4988373683693202893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1194,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984763925829261987}
+  - component: {fileID: 6331631866852275274}
   m_Layer: 0
   m_Name: RigLLeg021
   m_TagString: Untagged
@@ -1066,6 +1217,20 @@ Transform:
   m_Father: {fileID: 4984529963052578225}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &6331631866852275274
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988387214537591909}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.16365133
+  m_Height: 1.1677477
+  m_Direction: 0
+  m_Center: {x: -0.36196232, y: 0.03461786, z: 0.024913492}
 --- !u!1 &4988398776478163595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,6 +1392,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984499596510029527}
+  - component: {fileID: 4823256520544360512}
   m_Layer: 0
   m_Name: RigRLeg033
   m_TagString: Untagged
@@ -1248,6 +1414,20 @@ Transform:
   m_Father: {fileID: 4984756507191529607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4823256520544360512
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988487622081654287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.16041736
+  m_Height: 1.1010242
+  m_Direction: 0
+  m_Center: {x: -0.25048226, y: -0.04044344, z: 0.06755132}
 --- !u!1 &4988538897967614977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,6 +1467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986331461028604013}
+  - component: {fileID: 7799132595271741996}
   m_Layer: 0
   m_Name: RigRLeg023
   m_TagString: Untagged
@@ -1308,6 +1489,20 @@ Transform:
   m_Father: {fileID: 4986477481295580891}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7799132595271741996
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988560427731961859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17824185
+  m_Height: 1.1821038
+  m_Direction: 0
+  m_Center: {x: -0.31917647, y: 0.095262945, z: 0.083812244}
 --- !u!1 &4988563164023500677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,6 +1512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986056306536741519}
+  - component: {fileID: 5483696660663335466}
   m_Layer: 0
   m_Name: RigLLeg022
   m_TagString: Untagged
@@ -1339,6 +1535,20 @@ Transform:
   m_Father: {fileID: 4984763925829261987}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5483696660663335466
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988563164023500677}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.13814402
+  m_Height: 0.6990402
+  m_Direction: 0
+  m_Center: {x: -0.2045801, y: -0.03961346, z: 0.00872302}
 --- !u!1 &4988564870306745965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984756507191529607}
+  - component: {fileID: 8689101705863754539}
   m_Layer: 0
   m_Name: RigRLeg032
   m_TagString: Untagged
@@ -1478,6 +1689,20 @@ Transform:
   m_Father: {fileID: 4984588445287329767}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8689101705863754539
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988571517631188495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.15091845
+  m_Height: 0.7383498
+  m_Direction: 0
+  m_Center: {x: -0.265218, y: -0.00031698446, z: 0.031860456}
 --- !u!1 &4988579668304910323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,6 +1712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984756081804874105}
+  - component: {fileID: 8364068658248458502}
   m_Layer: 0
   m_Name: RigRLeg011
   m_TagString: Untagged
@@ -1509,6 +1735,20 @@ Transform:
   m_Father: {fileID: 4984529963052578225}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &8364068658248458502
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988579668304910323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1618805
+  m_Height: 1.0823007
+  m_Direction: 0
+  m_Center: {x: -0.40617934, y: -0.0030083605, z: 0.024447588}
 --- !u!1 &4988856359499755305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,6 +1758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984489390037994913}
+  - component: {fileID: 3105503454768396203}
   m_Layer: 0
   m_Name: RigLLeg011
   m_TagString: Untagged
@@ -1540,6 +1781,20 @@ Transform:
   m_Father: {fileID: 4984529963052578225}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &3105503454768396203
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988856359499755305}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.16074558
+  m_Height: 1.0269283
+  m_Direction: 0
+  m_Center: {x: -0.4222736, y: -0.0083878, z: -0.01669323}
 --- !u!1 &4989733344919626061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,6 +1804,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4984903794081946885}
+  - component: {fileID: 330504089202887562}
   m_Layer: 0
   m_Name: RigLLeg032
   m_TagString: Untagged
@@ -1571,6 +1827,20 @@ Transform:
   m_Father: {fileID: 4986216258107341631}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &330504089202887562
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4989733344919626061}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.13566768
+  m_Height: 0.7114726
+  m_Direction: 0
+  m_Center: {x: -0.25744504, y: 0.019482186, z: -0.027733196}
 --- !u!1 &4989743312638321827
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,4 +1900,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4986370389096990481}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7777560240049114321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6446933127501164413}
+  m_Layer: 0
+  m_Name: AttackingArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6446933127501164413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777560240049114321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.7, z: 2.51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4986370389096990481}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
