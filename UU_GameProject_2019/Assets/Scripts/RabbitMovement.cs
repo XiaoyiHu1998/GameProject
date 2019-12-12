@@ -32,8 +32,6 @@ public class RabbitMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         if (Vector3.Distance(transform.position, targetPosition) < 0.3f)
         {
             moving = false;
@@ -65,5 +63,4 @@ public class RabbitMovement : MonoBehaviour
     {
         targetPosition = new Vector3(Random.Range(xRange.x, xRange.y), transform.position.y, Random.Range(zRange.x, zRange.y));
     }
-
 }
