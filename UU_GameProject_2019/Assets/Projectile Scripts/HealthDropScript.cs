@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IExplodable
+public class HealthDropScript : MonoBehaviour
 {
-    void getExploded();
+    public int amount;
 }
