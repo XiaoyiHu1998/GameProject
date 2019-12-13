@@ -2750,9 +2750,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_RemovedComponents:
     - {fileID: 0}
 =======
+=======
+>>>>>>> f0ab9dc112005ec6455a4f833491efbdf8f85c8a
     - target: {fileID: 3719836038125075230, guid: 7737647c22c1fc64a88d5cd030c352ce,
         type: 3}
       propertyPath: player
