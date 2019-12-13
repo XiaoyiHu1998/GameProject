@@ -9,20 +9,26 @@ public class NextScene : MonoBehaviour
     protected bool loadedScene;
     public string sceneName;
 
+    /// <summary>
+    /// Checks if there is collision with the edge of the level.
+    /// The object that this script is assigned to is the edge of the level.
+    /// Sets next scene true if there is collision.
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.name == "ThirdPersonController" || collision.gameObject.name == "AIThirdPersonController")
         { nextScene = true; }
     }
 
-    // Start is called before the first frame update
+    // Setting initial variables.
     void Start()
     {
         nextScene = false;
         loadedScene = false;
     }
 
-    // Update is called once per frame
+    // Grabs the desiged scene name and loads that scene.
     void Update()
     {
         if(nextScene && !loadedScene)
