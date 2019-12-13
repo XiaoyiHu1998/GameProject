@@ -11,7 +11,7 @@ public class MetalonMovement : MonoBehaviour
     bool moving, attacking;
     float idleTime, speed, timer, rotatingSpeed, detectionArea;
     float AngleDifference, AngleDifference2, AngleDifferenceTarget;
-    Vector3 hornPosition;
+    protected Vector3 hornPosition;
     string MyName;
     public int health;
 
@@ -64,47 +64,8 @@ public class MetalonMovement : MonoBehaviour
             m_animator.SetBool("Run Forward", true);
         }
 
-        /*/If the angle is too high, rotate first
-        else if (AngleDifference > 90 && Vector3.Distance(transform.position, relativePlayerPos) < detectionArea)
-        {
-            m_animator.SetBool("Run Forward", false);
-            m_animator.SetBool("Walk Forward", false);
-
-            if (AngleDifference2 > 90)
-            {
-                if (!turning)
-                {
-                    m_animator.SetTrigger("Turn Left");
-                    timer = 0;
-                    turning = true;
-                }
-                if (timer >= 1.19f)
-                {
-                    transform.rotation *= Quaternion.Euler(0, 60, 0);
-                    timer = 0;
-                    turning = false;
-                }
-            }
-            if (AngleDifference2 < -90)
-            {
-                if (!turning)
-                {
-                    m_animator.SetTrigger("Turn Right");
-                    timer = 0;
-                    turning = true;
-                }
-                if (timer >= 1.19f)
-                {
-                    transform.rotation *= Quaternion.Euler(0, 60, 0);
-                    timer = 0;
-                    turning = false;
-                }
-            }
-            timer += Time.deltaTime;
-        }*/
-
         //Moving to the player
-        else if ( (Vector3.Distance(transform.position, relativePlayerPos) < detectionArea && AngleDifference < 90) || (Vector3.Distance(transform.position, relativePlayerPos) < 5) )
+        else if (Vector3.Distance(transform.position, relativePlayerPos) < detectionArea)
         {
             transform.position = Vector3.MoveTowards(transform.position, relativePlayerPos, speed * Time.deltaTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - transform.position, Vector3.up).eulerAngles).normalized, Time.deltaTime * speed / 2);
