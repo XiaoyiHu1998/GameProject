@@ -1474,7 +1474,6 @@ GameObject:
   - component: {fileID: 11469404}
   - component: {fileID: 3719836038125075230}
   - component: {fileID: 3659727027566850979}
-  - component: {fileID: 2325204518182341301}
   m_Layer: 0
   m_Name: ThirdPersonController
   m_TagString: DoosTag
@@ -1498,7 +1497,6 @@ Transform:
   - {fileID: 448028}
   - {fileID: 6033727301180342865}
   - {fileID: 5987920786048269961}
-  - {fileID: 687076427313339504}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1616,33 +1614,17 @@ MonoBehaviour:
     type: 3}
   BombObject: {fileID: 8809881157277098149, guid: ea3a3c2a7ad173649a82707ae1bdeeda,
     type: 3}
-  BoomerangObject: {fileID: 0}
+  BoomerangObject: {fileID: 1007062918946686750, guid: 930d5bdc1c65e1442bdf5853c3a2378a,
+    type: 3}
   SwordObject: {fileID: 0}
-  attackButton: 
-  switchButton: 
-  BombForce: {x: 500, y: 0, z: 0}
-  ArrowForce: {x: 500, y: 0, z: 0}
-  placeholderInventory: 
+  attackButton: r
+  switchButton: f
+  BombForce: {x: 500, y: 200, z: 0}
+  ArrowForce: {x: 2500, y: 0, z: 0}
+  BoomerangTravelDistance: 8
+  placeholderInventory: 00000000000000000000000000000000
   placeholderInventoryCaps: 
   placeholderWeaponAcquired: 
---- !u!114 &2325204518182341301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c56459bf244d1234a895a175ab88ef36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BoomerangEmitter: {fileID: 3091476516026400776}
-  BoomerangPrefab: {fileID: 1007062918946686750, guid: 930d5bdc1c65e1442bdf5853c3a2378a,
-    type: 3}
-  Distance: 8
-  boomerangButton: 2
-  throwing: 0
 --- !u!1 &150244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,7 +2945,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69950387731087067}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 1.075, z: 0.647}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 408730}
@@ -2983,36 +2965,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 2534964839176971238, guid: bccec6ba3ec5b7a479482814f4ded144, type: 3}
---- !u!1 &3091476516026400776
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 687076427313339504}
-  m_Layer: 0
-  m_Name: BoomerangEmitter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &687076427313339504
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3091476516026400776}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.068, z: 1.052}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 408730}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4436719769283990337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,6 +3017,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6033727301180342865}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 1bd93717587e0304d8408f72521defb8,
+        type: 3}
+      propertyPath: m_Name
+      value: sword._anim
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1bd93717587e0304d8408f72521defb8,
+        type: 3}
+      propertyPath: m_TagString
+      value: DoosTag
+      objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 1bd93717587e0304d8408f72521defb8,
         type: 3}
       propertyPath: m_Controller
@@ -3140,16 +3102,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: -41.03028
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 1bd93717587e0304d8408f72521defb8,
-        type: 3}
-      propertyPath: m_Name
-      value: sword._anim
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 1bd93717587e0304d8408f72521defb8,
-        type: 3}
-      propertyPath: m_TagString
-      value: DoosTag
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bd93717587e0304d8408f72521defb8, type: 3}
 --- !u!1 &5329782722534338435 stripped
@@ -3171,6 +3123,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6033727301180342865}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
+        type: 3}
+      propertyPath: m_Name
+      value: sword._collider_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
+        type: 3}
+      propertyPath: m_TagString
+      value: DoosTag
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bccec6ba3ec5b7a479482814f4ded144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3235,21 +3202,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: -1025.207
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
-        type: 3}
-      propertyPath: m_Name
-      value: sword._collider_mesh
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: bccec6ba3ec5b7a479482814f4ded144,
-        type: 3}
-      propertyPath: m_TagString
-      value: DoosTag
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bccec6ba3ec5b7a479482814f4ded144, type: 3}

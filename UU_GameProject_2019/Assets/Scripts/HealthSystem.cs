@@ -16,20 +16,19 @@ public class HealthSystem : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("hallo");
         SetHealthText();
     }
 
     void OnCollisionEnter(Collision collisionInformation)
     {       
-
-        if (collisionInformation.collider.tag == "DoosTag")
+        //Check to see if the player collides with the enemy.
+        if (collisionInformation.collider.tag == "EnemyTag")
         {  
+            //Lower the players health but also update the health text (showcasing the current health on screen)
+
             playerHealth--;
-
+            Debug.Log("enemy hit");
             SetHealthText();
-
-            Debug.Log("New health = " + playerHealth);
 
             if (playerHealth <= 0)
             {
@@ -45,17 +44,6 @@ public class HealthSystem : MonoBehaviour
     {
         HealthText.text = "Current health: " + playerHealth.ToString();
     }
-
-   /* void Update()
-    {
-        currentScene = SceneManager.GetActiveScene();
-
-        if (Input.GetKeyDown("space") && currentScene.name == "SpawnScene")
-        {
-            SceneManager.LoadScene("SpawnScene");
-            Debug.Log("Je bent momenteel in de spawn scene");
-        }
-    }*/
 
     void Respawn()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // The delta distance between player and camera.
     public float deltaZ;
 
     void Start()
@@ -12,7 +12,9 @@ public class CameraMovement : MonoBehaviour
         deltaZ = 5;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Follows the players position and makes adjustment in the z position.
+    /// </summary>
     void LateUpdate()
     {
         Vector3 playerPosition = GameObject.Find("ThirdPersonController").transform.position;
