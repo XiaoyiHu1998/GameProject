@@ -16,23 +16,31 @@ public class ProjectileLaunchScript : MonoBehaviour
     public Vector3 BombForce; //X is forward, X is upward and Z is sideways(legacy boomerang implementation, here in case a problem crops up with the current system and we need to revert it)
     public Vector3 ArrowForce;
 
-    Weapon currentWeapon;
+    public Weapon currentWeapon;
 
     //Stefan and Xiao Yi can place their global variables for boomerang and sword code here
+
     //Stefan:
-    public static Vector3 Destination;
     public float BoomerangTravelDistance = 8;
+
     //Xiao Yi:
+
+
 
     public int[] placeholderInventory; //placeholder for Nout's inventory system
     public int[] placeholderInventoryCaps;
     public bool[] placeholderWeaponAcquired;
 
-    int placeholderHealth; //placeholder for Wietse's health system
+    public int placeholderHealth; //placeholder for Wietse's health system
 
     void Start()
     {
         placeholderInventory = new int[Enum.GetNames(typeof(Weapon)).Length];
+
+        placeholderInventory[(int)Weapon.Bow] = 50; //give ourself all weapons for testing
+        placeholderInventory[(int)Weapon.Bombs] = 8;
+        placeholderInventory[(int)Weapon.Boomerang] = 1;
+        placeholderInventory[(int)Weapon.Sword] = 1;
 
         placeholderInventoryCaps = new int[Enum.GetNames(typeof(Weapon)).Length];
 
@@ -43,7 +51,7 @@ public class ProjectileLaunchScript : MonoBehaviour
 
         placeholderWeaponAcquired = new bool[Enum.GetNames(typeof(Weapon)).Length];
 
-        placeholderWeaponAcquired[(int)Weapon.Bow] = true; //placeholder for the shop
+        placeholderWeaponAcquired[(int)Weapon.Bow] = true; //unlock all weapons for testing
         placeholderWeaponAcquired[(int)Weapon.Bombs] = true;
         placeholderWeaponAcquired[(int)Weapon.Boomerang] = true;
         placeholderWeaponAcquired[(int)Weapon.Sword] = true;
@@ -110,7 +118,7 @@ public class ProjectileLaunchScript : MonoBehaviour
         placeholderHealth += amount;
     }
 
-    void UseBow() //shooting an arrow
+    void UseBow() //shooting an arrows
     {
         if (placeholderInventory[(int)Weapon.Bow] > 0 && placeholderWeaponAcquired[(int)Weapon.Bow])
         {
@@ -134,12 +142,11 @@ public class ProjectileLaunchScript : MonoBehaviour
     {
         if (placeholderInventory[(int)Weapon.Boomerang] > 0 && placeholderWeaponAcquired[(int)Weapon.Boomerang])
         {
-            //Code below is inactive for testing purposes
-            //  placeholderInventory[(int)Weapon.Boomerang]--;
+            placeholderInventory[(int)Weapon.Boomerang]--;
             GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
             MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
-            Destination = ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance);
-            // REMINDER _ add the boomerang to inventory after it gets Destroyed (timer / catching)
+            MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance));
+            MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
         }
     }
 
