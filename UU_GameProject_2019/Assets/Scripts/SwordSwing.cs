@@ -12,12 +12,14 @@ public class SwordSwing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+            //disables rendering of the sword before it is swung
             GetComponent<Renderer>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //checks if sword needs to be swung, before turning on the rendering and playing aniation
         if(Input.GetKey(attack_KeyBinding) && !GetComponent<Renderer>().enabled){
             GetComponent<Renderer>().enabled = true;
             updateTime();
@@ -28,6 +30,7 @@ public class SwordSwing : MonoBehaviour
         }
     }
 
+    //times the duration of the sword attack
     void updateTime(){
         stopTime = Time.time + attackTime;
     }
