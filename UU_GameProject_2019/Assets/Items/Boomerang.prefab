@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1568686910964708290}
   - component: {fileID: 68286265662612283}
   - component: {fileID: 4307085581229261746}
-  - component: {fileID: 4723341968787550315}
+  - component: {fileID: -6238347620543053572}
   m_Layer: 0
   m_Name: Boomerang
   m_TagString: Untagged
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &4723341968787550315
+--- !u!114 &-6238347620543053572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,10 +120,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1007062918946686750}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f79614d4fb1da194dafa69a0ee59a442, type: 3}
+  m_Script: {fileID: 11500000, guid: f1889cdf2cf532641845d6a4e7cb8dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  RotatingSpeed: 1024
-  Player: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
-  BendingSpeed: 10
+  Destination: {x: 0, y: 0, z: 0}
+  playerRelativePos: {x: 0, y: 0, z: 0}

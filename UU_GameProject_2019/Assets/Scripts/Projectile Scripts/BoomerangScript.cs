@@ -7,19 +7,19 @@ public class BoomerangScript : MonoBehaviour
     public float speed = 10f;
     float RotatingSpeed, timer;
     bool returning;
-    Vector3 Destination, playerRelativePos;
+    public Vector3 Destination, playerRelativePos;
+    public ProjectileLaunchScript Owner; //TODO: rewrite this to refer to gameObject instead of script
 
     void Start()
     {
         returning = false;
         RotatingSpeed = 1024;
         timer = 8;
-        Destination = BoomerangThrowing.Destination;
     }
 
     void Update()
     {
-        Vector3 playerPos = GameObject.Find("ThirdPersonController").transform.position;
+        Vector3 playerPos = GameObject.Find("ThirdPersonController").transform.position; //TODO: rewrite this to use Owner
         playerRelativePos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
 
         //rotates a 'RotatingSpeed' degrees per second around y axis
@@ -41,27 +41,34 @@ public class BoomerangScript : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
+            Owner.placeholderInventory[(int)Weapon.Boomerang]++;
             Destroy(gameObject);
         }
+    }
+
+    public void SetDestination(Vector3 destination)
+    {
+        Destination = destination;
+    }
+
+    public void SetOwner(ProjectileLaunchScript owner)
+    {
+        Owner = owner;
     }
 
     void OnCollisionEnter(Collision target)
     {
         IStunnable stunnable = target.gameObject.GetComponent<IStunnable>();
-        IBoomerangDamagable damageable = target.gameObject.GetComponent<IBoomerangDamagable>();
 
         if (stunnable != null)
         {
             stunnable.getStunned();
             returning = true;
         }
-        if (damageable != null)
+
+        if (target.gameObject.name == "ThirdPersonController" && returning) //TODO: rewrite this to use Owner
         {
-            damageable.GetDamaged();
-            returning = true;
-        }
-        if (target.gameObject.name == "ThirdPersonController" && returning)
-        {
+            Owner.placeholderInventory[(int)Weapon.Boomerang]++;
             Destroy(gameObject);
         }
         else
