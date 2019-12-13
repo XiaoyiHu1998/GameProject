@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System; //testing for broken spawn scene times 2
+using System;
 
 public class ProjectileLaunchScript : MonoBehaviour
 {
