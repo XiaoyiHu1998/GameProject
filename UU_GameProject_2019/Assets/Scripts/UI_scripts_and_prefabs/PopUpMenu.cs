@@ -42,8 +42,6 @@ public class PopUpMenu : MonoBehaviour
         }
     }
 
-    //below are the functions for the different buttons.
-
     public void ResumeGame()
     {
         PopUp.SetActive(false);

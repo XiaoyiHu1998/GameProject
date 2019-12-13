@@ -2,18 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerangScript : MonoBehaviour
+public class BoomerangMovement : MonoBehaviour
 {
     public float speed = 10f;
-    float RotatingSpeed, timer;
-    bool returning;
+    public float RotatingSpeed = 1024;
+    bool returning = false;
     Vector3 Destination, playerRelativePos;
 
     void Start()
     {
-        returning = false;
-        RotatingSpeed = 1024;
-        timer = 8;
         Destination = BoomerangThrowing.Destination;
     }
 
@@ -22,8 +19,7 @@ public class BoomerangScript : MonoBehaviour
         Vector3 playerPos = GameObject.Find("ThirdPersonController").transform.position;
         playerRelativePos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
 
-        //rotates a 'RotatingSpeed' degrees per second around y axis
-        transform.Rotate(0, 0, RotatingSpeed * Time.deltaTime, Space.Self); 
+        transform.Rotate(0, 0, RotatingSpeed * Time.deltaTime, Space.Self); //rotates 'RotatingSpeed' degrees per second around y axis
 
         if (returning)
         {
@@ -36,12 +32,6 @@ public class BoomerangScript : MonoBehaviour
             {
                 returning = true;
             }
-        }
-        //if the boomerang glitches out, then the timer will reach zero. when it does it returns the boomerang to the player
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            Destroy(gameObject);
         }
     }
 

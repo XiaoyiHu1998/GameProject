@@ -38,8 +38,6 @@ public class MenuScript : MonoBehaviour
         
     }
 
-    //the functions for the different buttons.
-
     public void StartGame()
     {
         SceneManager.LoadScene("SpawnScene");
@@ -79,7 +77,7 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene("SpawnScene");
         Time.timeScale = 1f;
-        //Debug.Log("Level 1 loaded!");
+        Debug.Log("Level 1 loaded!");
     }
 
     public void LoadLevel2()

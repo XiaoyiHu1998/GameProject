@@ -8,13 +8,12 @@ public class SwitchCamera : MonoBehaviour
     public Camera secondCamera;
     public static string activeCamera;
 
-    // Setting initial variables.
+    // Start is called before the first frame update
     void Start()
     {
         activeCamera = "mainCamera";
     }
 
-    // Switches the camera depending on which one is set active.
     private void Update()
     {
         if(activeCamera == "mainCamera")
