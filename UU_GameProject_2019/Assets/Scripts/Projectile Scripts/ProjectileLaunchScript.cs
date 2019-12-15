@@ -55,26 +55,24 @@ public class ProjectileLaunchScript : MonoBehaviour
         placeholderWeaponAcquired[(int)Weapon.Bombs] = true;
         placeholderWeaponAcquired[(int)Weapon.Boomerang] = true;
         placeholderWeaponAcquired[(int)Weapon.Sword] = true;
+
+        SwordObject.gameObject.GetComponent<SwordSwing>().SetOwner(this); //the sword object always exists, so it only needs to receive an owner once, as opposed to the boomerang which is reinstantiated with every throw for physics efficiency purposes
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(attackButton)) //attack action with the currently selected weapon
+        if (Input.GetKeyDown(attackButton)) //attack action with the currently selected weapon
         {
-            switch (currentWeapon)
+            if (placeholderInventory[(int)currentWeapon] > 0 && placeholderWeaponAcquired[(int)currentWeapon])
             {
-                case Weapon.Bow:
-                    UseBow();
-                    break;
-                case Weapon.Bombs:
-                    UseBombs();
-                    break;
-                case Weapon.Boomerang:
-                    UseBoomerang();
-                    break;
-                case Weapon.Sword:
-                    UseSword();
-                    break;
+                placeholderInventory[(int)currentWeapon]--;
+                switch (currentWeapon)
+                {
+                    case Weapon.Bow: UseBow(); break;
+                    case Weapon.Bombs: UseBombs(); break;
+                    case Weapon.Boomerang: UseBoomerang(); break;
+                    case Weapon.Sword: UseSword(); break;
+                }
             }
         }
 
@@ -120,38 +118,26 @@ public class ProjectileLaunchScript : MonoBehaviour
 
     void UseBow() //shooting an arrows
     {
-        if (placeholderInventory[(int)Weapon.Bow] > 0 && placeholderWeaponAcquired[(int)Weapon.Bow])
-        {
-            placeholderInventory[(int)Weapon.Bow]--;
-            GameObject MyArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-            MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
-        }
+        GameObject MyArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
     }
 
     void UseBombs() //throwing a bomb
     {
-        if (placeholderInventory[(int)Weapon.Bombs] > 0 && placeholderWeaponAcquired[(int)Weapon.Bombs])
-        {
-            placeholderInventory[(int)Weapon.Bombs]--;
-            GameObject MyBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-            MyBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
-        }
+        GameObject MyBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        MyBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
     }
 
     void UseBoomerang() //throwing the boomerang
     {
-        if (placeholderInventory[(int)Weapon.Boomerang] > 0 && placeholderWeaponAcquired[(int)Weapon.Boomerang])
-        {
-            placeholderInventory[(int)Weapon.Boomerang]--;
-            GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-            MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
-            MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance));
-            MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
-        }
+        GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
+        MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance));
+        MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
     }
 
     void UseSword() //swinging the sword
     {
-        //Xiao Yi's code
+        SwordObject.gameObject.GetComponent<SwordSwing>().StartSwing();
     }
 }

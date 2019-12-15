@@ -8,7 +8,7 @@ public class BoomerangScript : MonoBehaviour
     float RotatingSpeed, timer;
     bool returning;
     public Vector3 Destination, playerRelativePos;
-    public ProjectileLaunchScript Owner; //TODO: rewrite this to refer to gameObject instead of script
+    public ProjectileLaunchScript Owner;
 
     void Start()
     {
@@ -58,11 +58,11 @@ public class BoomerangScript : MonoBehaviour
 
     void OnCollisionEnter(Collision target)
     {
-        IStunnable stunnable = target.gameObject.GetComponent<IStunnable>();
+        IStunable stunable = target.gameObject.GetComponent<IStunable>();
 
-        if (stunnable != null)
+        if (stunable != null)
         {
-            stunnable.getStunned();
+            stunable.getStunned();
             returning = true;
         }
 

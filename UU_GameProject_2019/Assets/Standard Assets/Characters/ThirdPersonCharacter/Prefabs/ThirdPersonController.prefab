@@ -1616,15 +1616,17 @@ MonoBehaviour:
     type: 3}
   BoomerangObject: {fileID: 1007062918946686750, guid: 930d5bdc1c65e1442bdf5853c3a2378a,
     type: 3}
-  SwordObject: {fileID: 0}
+  SwordObject: {fileID: 5329782722534338435}
   attackButton: r
   switchButton: f
   BombForce: {x: 500, y: 200, z: 0}
   ArrowForce: {x: 2500, y: 0, z: 0}
+  currentWeapon: 0
   BoomerangTravelDistance: 8
   placeholderInventory: 00000000000000000000000000000000
   placeholderInventoryCaps: 
   placeholderWeaponAcquired: 
+  placeholderHealth: 0
 --- !u!1 &150244
 GameObject:
   m_ObjectHideFlags: 0
