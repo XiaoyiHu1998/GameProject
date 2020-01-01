@@ -66,11 +66,28 @@ public class BoomerangScript : MonoBehaviour
             returning = true;
         }
 
+        ItemDropScript lootDrop = target.gameObject.GetComponent<ItemDropScript>();
+
+        if (lootDrop != null)
+        {
+            Owner.lootObject(lootDrop.weapon, lootDrop.amount);
+            Destroy(lootDrop.gameObject);
+        }
+
+        HealthDropScript healthDrop = target.gameObject.GetComponent<HealthDropScript>();
+
+        if (healthDrop != null)
+        {
+            Owner.lootHealth(healthDrop.amount);
+            Destroy(healthDrop.gameObject);
+        }
+
         if (target.gameObject.name == "ThirdPersonController" && returning) //TODO: rewrite this to use Owner
         {
             Owner.placeholderInventory[(int)Weapon.Boomerang]++;
             Destroy(gameObject);
         }
+
         else
         {
             returning = true;
