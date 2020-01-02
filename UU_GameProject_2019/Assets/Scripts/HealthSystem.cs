@@ -25,24 +25,14 @@ public class HealthSystem : MonoBehaviour
         if (collisionInformation.collider.tag == "EnemyTag")
         {  
             //Lower the players health but also update the health text (showcasing the current health on screen)
-
-            playerHealth--;
             Debug.Log("enemy hit");
-            SetHealthText();
-
-            if (playerHealth <= 0)
-            {
-                Debug.Log("You died.");
-                Respawn();
-                
-            }
+            TakeDamage();
         }
-        
     }
 
     void SetHealthText()
     {
-        HealthText.text = "Current health: " + playerHealth.ToString();
+        //HealthText.text = "Current health: " + playerHealth.ToString();
     }
 
     void Respawn()
@@ -53,7 +43,15 @@ public class HealthSystem : MonoBehaviour
         
     }
 
+    public void TakeDamage()
+    {
+        playerHealth--;
+        SetHealthText();
 
-
-    
+        if (playerHealth <= 0)
+        {
+            Debug.Log("You died.");
+            Respawn();
+        }
+    }
 }

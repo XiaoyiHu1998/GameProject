@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e343c5ec76a659d4d9f4220bfa6df1ca
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ProjectileEmitter: {instanceID: 0}
+  - MagicBolt: {fileID: 2640206345002658043, guid: 6bbb8d88c4d3d844fbcc2712bfa0bff4,
+      type: 3}
+  - Clone: {fileID: 6324016847400469001, guid: 56f91a7bf042f7b4084466e63b37bfb1, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
