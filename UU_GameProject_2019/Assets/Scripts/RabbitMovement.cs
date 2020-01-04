@@ -10,7 +10,7 @@ public class RabbitMovement : MonoBehaviour
 
     private Animator m_animator;
 
-    protected Vector2 zRange, xRange;
+    public Vector2 zRange, xRange;
     protected Vector3 targetPosition;
     bool moving;
 
@@ -18,8 +18,6 @@ public class RabbitMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        zRange = new Vector2(10, 18);
-        xRange = new Vector2(13, 28);
         idleTime = 4f;
         speed = 1;
         moving = true;

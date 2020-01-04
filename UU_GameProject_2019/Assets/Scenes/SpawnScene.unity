@@ -4648,6 +4648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0418a8281e792418cd3d8ef0b5f47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zRange: {x: 10, y: 18}
+  xRange: {x: 13, y: 28}
 --- !u!4 &1284814775 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4787067198595134, guid: 3f9dcd6bf73fe2f40806fb0074f456c4,
@@ -6077,6 +6079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0418a8281e792418cd3d8ef0b5f47b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zRange: {x: 10, y: 18}
+  xRange: {x: 13, y: 28}
 --- !u!136 &1708573513
 CapsuleCollider:
   m_ObjectHideFlags: 0
