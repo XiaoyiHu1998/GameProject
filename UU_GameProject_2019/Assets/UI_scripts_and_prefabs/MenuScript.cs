@@ -22,7 +22,7 @@ public class MenuScript : MonoBehaviour
 
         playButton.onClick.AddListener(StartGame);
         
-        optionsButton.onClick.AddListener(OpenOptions);
+       // optionsButton.onClick.AddListener(OpenOptions);
         
         back_OptionsToMenu.onClick.AddListener(GoBack_OptionsToMenu);
 
@@ -35,7 +35,17 @@ public class MenuScript : MonoBehaviour
         Level2Button.onClick.AddListener(LoadLevel2);
 
         ContinueButton.onClick.AddListener(Continue);
-        
+
+       /* Scene currentScene = SceneManager.GetActiveScene();
+
+        string sceneName = currentScene.name;
+
+        if (sceneName == "MenuScene")
+        {
+            Debug.Log("je bent in menu scene");
+            OptionsPanel.SetActive(true);
+        }
+        */
     }
 
     public void StartGame()
@@ -43,13 +53,13 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("SpawnScene");
         Time.timeScale = 1f;
     }
-
+    /*
     public void OpenOptions()
     { 
         OptionsPanel.SetActive(true);
         MenuPanel.SetActive(false);        
     }
-
+    */
     public void QuitGame()
     {
         Application.Quit();
@@ -88,6 +98,7 @@ public class MenuScript : MonoBehaviour
 
     public void Continue()
     {
+        Debug.Log("continued");
         MenuPanel.SetActive(true);
         MainOpeningPanel.SetActive(false);
     }
