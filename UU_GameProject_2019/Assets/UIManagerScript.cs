@@ -9,9 +9,11 @@ public class UIManagerScript : MonoBehaviour
 {
     public RectTransform MenuPanel, OptionsPanel, LevelsPanel, MainOpeningPanel, playbutton, optionsbutton, levelsbutton, quitbutton, buttonlayout;
 
+    public Text testtext, text1, text2, text3, text4;
+
     public Button button_Play, button_Options, button_Quit, button_OptionsToMenu, button_Levels, button_LevelsToMenu, button_Continue;
 
-    public float animationSpeed, animationSpeed_button, animationDelay;
+    public float animationSpeed, animationSpeed_button, animationDelay, fadeTime;
 
     public void Awake()
     {
@@ -79,7 +81,13 @@ public class UIManagerScript : MonoBehaviour
     {
         //playbutton.DOShakePosition(1, new Vector3(5, 0, 0), 15, 0, false, false);
         playbutton.DOPunchScale(new Vector3(0.5f, 0.5f, 0), 0.2f, 2, 1);
-        SceneManager.LoadScene("SpawnScene");
+        testtext.DOFade(0, fadeTime);
+        text1.DOFade(0, fadeTime);
+        text2.DOFade(0, fadeTime);
+        text3.DOFade(0, fadeTime);
+        text4.DOFade(0, fadeTime);
+        //MenuPanel.DOScale(0.01f, 0.5f);
+        //SceneManager.LoadScene("SpawnScene");
         Time.timeScale = 1f;
     }
 
