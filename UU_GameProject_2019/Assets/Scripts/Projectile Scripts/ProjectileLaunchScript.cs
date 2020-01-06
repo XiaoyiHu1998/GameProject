@@ -62,6 +62,9 @@ public class ProjectileLaunchScript : MonoBehaviour
         placeholderWeaponAcquired[(int)Weapon.Sword] = true;
 
         SwordObject.gameObject.GetComponent<SwordSwing>().SetOwner(this); //the sword object always exists, so it only needs to receive an owner once, as opposed to the boomerang which is reinstantiated with every throw for physics efficiency purposes
+
+        placeholderHealth = 3;
+        placeholderMaxHealth = 6;
     }
 
     void Update()
@@ -125,32 +128,37 @@ public class ProjectileLaunchScript : MonoBehaviour
 
     void UseBow() //shooting an arrows
     {
-        GameObject MyArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-        MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
-        MyArrow.gameObject.GetComponent<ArrowScript>().SetOwner(this);
+        GameObject myArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        myArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
+        myArrow.gameObject.GetComponent<ArrowScript>().SetOwner(this);
     }
 
     void UseBombs() //throwing a bomb
     {
-        GameObject MyBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-        MyBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
+        GameObject myBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        myBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
     }
 
     void UseBoomerang() //throwing the boomerang
     {
-        GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-        MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
-        MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance));
-        MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
+        GameObject myBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        myBoomerang.transform.rotation = BoomerangObject.transform.rotation;
+        myBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance));
+        myBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
     }
 
     void UseSword() //swinging the sword
     {
-        SwordObject.gameObject.GetComponent<SwordSwing>().StartSwing();
-        if (placeholderHealth == placeholderMaxHealth)
+        SwordObject.gameObject.GetComponent<SwordSwing>().StartSwing(); //sword itself does nothing to prevent doube hits
+        GameObject myBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        myBeam.gameObject.GetComponent<BeamScript>().SetOwner(this);
+
+        if (placeholderHealth == placeholderMaxHealth) //sword beam if at full health
+            myBeam.gameObject.GetComponent<BeamScript>().SetTimer(5f);
+        else
         {
-            GameObject MyBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-            MyBeam.gameObject.GetComponent<BeamScript>().SetOwner(this);
+            myBeam.gameObject.GetComponent<BeamScript>().SetTimer(0.05f);
+            myBeam.gameObject.GetComponent<Renderer>().enabled = false; //short invisible beam only representing melee hit if not
         }
     }
 }

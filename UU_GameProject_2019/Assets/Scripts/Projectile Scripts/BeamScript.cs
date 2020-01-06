@@ -5,13 +5,12 @@ using UnityEngine;
 public class BeamScript : MonoBehaviour
 {
     public float speed = 10f;
-    public float timer = 5f; //maximum range, expressed in seconds of flight time
+    
     public ProjectileLaunchScript Owner;
 
     void Start()
     {
         transform.Rotate(0, 90, 0, Space.Self); //beam is wider than it is long, so it is rotated
-        Destroy(gameObject, timer);
     }
     
     void Update()
@@ -21,6 +20,8 @@ public class BeamScript : MonoBehaviour
 
     void OnTriggerEnter(Collider target)
     {
+        print("hit something");
+
         IStabable stabable = target.gameObject.GetComponent<IStabable>(); //IStabable is the interface that tracks if something can interact with the sword or it's beam in a special way
 
         if (stabable != null)
@@ -48,5 +49,10 @@ public class BeamScript : MonoBehaviour
     public void SetOwner(ProjectileLaunchScript owner)
     {
         Owner = owner;
+    }
+
+    public void SetTimer(float timer)
+    {
+        Destroy(gameObject, timer);
     }
 }
