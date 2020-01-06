@@ -6,12 +6,14 @@ using UnityEngine.Playables;
 public class EnableTimeline : MonoBehaviour
 {
     public PlayableDirector playableDirector;
+    public GameObject canvas;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playableDirector.Play();
+            canvas.SetActive(true);
         }
     }
 }

@@ -40,6 +40,7 @@ public class UIManagerScript : MonoBehaviour
         //levelsbutton.DOAnchorPos(Vector2.zero, animationSpeed_button).SetDelay(2.1f);
         //optionsbutton.DOAnchorPos(Vector2.zero, animationSpeed_button).SetDelay(2.2f);
         //quitbutton.DOAnchorPos(Vector2.zero, animationSpeed_button).SetDelay(2.3f);
+        print("werkt");
         
     }
 
