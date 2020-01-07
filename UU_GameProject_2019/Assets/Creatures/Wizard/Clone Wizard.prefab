@@ -399,8 +399,7 @@ GameObject:
   - component: {fileID: 6327227268721221433}
   - component: {fileID: 6237877258813794489}
   - component: {fileID: 1792883477245784119}
-  - component: {fileID: 1792883477245784112}
-  - component: {fileID: 2728440710441095263}
+  - component: {fileID: 5605481403471786559}
   m_Layer: 0
   m_Name: Clone Wizard
   m_TagString: Untagged
@@ -464,21 +463,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!136 &1792883477245784112
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6324016847400469001}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.8308058
-  m_Height: 5.659509
-  m_Direction: 1
-  m_Center: {x: 0, y: 3.8465278, z: 0.017567635}
---- !u!114 &2728440710441095263
+--- !u!114 &5605481403471786559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -490,11 +475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1caac05d62d90944aba9b156062a535b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileEmitter: {fileID: 1792883477995911811}
-  MagicBolt: {fileID: 2640206345002658043, guid: 6bbb8d88c4d3d844fbcc2712bfa0bff4,
-    type: 3}
+  ProjectileEmitter: {fileID: 0}
+  MagicBolt: {fileID: 0}
   Clone: {fileID: 0}
-  ShootingForce: {x: 500, y: 0, z: 0}
+  ShootingForce: {x: 0, y: 0, z: 0}
   attackDelay: 0
   teleportDelay: 0
   health: 0

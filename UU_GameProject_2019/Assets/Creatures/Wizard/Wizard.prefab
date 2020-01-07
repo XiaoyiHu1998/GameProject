@@ -15605,9 +15605,10 @@ MonoBehaviour:
     type: 3}
   Clone: {fileID: 6324016847400469001, guid: 56f91a7bf042f7b4084466e63b37bfb1, type: 3}
   ShootingForce: {x: 500, y: 0, z: 0}
-  attackDelay: 3
+  attackDelay: 4
   teleportDelay: 4
   health: 8
+  hittable: 0
 --- !u!1 &5702385985902823536
 GameObject:
   m_ObjectHideFlags: 0
@@ -30650,7 +30651,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 4029d7b370757f849aeebc2fe714cffa, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!1 &5702385987133080710

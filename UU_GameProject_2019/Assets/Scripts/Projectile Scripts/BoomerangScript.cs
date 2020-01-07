@@ -66,12 +66,12 @@ public class BoomerangScript : MonoBehaviour
             returning = true;
         }
 
-        if (target.gameObject.name == "ThirdPersonController" && returning) //TODO: rewrite this to use Owner
+        if (target.gameObject.tag == "Player" && returning) //TODO: rewrite this to use Owner
         {
             Owner.placeholderInventory[(int)Weapon.Boomerang]++;
             Destroy(gameObject);
         }
-        else
+        else if (target.gameObject.tag != "Projectile")
         {
             returning = true;
         }

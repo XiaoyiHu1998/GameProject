@@ -16,16 +16,17 @@ public class MagicBoltScript : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision target)
+    void OnTriggerEnter(Collider target)
     {
         if (target.gameObject.tag == "Player")
         {
             HealthSystem Script = GameObject.FindObjectOfType(typeof(HealthSystem)) as HealthSystem;
             Script.TakeDamage();
-            Debug.Log("Player");
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
-        Debug.Log("Destroy");
+        else if (target.gameObject.tag == "Untagged") 
+        {
+            Destroy(gameObject);
+        }
     }
 }
