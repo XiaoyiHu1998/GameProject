@@ -5,6 +5,6 @@ public class LoadOnActive : MonoBehaviour
 {
     public void OnEnable()
     {
-        SceneManager.LoadScene("SpawnScene");
+        SceneManager.LoadScene("StartingCaveScene");
     }
 }

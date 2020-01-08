@@ -7,7 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MenuBackgroundScene.unity
-    guid: 1734fe96c0b0ba24f86139c763f00375
+    guid: 07e264608cf2ee74d8abd50c19278fdb
+  - enabled: 1
+    path: Assets/Scenes/StartingCaveScene.unity
+    guid: 90768d323082f514a85687e4e1b510d6
   - enabled: 1
     path: Assets/Scenes/SpawnScene.unity
     guid: 9e3a49c0a58d2f74fa875d5676ad58b0

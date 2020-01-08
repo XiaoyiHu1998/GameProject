@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
@@ -8,6 +9,7 @@ public class NextScene : MonoBehaviour
     protected bool nextScene;
     protected bool loadedScene;
     public string sceneName;
+    public PlayableDirector playableDirector;
 
     private void OnCollisionExit(Collision collision)
     {
@@ -15,21 +17,25 @@ public class NextScene : MonoBehaviour
         { nextScene = true; }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         nextScene = false;
         loadedScene = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(nextScene && !loadedScene)
         {
+            Play();
             SceneManager.LoadScene(sceneName: sceneName);
             loadedScene = true;
         }
 
+    }
+
+    void Play()
+    {
+        playableDirector.Play();
     }
 }
