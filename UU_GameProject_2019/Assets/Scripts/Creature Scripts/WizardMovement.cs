@@ -10,7 +10,6 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
     public int health;
     private List<GameObject> CloneList = new List<GameObject>(3);
 
-    private GameObject Clone1, Clone2, Clone3;
     private int maxHealth, cloneCount;
     private Animator m_animator;
 
@@ -94,32 +93,10 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
         //Rotating around the player
         else if (health <= maxHealth / 2)
         {
-            //Making 1 Clone
-            if (health <= (maxHealth * 3/8) && cloneCount < 1)
+            //Making clones
+            for (int i = 1; i<=3; i++)
             {
-                Clone1 = Instantiate(Clone, transform.position, transform.rotation) as GameObject;
-                Clone1.transform.parent = transform;
-                CloneList.Add(Clone1);
-                cloneCount = 1;
-                Debug.Log("Made a Clone");
-            }
-            //Making a second Clone
-            if (health <= maxHealth / 4 && cloneCount < 2)
-            {
-                Clone2 = Instantiate(Clone, transform.position, transform.rotation) as GameObject;
-                Clone2.transform.parent = transform;
-                CloneList.Add(Clone2);
-                cloneCount = 2;
-                Debug.Log("Made a second Clone");
-            }
-            //Making a third Clone
-            if (health <= (maxHealth * 1/8) && cloneCount < 3)
-            {
-                Clone3 = Instantiate(Clone, transform.position, transform.rotation) as GameObject;
-                Clone3.transform.parent = transform;
-                CloneList.Add(Clone3);
-                cloneCount = 3;
-                Debug.Log("Made a third Clone");
+                if (health <= (maxHealth * (4 - i) / 8) && cloneCount < i) {CreateClone();}
             }
 
             //Stop spinning fast
@@ -173,7 +150,7 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
         }
     }
 
-    protected void ShootMagicBolt()
+    void ShootMagicBolt()
     {
         GameObject MyBolt = Instantiate(MagicBolt, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         MyBolt.GetComponent<Rigidbody>().AddRelativeForce(ShootingForce);
@@ -182,6 +159,14 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
         rot = new Vector3(rot.x, rot.y - 90, rot.z);
         MyBolt.transform.rotation = Quaternion.Euler(rot);
         Destroy(MyBolt, 5);
+    }
+
+    void CreateClone()
+    {
+        GameObject MyClone = Instantiate(Clone, transform.position, transform.rotation) as GameObject;
+        MyClone.transform.parent = transform;
+        CloneList.Add(MyClone);
+        cloneCount++;
     }
 
     void TakeDamage()
@@ -217,12 +202,10 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
     {
         TakeDamage();
     }
-
     public void getExploded()
     {
         TakeDamage();
     }
-
     public void getStunned()
     {
         TakeDamage();
