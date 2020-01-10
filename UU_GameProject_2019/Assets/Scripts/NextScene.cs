@@ -6,36 +6,49 @@ using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
+    protected float timer;
     protected bool nextScene;
-    protected bool loadedScene;
+    public Vector3 playerPosition;
+    public Vector3 playerRotation;
     public string sceneName;
     public PlayableDirector playableDirector;
-
-    private void OnCollisionExit(Collision collision)
+    
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "ThirdPersonController" || collision.gameObject.name == "AIThirdPersonController")
-        { nextScene = true; }
+        {
+            nextScene = true;   
+        }
     }
 
     void Start()
     {
+        timer = 0;
         nextScene = false;
-        loadedScene = false;
     }
 
     void Update()
     {
-        if(nextScene && !loadedScene)
+        if (nextScene)
         {
             Play();
-            SceneManager.LoadScene(sceneName: sceneName);
-            loadedScene = true;
+            SavePlayer();
+            timer += Time.deltaTime;
+            if (timer > 1)
+            {
+                SceneManager.LoadScene(sceneName: sceneName);
+            }
         }
-
     }
 
     void Play()
     {
         playableDirector.Play();
+    }
+
+    void SavePlayer()
+    {
+        PlayerStats.playerPosition = playerPosition;
+        PlayerStats.playerRotation = playerRotation;
     }
 }
