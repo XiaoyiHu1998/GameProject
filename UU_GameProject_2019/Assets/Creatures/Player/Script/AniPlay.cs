@@ -41,27 +41,11 @@ public class AniPlay : MonoBehaviour
             {
                 for (int j = 0; j < animator.Length; j++)
                 {
-                    animator[j].SetBool("idleToIdle01", false);
-                    animator[j].SetBool("idleToWalk", false);
-                    animator[j].SetBool("idleToRun", false);
-                    animator[j].SetBool("idleToJump", false);
-                    animator[j].SetBool("idleToDamage", false);
-                    animator[j].SetBool("idleToStun", false);
-                    animator[j].SetBool("idleToAttack01", false);
-                    animator[j].SetBool("idleToAttack02", false);
-                    animator[j].SetBool("idleToAttack03", false);
-                    animator[j].SetBool("idleToAttack04", false);
-                    animator[j].SetBool("idleToWin", false);
-                    animator[j].SetBool("idleToDie", false);
-                }
-            }
-            else
-            {
-                for (int j = 0; j < animator.Length; j++)
-                {
-                    animator[j].SetBool("walkToIdle", false);
-                    animator[j].SetBool("runToIdle", false);
-                    animator[j].SetBool("dieToIdle", false);
+                    animator[j].SetBool("Standing", false);
+                    animator[j].SetBool("Walking", false);
+                    animator[j].SetBool("Running", false);
+                    animator[j].SetBool("Stunned", false);
+                    animator[j].SetBool("Victory", false);
                 }
             }
 
@@ -71,7 +55,7 @@ public class AniPlay : MonoBehaviour
                 {
                     for (int j = 0; j < animator.Length; j++)
                     {
-                        animator[j].SetBool("walkToIdle", true);
+                        animator[j].SetBool("Walking", false);
                     }
                 }
 
@@ -79,7 +63,7 @@ public class AniPlay : MonoBehaviour
                 {
                     for (int j = 0; j < animator.Length; j++)
                     {
-                        animator[j].SetBool("runToIdle", true);
+                        animator[j].SetBool("Running", false);
                     }
                 }
 
@@ -87,7 +71,7 @@ public class AniPlay : MonoBehaviour
                 {
                     for (int j = 0; j < animator.Length; j++)
                     {
-                        animator[j].SetBool("dieToIdle", true);
+                        animator[j].SetTrigger("Revive");
                     }
                 }
 
@@ -97,79 +81,79 @@ public class AniPlay : MonoBehaviour
                     case "stand":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToIdle01", true);
+                            animator[j].SetBool("Standing", true);
                         }
 
                         break;
                     case "walk":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToWalk", true);
+                            animator[j].SetBool("Walking", true);
                         }
 
                         break;
                     case "run":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToRun", true);
+                            animator[j].SetBool("Running", true);
                         }
                         break;
                     case "jump":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToJump", true);
+                            animator[j].SetTrigger("Jump");
                         }
                         break;
                     case "damage":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToDamage", true);
+                            animator[j].SetTrigger("TakeDamage");
                         }
                         break;
                     case "stun":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToStun", true);
+                            animator[j].SetBool("Stunned", true);
                         }
                         break;
                     case "attack01":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToAttack01", true);
+                            animator[j].SetTrigger("Attack");
                         }
                         break;
 
                     case "attack02":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToAttack02", true);
+                            animator[j].SetTrigger("ShieldBash");
                         }
 
                         break;
                     case "attack03":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToAttack03", true);
+                            animator[j].SetTrigger("JumpSlash");
                         }
                         break;
 
                     case "attack04":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToAttack04", true);
+                            animator[j].SetTrigger("SwordThrust");
                         }
 
                         break;
                     case "win":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToWin", true);
+                            animator[j].SetBool("Victory", true);
                         }
                         break;
                     case "die":
                         for (int j = 0; j < animator.Length; j++)
                         {
-                            animator[j].SetBool("idleToDie", true);
+                            animator[j].SetTrigger("Die");
                         }
                         break;
 

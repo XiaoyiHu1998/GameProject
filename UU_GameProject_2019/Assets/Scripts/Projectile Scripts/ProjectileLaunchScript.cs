@@ -146,7 +146,7 @@ public class ProjectileLaunchScript : MonoBehaviour
             GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
             MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
             MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * BoomerangTravelDistance));
-            MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
+            //MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
         }
     }
 

@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     /// </summary>
     void LateUpdate()
     {
-        Vector3 playerPosition = GameObject.Find("ThirdPersonController").transform.position;
+        Vector3 playerPosition = GameObject.Find("Player").transform.position;
         Camera.main.transform.position = new Vector3(playerPosition.x, transform.position.y, playerPosition.z - deltaZ);
     }
 }

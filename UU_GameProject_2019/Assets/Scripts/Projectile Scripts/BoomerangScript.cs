@@ -8,7 +8,8 @@ public class BoomerangScript : MonoBehaviour
     float RotatingSpeed, timer;
     bool returning;
     public Vector3 Destination, playerRelativePos;
-    public ProjectileLaunchScript Owner; //TODO: rewrite this to refer to gameObject instead of script
+    public CharacterControl Owner; //TODO: rewrite this to refer to gameObject instead of script
+    private PlayerInventory Inv;
 
     void Start()
     {
@@ -19,7 +20,7 @@ public class BoomerangScript : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerPos = GameObject.Find("ThirdPersonController").transform.position; //TODO: rewrite this to use Owner
+        Vector3 playerPos = GameObject.Find("Player").transform.position; //TODO: rewrite this to use Owner
         playerRelativePos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
 
         //rotates a 'RotatingSpeed' degrees per second around y axis
@@ -41,7 +42,7 @@ public class BoomerangScript : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Owner.placeholderInventory[(int)Weapon.Boomerang]++;
+            Inv.Inventory[(int)Weapon.Boomerang]++;
             Destroy(gameObject);
         }
     }
@@ -51,9 +52,10 @@ public class BoomerangScript : MonoBehaviour
         Destination = destination;
     }
 
-    public void SetOwner(ProjectileLaunchScript owner)
+    public void SetOwner(CharacterControl owner, PlayerInventory inv)
     {
         Owner = owner;
+        Inv = inv;
     }
 
     void OnCollisionEnter(Collision target)
@@ -66,9 +68,9 @@ public class BoomerangScript : MonoBehaviour
             returning = true;
         }
 
-        if (target.gameObject.name == "ThirdPersonController" && returning) //TODO: rewrite this to use Owner
+        if (target.gameObject.tag == "Player" && returning)
         {
-            Owner.placeholderInventory[(int)Weapon.Boomerang]++;
+            Inv.Inventory[(int)Weapon.Boomerang]++;
             Destroy(gameObject);
         }
         else
