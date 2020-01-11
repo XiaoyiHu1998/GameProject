@@ -690,6 +690,7 @@ MonoBehaviour:
     type: 3}
   BoomerangObject: {fileID: 1007062918946686750, guid: 930d5bdc1c65e1442bdf5853c3a2378a,
     type: 3}
+  SwordObject: {fileID: 7425150268697212765}
   attackButton: e
   switchButton: f
   weaponButton: r
@@ -709,7 +710,7 @@ MonoBehaviour:
   Inventory: 
   InventoryCaps: 
   WeaponAcquired: 
-  playerHealth: 0
+  playerHealth: 6
 --- !u!1 &7424680130118557235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1064,7 @@ GameObject:
   - component: {fileID: 7430020066715738129}
   - component: {fileID: 7456560779185979291}
   - component: {fileID: 7448401652081146285}
+  - component: {fileID: 6432113905513449158}
   m_Layer: 0
   m_Name: sword
   m_TagString: Untagged
@@ -1130,6 +1132,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &6432113905513449158
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425150268697212765}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.17049676
+  m_Height: 1.5285931
+  m_Direction: 1
+  m_Center: {x: 0.00000034336875, y: -0.5891388, z: -0.00000002049035}
 --- !u!1 &7425153298447829011
 GameObject:
   m_ObjectHideFlags: 0

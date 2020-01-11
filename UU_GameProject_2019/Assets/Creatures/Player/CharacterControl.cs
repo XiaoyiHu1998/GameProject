@@ -18,6 +18,7 @@ public class CharacterControl : MonoBehaviour
     public GameObject BowObject;
     public GameObject BombObject;
     public GameObject BoomerangObject;
+    public GameObject SwordObject;
 
     public string attackButton;
     public string switchButton;
@@ -39,6 +40,9 @@ public class CharacterControl : MonoBehaviour
 
     void Update()
     {
+        if (inv.WeaponAcquired[(int)Weapon.Sword]) { SwordObject.gameObject.GetComponent<Renderer>().enabled = true; }
+        else { SwordObject.gameObject.GetComponent<Renderer>().enabled = false; }
+
         Movement();
         GetInput();
     }
@@ -80,7 +84,7 @@ public class CharacterControl : MonoBehaviour
 
     void GetInput()
     {
-        if (controller.isGrounded)
+        if (controller.isGrounded && unmovableTimer <= 0)
         {
             if (Input.GetKeyDown(attackButton))
             {
@@ -113,10 +117,13 @@ public class CharacterControl : MonoBehaviour
         }
     }
 
-    void UseSword()
+    void UseSword() //Swinging sword
     {
-        anim.SetTrigger("Attack");
-        unmovableTimer = 1f;
+        if (inv.WeaponAcquired[(int)Weapon.Sword])
+        {
+            anim.SetTrigger("Attack");
+            unmovableTimer = 1f;
+        }
     }
 
     void UseBow() //shooting an arrows
@@ -155,6 +162,14 @@ public class CharacterControl : MonoBehaviour
     void OnEventFx(GameObject InEffect)
     {
         GameObject newSpell = Instantiate(InEffect);
+        newSpell.transform.position = transform.position;
+        newSpell.transform.rotation = transform.rotation;
+        newSpell.transform.parent = transform;
+
+        if (newSpell.name == "fx_attack01(Clone)")
+        {
+            newSpell.transform.localPosition = new Vector3(0, 0.914f, 0.79f);
+        }
 
         Destroy(newSpell, 1.0f);
     }
