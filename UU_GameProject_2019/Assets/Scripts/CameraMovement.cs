@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 playerPosition = GameObject.Find("ThirdPersonController").transform.position;
+        Vector3 playerPosition = GameObject.Find("Player").transform.position;
         Camera.main.transform.position = new Vector3(playerPosition.x, playerPosition.y + 5, playerPosition.z - deltaZ);
     }
 }

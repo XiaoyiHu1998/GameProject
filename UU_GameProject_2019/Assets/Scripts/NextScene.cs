@@ -15,7 +15,7 @@ public class NextScene : MonoBehaviour
     
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "ThirdPersonController" || collision.gameObject.name == "AIThirdPersonController")
+        if (collision.gameObject.name == "Player")
         {
             nextScene = true;   
         }
