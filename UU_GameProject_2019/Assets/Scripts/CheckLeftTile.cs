@@ -4,24 +4,28 @@ using UnityEngine;
 
 public class CheckLeftTile : MonoBehaviour
 {
-
     public static bool leftTilePressed;
     protected Vector3 pressedPosition, originalPosition, originalArrowPosition;
     protected GameObject leftArrow;
     protected float speed;
 
+    /// <summary>
+    /// Checks if there is collision with the player and if so sets the pressed bool to true.
+    /// </summary>
+    /// <param name="LeftTileCollision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "ThirdPersonController" || collision.gameObject.name == "AIThirdPersonController")
         { leftTilePressed = true; }
     }
 
+    // Resets tile bool.
     private void OnCollisionExit(Collision collision)
     {
         leftTilePressed = false;
     }
 
-    // Start is called before the first frame update
+    // Setting initial variables.
     void Start()
     {
         originalPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -31,7 +35,10 @@ public class CheckLeftTile : MonoBehaviour
         speed = 0.1f;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Checks if tile is pressed. If pressed it moves the tile and the arrow image on the tile downwards.
+    /// If it is not pressed it stays on the starting position.
+    /// </summary>
     void LateUpdate()
     {
        if (leftTilePressed)
