@@ -15,9 +15,7 @@ public class PopUpMenu : MonoBehaviour
 
     public GameObject PopUp, OptionsPanel;
 
-    public Button ResumeButton, ExitGameButton;
-
-    public float closeDelay;
+    public Button ResumeButton, GoToSettingsButton, ExitGameButton;
 
    // Scene currentScene = SceneManager.GetActiveScene();
    // string sceneName = currentScene.name;
@@ -27,7 +25,7 @@ public class PopUpMenu : MonoBehaviour
         //On click events for the pop up menu buttons
 
         ResumeButton.onClick.AddListener(ResumeGame);
-        //GoToSettingsButton.onClick.AddListener(OpenSettings);
+        GoToSettingsButton.onClick.AddListener(OpenSettings);
         ExitGameButton.onClick.AddListener(ExitGame);
         
     }
@@ -51,12 +49,16 @@ public class PopUpMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
+            //PopUpPanel.DOAnchorPos(new Vector2(1000, 0), 5);
+            //PopUpPanel.DOSizeDelta(new Vector2(0,0), 5, false);
             PopUpPanel.DOScale(0.01f, 0.5f);
+            Debug.Log("P");
         }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
             PopUpPanel.DOScale(1f, 1);
+            Debug.Log("I");
         }
     }
 
@@ -64,9 +66,10 @@ public class PopUpMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        //PopUp.SetActive(false);
         //Time.timeScale = 1f;
         IsPaused = false;
-        PopUpPanel.DOScale(0.0001f, 0.5f).SetDelay(closeDelay);
+        PopUpPanel.DOScale(0.01f, 0.5f);
     }
 
     public void PauseGame()
@@ -78,6 +81,15 @@ public class PopUpMenu : MonoBehaviour
 
     }
 
+    public void OpenSettings()
+    {
+        SceneManager.LoadScene("MenuScene");
+        //OptionsPanel.SetActive(true);
+       /* if (sceneName == "MenuScene")
+        {
+            Debug.Log("yoyo");
+        }*/
+    }
 
     public void ExitGame()
     {
