@@ -33,7 +33,7 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
 
     void Update()
     {
-        playerPos = GameObject.Find("ThirdPersonController").transform.position;
+        playerPos = GameObject.Find("Player").transform.position;
         relativePlayerPos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
 
         //Looking at Player
