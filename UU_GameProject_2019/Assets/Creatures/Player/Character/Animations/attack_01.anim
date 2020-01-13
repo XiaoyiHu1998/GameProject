@@ -57588,3 +57588,11 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0.5
+    functionName: ShootBeam
+    data: 
+    objectReferenceParameter: {fileID: 8018546882065626431, guid: 730a168bfea94b24c87cd6cfe9e2a63b,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
