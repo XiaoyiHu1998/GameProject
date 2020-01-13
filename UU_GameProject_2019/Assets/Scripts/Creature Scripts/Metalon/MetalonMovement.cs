@@ -33,7 +33,7 @@ public class MetalonMovement : MonoBehaviour
 
     void Update()
     {
-        playerPos = GameObject.Find("ThirdPersonController").transform.position;
+        playerPos = GameObject.Find("Player").transform.position;
         hornPosition = GameObject.Find(MyName + "/AttackingArea").transform.position;
         float hornDistanceX = hornPosition.x - transform.position.x;
         float hornDistanceZ = hornPosition.z - transform.position.z;
