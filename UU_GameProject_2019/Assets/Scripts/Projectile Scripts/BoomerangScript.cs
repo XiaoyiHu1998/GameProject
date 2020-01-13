@@ -41,7 +41,7 @@ public class BoomerangScript : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Owner.placeholderInventory[(int)Weapon.Boomerang]++;
+            Owner.lootObject(Weapon.Boomerang, 1);
             Destroy(gameObject);
         }
     }
@@ -82,9 +82,17 @@ public class BoomerangScript : MonoBehaviour
             Destroy(healthDrop.gameObject);
         }
 
-        if (target.gameObject.name == "ThirdPersonController" && returning) //TODO: rewrite this to use Owner
+        MoneyDropScript moneyDrop = target.gameObject.GetComponent<MoneyDropScript>();
+
+        if (moneyDrop != null)
         {
-            Owner.placeholderInventory[(int)Weapon.Boomerang]++;
+            Owner.lootMoney(moneyDrop.amount);
+            Destroy(moneyDrop.gameObject);
+        }
+
+        if (target.gameObject.name == "ThirdPersonController" && returning) 
+        {
+            Owner.lootObject(Weapon.Boomerang, 1);
             Destroy(gameObject);
         }
 

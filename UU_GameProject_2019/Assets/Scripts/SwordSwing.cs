@@ -23,7 +23,7 @@ public class SwordSwing : MonoBehaviour
         if(Time.time > stopTime && GetComponent<Renderer>().enabled)
         {
             GetComponent<Renderer>().enabled = false;
-            Owner.placeholderInventory[(int)Weapon.Sword]++;
+            Owner.lootObject(Weapon.Sword, 1);
         }
     }
 

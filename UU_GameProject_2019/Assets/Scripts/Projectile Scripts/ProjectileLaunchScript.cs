@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System;
 
 public class ProjectileLaunchScript : MonoBehaviour
 {
-    public PlayerState playerState;
     public GameObject InventoryCursor;
+
+    public Text[] AmmoCounters = new Text[Enum.GetNames(typeof(Weapon)).Length];
 
     public GameObject ProjectileEmitter;
     public GameObject BowObject;
     public GameObject BombObject;
     public GameObject BoomerangObject;
     public GameObject SwordObject;
+
     public GameObject BeamObject;
 
     public string attackButton; //some of these are public so they can be seen/edited in the Unity GUI, will be private in the final build
     public string switchButton;
+    public string shopButton;
 
     public Vector3 BombForce; //X is forward, X is upward and Z is sideways(legacy boomerang implementation, here in case a problem crops up with the current system and we need to revert it)
     public Vector3 ArrowForce;
@@ -27,53 +31,80 @@ public class ProjectileLaunchScript : MonoBehaviour
     //Stefan:
     public float BoomerangTravelDistance = 8;
 
-    //Xiao Yi:
+    public int[] Inventory;
+    public int[] InventoryCaps;
+    public bool[] WeaponAcquired;
+    public int[] WeaponPrices;
+    public int[] AmmoPrices;
+    public int[] AmmoQuantity;
 
+    public int Health; //placeholder for Wietse's health system
+    public int MaxHealth;
+    public int Money;
 
-
-    public int[] placeholderInventory; //placeholder for Nout's inventory system
-    public int[] placeholderInventoryCaps;
-    public bool[] placeholderWeaponAcquired;
-
-    public int placeholderHealth; //placeholder for Wietse's health system
-    public int placeholderMaxHealth;
+    public bool shopOpen;
 
     void Start()
     {
-        placeholderInventory = new int[Enum.GetNames(typeof(Weapon)).Length];
 
-        placeholderInventory[(int)Weapon.Bow] = 50; //give ourself all weapons for testing
-        placeholderInventory[(int)Weapon.Bombs] = 8;
-        placeholderInventory[(int)Weapon.Boomerang] = 1;
-        placeholderInventory[(int)Weapon.Sword] = 1;
+        Inventory = new int[Enum.GetNames(typeof(Weapon)).Length];
 
-        placeholderInventoryCaps = new int[Enum.GetNames(typeof(Weapon)).Length];
+        Inventory[(int)Weapon.Bow] = 0;
+        Inventory[(int)Weapon.Bombs] = 0;
+        Inventory[(int)Weapon.Boomerang] = 0;
+        Inventory[(int)Weapon.Sword] = 0;
 
-        placeholderInventoryCaps[(int)Weapon.Bow] = 50; //temporary place until finalized, to be moved to a script containing all constants for final build
-        placeholderInventoryCaps[(int)Weapon.Bombs] = 8;
-        placeholderInventoryCaps[(int)Weapon.Boomerang] = 1;
-        placeholderInventoryCaps[(int)Weapon.Sword] = 1;
+        InventoryCaps = new int[Enum.GetNames(typeof(Weapon)).Length];
 
-        placeholderWeaponAcquired = new bool[Enum.GetNames(typeof(Weapon)).Length];
+        InventoryCaps[(int)Weapon.Bow] = 50;
+        InventoryCaps[(int)Weapon.Bombs] = 8;
+        InventoryCaps[(int)Weapon.Boomerang] = 1;
+        InventoryCaps[(int)Weapon.Sword] = 1;
 
-        placeholderWeaponAcquired[(int)Weapon.Bow] = true; //unlock all weapons for testing
-        placeholderWeaponAcquired[(int)Weapon.Bombs] = true;
-        placeholderWeaponAcquired[(int)Weapon.Boomerang] = true;
-        placeholderWeaponAcquired[(int)Weapon.Sword] = true;
+        WeaponAcquired = new bool[Enum.GetNames(typeof(Weapon)).Length];
+
+        WeaponAcquired[(int)Weapon.Bow] = false;
+        WeaponAcquired[(int)Weapon.Bombs] = false;
+        WeaponAcquired[(int)Weapon.Boomerang] = false;
+        WeaponAcquired[(int)Weapon.Sword] = false;
+
+        WeaponPrices = new int[Enum.GetNames(typeof(Weapon)).Length];
+
+        WeaponPrices[(int)Weapon.Bow] = 100;
+        WeaponPrices[(int)Weapon.Bombs] = 50;
+        WeaponPrices[(int)Weapon.Boomerang] = 250;
+        WeaponPrices[(int)Weapon.Sword] = 0;
+
+        AmmoPrices = new int[Enum.GetNames(typeof(Weapon)).Length];
+
+        AmmoPrices[(int)Weapon.Bow] = 10;
+        AmmoPrices[(int)Weapon.Bombs] = 50;
+        AmmoPrices[(int)Weapon.Boomerang] = 0;
+        AmmoPrices[(int)Weapon.Sword] = 0;
+
+        AmmoQuantity = new int[Enum.GetNames(typeof(Weapon)).Length];
+
+        AmmoQuantity[(int)Weapon.Bow] = 20;
+        AmmoQuantity[(int)Weapon.Bombs] = 8;
+        AmmoQuantity[(int)Weapon.Boomerang] = 1;
+        AmmoQuantity[(int)Weapon.Sword] = 1;
 
         SwordObject.gameObject.GetComponent<SwordSwing>().SetOwner(this); //the sword object always exists, so it only needs to receive an owner once, as opposed to the boomerang which is reinstantiated with every throw for physics efficiency purposes
 
-        placeholderHealth = 3;
-        placeholderMaxHealth = 6;
+        Health = 3;
+        MaxHealth = 6;
+        Money = 10000;
+        shopOpen = true;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(attackButton)) //attack action with the currently selected weapon
         {
-            if (placeholderInventory[(int)currentWeapon] > 0 && placeholderWeaponAcquired[(int)currentWeapon])
+            if (Inventory[(int)currentWeapon] > 0 && WeaponAcquired[(int)currentWeapon])
             {
-                placeholderInventory[(int)currentWeapon]--;
+                Inventory[(int)currentWeapon]--;
+                AmmoCounters[(int)currentWeapon].text = "ammo: " + Inventory[(int)currentWeapon].ToString();
                 switch (currentWeapon)
                 {
                     case Weapon.Bow: UseBow(); break;
@@ -90,6 +121,14 @@ public class ProjectileLaunchScript : MonoBehaviour
             if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
                 currentWeapon = (Weapon)0;
             InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+        }
+
+        if (Input.GetKeyDown(shopButton)) //attempt to purchase
+        {
+            if (shopOpen)
+            {
+                buyWeapon(currentWeapon);
+            }
         }
     }
 
@@ -110,20 +149,34 @@ public class ProjectileLaunchScript : MonoBehaviour
         {
             lootHealth(healthDrop.amount);
             Destroy(healthDrop.gameObject);
+            return; //if the pickup was health, then the below can not be true
+        }
+
+        MoneyDropScript moneyDrop = target.gameObject.GetComponent<MoneyDropScript>();
+
+        if (moneyDrop != null)
+        {
+            lootMoney(moneyDrop.amount);
+            Destroy(moneyDrop.gameObject);
         }
     }
 
     public void lootObject(Weapon lootedObject, int amount) //placeholder for Nout's inventory system
     {
-        print("looted a thing!");
-        placeholderInventory[(int)lootedObject] += amount;
-        if (placeholderInventory[(int)lootedObject] > placeholderInventoryCaps[(int)lootedObject])
-            placeholderInventory[(int)lootedObject] = placeholderInventoryCaps[(int)lootedObject];
+        Inventory[(int)lootedObject] += amount;
+        if (Inventory[(int)lootedObject] > InventoryCaps[(int)lootedObject])
+            Inventory[(int)lootedObject] = InventoryCaps[(int)lootedObject];
+        AmmoCounters[(int)lootedObject].text = "ammo: " + Inventory[(int)lootedObject].ToString();
     }
 
     public void lootHealth(int amount) //placeholder for Wietse's health system
     {
-        placeholderHealth += amount;
+        Health += amount;
+    }
+
+    public void lootMoney(int amount) //placeholder for Wietse's health system
+    {
+        Money += amount;
     }
 
     void UseBow() //shooting an arrows
@@ -153,12 +206,29 @@ public class ProjectileLaunchScript : MonoBehaviour
         GameObject myBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         myBeam.gameObject.GetComponent<BeamScript>().SetOwner(this);
 
-        if (placeholderHealth == placeholderMaxHealth) //sword beam if at full health
+        if (Health == MaxHealth) //sword beam if at full health
             myBeam.gameObject.GetComponent<BeamScript>().SetTimer(5f);
         else
         {
             myBeam.gameObject.GetComponent<BeamScript>().SetTimer(0.05f);
             myBeam.gameObject.GetComponent<Renderer>().enabled = false; //short invisible beam only representing melee hit if not
+        }
+    }
+
+    void buyWeapon(Weapon weapon)
+    {
+        if (Money >= WeaponPrices[(int)weapon] && !WeaponAcquired[(int)weapon])
+        {
+            Money -= WeaponPrices[(int)weapon];
+            WeaponAcquired[(int)weapon] = true;
+            lootObject(weapon, AmmoQuantity[(int)weapon]);
+            AmmoCounters[(int)weapon].text = "ammo: " + Inventory[(int)weapon].ToString();
+        }
+
+        else if (Money >= AmmoPrices[(int)weapon] && Inventory[(int)weapon] < InventoryCaps[(int)weapon] && InventoryCaps[(int)weapon] > 1)
+        {
+            Money -= AmmoPrices[(int)weapon];
+            lootObject(weapon, AmmoQuantity[(int)weapon]);
         }
     }
 }

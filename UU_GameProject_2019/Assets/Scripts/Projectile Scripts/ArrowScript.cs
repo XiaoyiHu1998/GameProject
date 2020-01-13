@@ -41,6 +41,14 @@ public class ArrowScript : MonoBehaviour
             Destroy(healthDrop.gameObject);
         }
 
+        MoneyDropScript moneyDrop = target.gameObject.GetComponent<MoneyDropScript>();
+
+        if (moneyDrop != null)
+        {
+            Owner.lootMoney(moneyDrop.amount);
+            Destroy(moneyDrop.gameObject);
+        }
+
         Destroy(gameObject);
     }
 

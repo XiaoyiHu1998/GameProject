@@ -20,8 +20,6 @@ public class BeamScript : MonoBehaviour
 
     void OnTriggerEnter(Collider target)
     {
-        print("hit something");
-
         IStabable stabable = target.gameObject.GetComponent<IStabable>(); //IStabable is the interface that tracks if something can interact with the sword or it's beam in a special way
 
         if (stabable != null)
@@ -37,12 +35,20 @@ public class BeamScript : MonoBehaviour
             Destroy(lootDrop.gameObject);
         }
 
-        HealthDropScript healthDrop = target.gameObject.GetComponent<HealthDropScript>();
+        HealthDropScript healthDrop = target.gameObject.GetComponent<HealthDropScript>(); //maybe move this to 
 
         if (healthDrop != null)
         {
             Owner.lootHealth(healthDrop.amount);
             Destroy(healthDrop.gameObject);
+        }
+
+        MoneyDropScript moneyDrop = target.gameObject.GetComponent<MoneyDropScript>();
+
+        if (moneyDrop != null)
+        {
+            Owner.lootMoney(moneyDrop.amount);
+            Destroy(moneyDrop.gameObject);
         }
     }
 
