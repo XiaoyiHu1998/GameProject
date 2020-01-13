@@ -73,7 +73,7 @@ public class BoomerangScript : MonoBehaviour
             Inv.Inventory[(int)Weapon.Boomerang]++;
             Destroy(gameObject);
         }
-        else
+        else if (target.gameObject.tag != "Projectile")
         {
             returning = true;
         }

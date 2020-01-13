@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -6238347620543053572}
   m_Layer: 0
   m_Name: Boomerang
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,3 +126,4 @@ MonoBehaviour:
   speed: 10
   Destination: {x: 0, y: 0, z: 0}
   playerRelativePos: {x: 0, y: 0, z: 0}
+  Owner: {fileID: 0}

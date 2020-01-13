@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DoosTag
   - EnemyTag
+  - Projectile
   layers:
   - Default
   - TransparentFX
