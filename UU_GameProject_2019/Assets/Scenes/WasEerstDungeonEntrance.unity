@@ -2959,7 +2959,7 @@ PrefabInstance:
     - target: {fileID: 4614774851238229875, guid: 64dfec16b2551074dbde96e888852756,
         type: 3}
       propertyPath: m_Name
-      value: PauseMenuDingen
+      value: PauseMenuDingen2
       objectReference: {fileID: 0}
     - target: {fileID: 4614774851238229875, guid: 64dfec16b2551074dbde96e888852756,
         type: 3}
@@ -3170,6 +3170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614774850541723236, guid: 64dfec16b2551074dbde96e888852756,
+        type: 3}
+      propertyPath: m_Name
+      value: PauseMenuCanvasTest
       objectReference: {fileID: 0}
     - target: {fileID: 7066130698520775711, guid: 64dfec16b2551074dbde96e888852756,
         type: 3}

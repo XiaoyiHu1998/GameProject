@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MenuScene.unity
+    path: Assets/Scenes/MainMenuScene.unity
     guid: 51b6d00e17f5d534c87cd65666149f96
   - enabled: 1
     path: Assets/Scenes/PauseMenuScene.unity
     guid: 9e3a49c0a58d2f74fa875d5676ad58b0
   - enabled: 0
-    path: Assets/Scenes/PauseScene.unity
+    path: Assets/Scenes/WasEerstDungeonEntrance.unity
     guid: 35f91a83d7c9aaf45863d505f03e69e4
   m_configObjects: {}
