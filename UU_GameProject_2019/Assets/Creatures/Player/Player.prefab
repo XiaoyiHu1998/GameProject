@@ -691,10 +691,13 @@ MonoBehaviour:
   BoomerangObject: {fileID: 1007062918946686750, guid: 930d5bdc1c65e1442bdf5853c3a2378a,
     type: 3}
   SwordObject: {fileID: 7425150268697212765}
+  BeamObject: {fileID: 8018546882065626431, guid: 730a168bfea94b24c87cd6cfe9e2a63b,
+    type: 3}
   attackButton: e
   switchButton: f
   weaponButton: r
   currentWeapon: 0
+  inv: {fileID: 0}
 --- !u!114 &7057252276754233158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,6 +714,7 @@ MonoBehaviour:
   InventoryCaps: 
   WeaponAcquired: 
   playerHealth: 6
+  maxHealth: 6
 --- !u!1 &7424680130118557235
 GameObject:
   m_ObjectHideFlags: 0

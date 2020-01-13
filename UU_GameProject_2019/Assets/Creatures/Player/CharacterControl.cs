@@ -11,7 +11,7 @@ public class CharacterControl : MonoBehaviour
     float unmovableTimer;      //The player cannot move while this is bigger than 0
 
     [SerializeField] float boomerangTravelDistance = 8;
-    public Vector3 BombForce; //X is forward, X is upward and Z is sideways(legacy boomerang implementation, here in case a problem crops up with the current system and we need to revert it)
+    public Vector3 BombForce;
     public Vector3 ArrowForce;
 
     public GameObject ProjectileEmitter;
@@ -19,13 +19,14 @@ public class CharacterControl : MonoBehaviour
     public GameObject BombObject;
     public GameObject BoomerangObject;
     public GameObject SwordObject;
+    public GameObject BeamObject;
 
     public string attackButton;
     public string switchButton;
     public string weaponButton;
     public Weapon currentWeapon;
 
-    private PlayerInventory inv;
+    public PlayerInventory inv;
 
     Vector3 moveDirection = Vector3.zero;
     CharacterController controller;
@@ -94,18 +95,10 @@ public class CharacterControl : MonoBehaviour
             {
                 switch (currentWeapon)
                 {
-                    case Weapon.Bow:
-                        UseBow();
-                        break;
-                    case Weapon.Bombs:
-                        UseBombs();
-                        break;
-                    case Weapon.Boomerang:
-                        UseBoomerang();
-                        break;
-                    case Weapon.Sword:
-                        UseSword();
-                        break;
+                    case Weapon.Bow: UseBow(); break;
+                    case Weapon.Bombs: UseBombs(); break;
+                    case Weapon.Boomerang: UseBoomerang(); break;
+                    case Weapon.Sword: UseSword(); break;
                 }
             }
         }
@@ -123,6 +116,19 @@ public class CharacterControl : MonoBehaviour
         {
             anim.SetTrigger("Attack");
             unmovableTimer = 1f;
+        }
+    }
+
+    void ShootBeam() //Shoots the hitbox for doing damage with the sword
+    {
+        GameObject myBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        myBeam.gameObject.GetComponent<BeamScript>().SetOwner(this);
+        if (inv.playerHealth == inv.maxHealth) //sword beam if at full health
+            myBeam.gameObject.GetComponent<BeamScript>().SetTimer(5f);
+        else
+        {
+            myBeam.gameObject.GetComponent<BeamScript>().SetTimer(0.05f);
+            myBeam.gameObject.GetComponent<Renderer>().enabled = false; //short invisible beam only representing melee hit if not
         }
     }
 
