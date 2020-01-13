@@ -9,6 +9,7 @@ public class PlayerInventory : MonoBehaviour
     public bool[] WeaponAcquired;
 
     public int playerHealth;
+    public int maxHealth;
 
     void Start()
     {
