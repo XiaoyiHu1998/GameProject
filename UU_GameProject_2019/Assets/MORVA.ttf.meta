@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: cb412929afe866d4a923c0670539b4be
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MORVA
+  fontNames:
+  - MORVA
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5f672c32edb5837448ff9fbe2d7d812b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
