@@ -16,6 +16,7 @@ public class SetVolumeValue : MonoBehaviour
     public void ToggleVolume()
     {
         audioMixer.SetFloat("ZeldaMusicVolume", 0);
+        Debug.Log("toggled");
     }
     */
     
