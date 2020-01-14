@@ -4,30 +4,39 @@ using UnityEngine;
 
 public class SwordSwing : MonoBehaviour
 {
-    [SerializeField] private string attack_KeyBinding;
     private float attackTime = 0.33f;
     private float stopTime = 0.0f;
+    public ProjectileLaunchScript Owner;
 
-    private Animation animation;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-            //disables rendering of the sword before it is swung
-            GetComponent<Renderer>().enabled = false;
+        //disables rendering of the sword before it is swung
+        GetComponent<Renderer>().enabled = false;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //checks if sword needs to be swung, before turning on the rendering and playing aniation
-        if(Input.GetKey(attack_KeyBinding) && !GetComponent<Renderer>().enabled){
-            GetComponent<Renderer>().enabled = true;
-            updateTime();
-            animation.Play();
-        }
-        else if(Time.time > stopTime){
+        if(Time.time > stopTime && GetComponent<Renderer>().enabled)
+        {
             GetComponent<Renderer>().enabled = false;
+            Owner.lootObject(Weapon.Sword, 1);
         }
+    }
+
+    public void SetOwner(ProjectileLaunchScript owner)
+    {
+        Owner = owner;
+    }
+
+    public void StartSwing()
+    {
+        GetComponent<Renderer>().enabled = true;
+        updateTime();
+        animator.Play("Sword Attack", 0, 0);
     }
 
     //times the duration of the sword attack

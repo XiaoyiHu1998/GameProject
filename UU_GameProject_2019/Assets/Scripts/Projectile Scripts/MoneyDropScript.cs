@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IStabable
+public class MoneyDropScript : MonoBehaviour
 {
-    void getStabbed();
+    public int amount;
 }

@@ -8,8 +8,7 @@ public class BoomerangScript : MonoBehaviour
     float RotatingSpeed, timer;
     bool returning;
     public Vector3 Destination, playerRelativePos;
-    public CharacterControl Owner; //TODO: rewrite this to refer to gameObject instead of script
-    private PlayerInventory Inv;
+    public ProjectileLaunchScript Owner;
 
     void Start()
     {
@@ -42,7 +41,7 @@ public class BoomerangScript : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Inv.Inventory[(int)Weapon.Boomerang]++;
+            Owner.lootObject(Weapon.Boomerang, 1);
             Destroy(gameObject);
         }
     }
@@ -60,20 +59,45 @@ public class BoomerangScript : MonoBehaviour
 
     void OnCollisionEnter(Collision target)
     {
-        IStunnable stunnable = target.gameObject.GetComponent<IStunnable>();
+        IStunable stunable = target.gameObject.GetComponent<IStunable>();
 
-        if (stunnable != null)
+        if (stunable != null)
         {
-            stunnable.getStunned();
+            stunable.getStunned();
             returning = true;
         }
 
-        if (target.gameObject.tag == "Player" && returning)
+        ItemDropScript lootDrop = target.gameObject.GetComponent<ItemDropScript>();
+
+        if (lootDrop != null)
         {
-            Inv.Inventory[(int)Weapon.Boomerang]++;
+            Owner.lootObject(lootDrop.weapon, lootDrop.amount);
+            Destroy(lootDrop.gameObject);
+        }
+
+        HealthDropScript healthDrop = target.gameObject.GetComponent<HealthDropScript>();
+
+        if (healthDrop != null)
+        {
+            Owner.lootHealth(healthDrop.amount);
+            Destroy(healthDrop.gameObject);
+        }
+
+        MoneyDropScript moneyDrop = target.gameObject.GetComponent<MoneyDropScript>();
+
+        if (moneyDrop != null)
+        {
+            Owner.lootMoney(moneyDrop.amount);
+            Destroy(moneyDrop.gameObject);
+        }
+
+        if (target.gameObject.name == "ThirdPersonController" && returning) 
+        {
+            Owner.lootObject(Weapon.Boomerang, 1);
             Destroy(gameObject);
         }
-        else if (target.gameObject.tag != "Projectile")
+
+        else
         {
             returning = true;
         }

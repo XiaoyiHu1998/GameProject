@@ -18,7 +18,7 @@ public class BombScript : MonoBehaviour, IExplodable, IBurnable
     
     void Update()
     {
-        remainingFuse -= Time.deltaTime;
+        remainingFuse -= Time.deltaTime; //slightly different implementation from arrows and beams since bombs need to call their own Explode() function instead of the basic Destroy() one
         if (remainingFuse <= 0)
         {
             Explode();
