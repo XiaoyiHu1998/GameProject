@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
+public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable, IStabable
 {
     public GameObject ProjectileEmitter, MagicBolt, Clone;
     public Vector3 ShootingForce;
@@ -198,6 +198,10 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunnable
         Destroy(gameObject, 5);
     }
 
+    public void getStabbed()
+    {
+        TakeDamage();
+    }
     public void getShot()
     {
         TakeDamage();

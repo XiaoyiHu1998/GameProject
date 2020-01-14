@@ -24,8 +24,9 @@ public class CharacterControl : MonoBehaviour
     public string attackButton;
     public string switchButton;
     public string weaponButton;
-    public Weapon currentWeapon;
+    public string shopButton;
 
+    public Weapon currentWeapon;
     public PlayerInventory inv;
 
     Vector3 moveDirection = Vector3.zero;
@@ -93,12 +94,17 @@ public class CharacterControl : MonoBehaviour
             }
             if (Input.GetKeyDown(weaponButton)) //attack action with the currently selected weapon
             {
-                switch (currentWeapon)
+                if (inv.Inventory[(int)currentWeapon] > 0 && inv.WeaponAcquired[(int)currentWeapon])
                 {
-                    case Weapon.Bow: UseBow(); break;
-                    case Weapon.Bombs: UseBombs(); break;
-                    case Weapon.Boomerang: UseBoomerang(); break;
-                    case Weapon.Sword: UseSword(); break;
+                    inv.Inventory[(int)currentWeapon]--;
+                    inv.AmmoCounters[(int)currentWeapon].text = "ammo: " + inv.Inventory[(int)currentWeapon].ToString();
+                    switch (currentWeapon)
+                    {
+                        case Weapon.Bow: UseBow(); break;
+                        case Weapon.Bombs: UseBombs(); break;
+                        case Weapon.Boomerang: UseBoomerang(); break;
+                        case Weapon.Sword: UseSword(); break;
+                    }
                 }
             }
         }
@@ -107,16 +113,22 @@ public class CharacterControl : MonoBehaviour
             currentWeapon++;
             if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
                 currentWeapon = (Weapon)0;
+            inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+        }
+
+        if (Input.GetKeyDown(shopButton)) //attempt to purchase
+        {
+            if (inv.shopOpen)
+            {
+                inv.buyWeapon(currentWeapon);
+            }
         }
     }
 
     void UseSword() //Swinging sword
     {
-        if (inv.WeaponAcquired[(int)Weapon.Sword])
-        {
-            anim.SetTrigger("Attack");
-            unmovableTimer = 1f;
-        }
+        anim.SetTrigger("Attack");
+        unmovableTimer = 1f;
     }
 
     void ShootBeam() //Shoots the hitbox for doing damage with the sword
@@ -134,34 +146,22 @@ public class CharacterControl : MonoBehaviour
 
     void UseBow() //shooting an arrows
     {
-        if (inv.Inventory[(int)Weapon.Bow] > 0 && inv.WeaponAcquired[(int)Weapon.Bow])
-        {
-            inv.Inventory[(int)Weapon.Bow]--;
-            GameObject MyArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-            MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
-        }
+        GameObject MyArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
     }
 
     void UseBombs() //throwing a bomb
     {
-        if (inv.Inventory[(int)Weapon.Bombs] > 0 && inv.WeaponAcquired[(int)Weapon.Bombs])
-        {
-            inv.Inventory[(int)Weapon.Bombs]--;
-            GameObject MyBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-            MyBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
-        }
+        GameObject MyBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        MyBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
     }
 
     void UseBoomerang() //throwing the boomerang
     {
-        if (inv.Inventory[(int)Weapon.Boomerang] > 0 && inv.WeaponAcquired[(int)Weapon.Boomerang])
-        {
-            inv.Inventory[(int)Weapon.Boomerang]--;
-            GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-            MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
-            MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * boomerangTravelDistance));
-            MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this, inv);
-        }
+        GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
+        MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * boomerangTravelDistance));
+        MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
     }
 
     //Creates particle effects for animations

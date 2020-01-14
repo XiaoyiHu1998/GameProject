@@ -8,7 +8,7 @@ public class BoomerangScript : MonoBehaviour
     float RotatingSpeed, timer;
     bool returning;
     public Vector3 Destination, playerRelativePos;
-    public ProjectileLaunchScript Owner;
+    public CharacterControl Owner;
 
     void Start()
     {
@@ -19,7 +19,7 @@ public class BoomerangScript : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerPos = GameObject.Find("Player").transform.position; //TODO: rewrite this to use Owner
+        Vector3 playerPos = GameObject.Find("Player").transform.position;
         playerRelativePos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
 
         //rotates a 'RotatingSpeed' degrees per second around y axis
@@ -41,7 +41,7 @@ public class BoomerangScript : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Owner.lootObject(Weapon.Boomerang, 1);
+            Owner.inv.lootObject(Weapon.Boomerang, 1);
             Destroy(gameObject);
         }
     }
@@ -51,10 +51,9 @@ public class BoomerangScript : MonoBehaviour
         Destination = destination;
     }
 
-    public void SetOwner(CharacterControl owner, PlayerInventory inv)
+    public void SetOwner(CharacterControl owner)
     {
         Owner = owner;
-        Inv = inv;
     }
 
     void OnCollisionEnter(Collision target)
@@ -71,7 +70,7 @@ public class BoomerangScript : MonoBehaviour
 
         if (lootDrop != null)
         {
-            Owner.lootObject(lootDrop.weapon, lootDrop.amount);
+            Owner.inv.lootObject(lootDrop.weapon, lootDrop.amount);
             Destroy(lootDrop.gameObject);
         }
 
@@ -79,7 +78,7 @@ public class BoomerangScript : MonoBehaviour
 
         if (healthDrop != null)
         {
-            Owner.lootHealth(healthDrop.amount);
+            Owner.inv.lootHealth(healthDrop.amount);
             Destroy(healthDrop.gameObject);
         }
 
@@ -87,13 +86,13 @@ public class BoomerangScript : MonoBehaviour
 
         if (moneyDrop != null)
         {
-            Owner.lootMoney(moneyDrop.amount);
+            Owner.inv.lootMoney(moneyDrop.amount);
             Destroy(moneyDrop.gameObject);
         }
 
-        if (target.gameObject.name == "ThirdPersonController" && returning) 
+        if (target.gameObject.tag == "Player" && returning) 
         {
-            Owner.lootObject(Weapon.Boomerang, 1);
+            Owner.inv.lootObject(Weapon.Boomerang, 1);
             Destroy(gameObject);
         }
 

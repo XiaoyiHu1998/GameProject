@@ -42,6 +42,14 @@ public class BeamScript : MonoBehaviour
             Owner.inv.lootHealth(healthDrop.amount);
             Destroy(healthDrop.gameObject);
         }
+
+        MoneyDropScript moneyDrop = target.gameObject.GetComponent<MoneyDropScript>();
+
+        if (moneyDrop != null)
+        {
+            Owner.inv.lootMoney(moneyDrop.amount);
+            Destroy(moneyDrop.gameObject);
+        }
     }
 
     public void SetOwner(CharacterControl owner)
