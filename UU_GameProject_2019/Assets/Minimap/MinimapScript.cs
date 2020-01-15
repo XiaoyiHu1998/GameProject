@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MinimapScript : MonoBehaviour
 {
-    public int MarkerX;
-    public int MarkerY;
     public GameObject QuestMarker;
 
     public void UpdateQuestMarker(int x, int y) //call this from main quest registry
