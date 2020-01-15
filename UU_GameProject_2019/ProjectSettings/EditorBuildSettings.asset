@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TopSpawnScene.unity
     guid: d3f219372fe867e4cb40014b9c76efa3
+  - enabled: 1
+    path: Assets/Scenes/OrangeScene.unity
+    guid: 5fb144160fe9cfa4bbd5ce898fa0e30b
   m_configObjects: {}
