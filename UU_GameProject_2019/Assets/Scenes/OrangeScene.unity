@@ -1033,7 +1033,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347319250}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -33.84, y: -14.341953, z: 9.65}
+  m_LocalPosition: {x: -30.82, y: -14.341953, z: 9.65}
   m_LocalScale: {x: 53.996708, y: 13.658515, z: 0.18782844}
   m_Children: []
   m_Father: {fileID: 1521191494}
@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {x: 38, y: 0.08, z: 15}
   playerRotation: {x: 0, y: -90, z: 0}
-  sceneName: TopSpawnScene
+  sceneName: SceneX2Y0
   playableDirector: {fileID: 1848016518}
 --- !u!65 &347319253
 BoxCollider:
