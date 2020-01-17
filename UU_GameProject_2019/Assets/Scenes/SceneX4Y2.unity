@@ -576,6 +576,7 @@ MonoBehaviour:
   playerRotation: {x: 0, y: -90, z: 0}
   sceneName: SpawnScene
   playableDirector: {fileID: 1153813636}
+  playerInventory: {fileID: 0}
 --- !u!1001 &94133281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1316,6 +1317,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rabbit 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1588090451174212, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4677745771901032, guid: c737dd230724d61469e1c672cf47ed9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.661085
@@ -2007,6 +2012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsKinematic
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863327756020938123, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bd945d92de27b4a9ee7cc2146bab6f, type: 3}
