@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Collider))]
 public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
 {
     public GameObject ProjectileEmitter;
@@ -12,16 +15,13 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
     private Animator m_animator;
     private Vector2 zRange, xRange;
     private Vector3 relativePlayerPos, targetPosition;
-    bool moving, attacking;
-    float idleTimer, attackTimer, rotatingSpeed;
-    float AngleDifference, AngleDifference2, AngleDifferenceTarget;
+    float idleTimer, attackTimer, stunnedTimer;
     protected Transform playerTrans;
 
     void Start()
     {
         zRange = new Vector2(8, 20);
         xRange = new Vector2(14, 31);
-        moving = true;
 
         m_animator = GetComponent<Animator>();
         m_animator.SetBool("Running", true);
@@ -33,8 +33,11 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
     void Update()
     {
         relativePlayerPos = playerTrans.position;
+        if (stunnedTimer < 0) { m_animator.SetBool("Stunned", false); }
+        stunnedTimer -= Time.deltaTime; // (stunnedTimer >= 0) == stunned,    (stunnedTimer < -1) == stunnable
 
-        if (Vector3.Distance(transform.position, relativePlayerPos) < fleeDistance)
+        if (m_animator.GetBool("Stunned")) { } //Do nothing
+        else if (Vector3.Distance(transform.position, relativePlayerPos) < fleeDistance)
         {
             Flee();
         }
@@ -50,6 +53,8 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
                 Move();
             }
         }
+        Vector3 currentEulerAngles = (transform.rotation).eulerAngles;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, currentEulerAngles.y, 0), Time.deltaTime * speed);
     }
 
     //Moving away from player
@@ -107,7 +112,12 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
     public void LaunchArrow(GameObject Arrow)
     {
         GameObject MyArrow = Instantiate(Arrow, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-        MyArrow.transform.parent = transform;
+
+        //Change Rotation
+        Vector3 rot = MyArrow.transform.rotation.eulerAngles;
+        rot = new Vector3(rot.x, rot.y, rot.z + 90);
+        MyArrow.transform.rotation = Quaternion.Euler(rot);
+        
         MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ShootingForce);
         Destroy(MyArrow, 5);
     }
@@ -123,9 +133,7 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
 
     void TakeDamage()
     {
-        m_animator.SetBool("Running", false);
         health--;
-
         if (health <= 0)
         {
             Die();
@@ -139,7 +147,7 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
     void Die()
     {
         m_animator.SetTrigger("Die");
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 4);
     }
 
     public void getStabbed() { TakeDamage(); }
@@ -147,6 +155,10 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
     public void getExploded() { TakeDamage(); }
     public void getStunned()
     {
-
+        if (stunnedTimer <= -1f)
+        {
+            m_animator.SetBool("Stunned", true);
+            stunnedTimer = 2f;
+        }
     }
 }
