@@ -42888,7 +42888,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.5
-    functionName: ShootArrow()
+    functionName: LaunchArrow
     data: 
     objectReferenceParameter: {fileID: 8761165923221937294, guid: 1d27c928bdada484f98ed60020737292,
       type: 3}
