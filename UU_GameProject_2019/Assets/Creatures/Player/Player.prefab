@@ -1112,6 +1112,7 @@ Transform:
   - {fileID: 7422917215571578175}
   - {fileID: 7422774202976486865}
   - {fileID: 7422703967244649737}
+  - {fileID: 1664217762230367011}
   m_Father: {fileID: 7422629927910845777}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 61.146545, y: -137.9602, z: -146.83775}
@@ -1758,7 +1759,6 @@ GameObject:
   - component: {fileID: 7430020066715738129}
   - component: {fileID: 7456560779185979291}
   - component: {fileID: 7448401652081146285}
-  - component: {fileID: 6432113905513449158}
   m_Layer: 0
   m_Name: sword
   m_TagString: Untagged
@@ -1826,20 +1826,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6432113905513449158
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7425150268697212765}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.17049676
-  m_Height: 1.5285931
-  m_Direction: 1
-  m_Center: {x: 0.00000034336875, y: -0.5891388, z: -0.00000002049035}
 --- !u!1 &7425153298447829011
 GameObject:
   m_ObjectHideFlags: 0
@@ -2797,3 +2783,33 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8924819659586303443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664217762230367011}
+  m_Layer: 0
+  m_Name: B_P
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1664217762230367011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924819659586303443}
+  m_LocalRotation: {x: -0.5661417, y: -0.4725549, z: 0.40070438, w: 0.5437017}
+  m_LocalPosition: {x: -0.071098626, y: 0.037280083, z: -0.012298763}
+  m_LocalScale: {x: 1.0000004, y: 1.0000001, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 7422724281561533605}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
