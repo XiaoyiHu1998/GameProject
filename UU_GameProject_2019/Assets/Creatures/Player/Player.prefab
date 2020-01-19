@@ -1180,6 +1180,7 @@ GameObject:
   - component: {fileID: 3999194826465327079}
   - component: {fileID: 7057252276754233158}
   - component: {fileID: -4672743612241402253}
+  - component: {fileID: 6120991742605147456}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1329,9 +1330,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a91ffd7771b1f459451f82cc43fa2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MarkerX: 0
-  MarkerY: 0
   QuestMarker: {fileID: 5648570669646714921}
+--- !u!114 &6120991742605147456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7424676295703659441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa35ddab09c75e344888061e1a749c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RespawnPosition: {x: 0, y: 0, z: 0}
+  RespawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  MaxHealth: 6
+  CurrentHealth: 0
+  lastHit: 0
+  hitDuration: 5
 --- !u!1 &7424680130118557235
 GameObject:
   m_ObjectHideFlags: 0
