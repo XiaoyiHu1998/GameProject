@@ -113,7 +113,7 @@ public class CharacterControl : MonoBehaviour
             currentWeapon++;
             if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
                 currentWeapon = (Weapon)0;
-            InventoryStats.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+          //  InventoryStats.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
         }
 
         if (Input.GetKeyDown(shopButton)) //attempt to purchase
