@@ -520,11 +520,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instructies: {fileID: 361510347}
   sentences:
-  - Welcome to our game!
-  - Check out the cave to the north!
-  - Press ? to swing your sword and perform a melee attack.
-  - Press ? to switch between your weapons.
-  - blablablablabla
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   typeSpeed: 0.02
   playNextSentenceButton: {fileID: 245356735}
   openDialogueButton: {fileID: 1785554217}
@@ -559,6 +574,7 @@ GameObject:
   - component: {fileID: 603882945}
   - component: {fileID: 603882944}
   - component: {fileID: 603882946}
+  - component: {fileID: 603882947}
   m_Layer: 5
   m_Name: CloseDialogueButton
   m_TagString: Untagged
@@ -583,8 +599,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 476, y: 46.85}
-  m_SizeDelta: {x: 142.2, y: 93.7}
+  m_AnchoredPosition: {x: 502, y: 67}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603882944
 MonoBehaviour:
@@ -599,12 +615,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 11277a3f23988ec47908362d708edaa8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9aeac1c0750d43d498b7e62859763888, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -665,6 +681,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &603882947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603882942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.6392157, g: 0.45098042, b: 0.29411766, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &885501220
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +709,7 @@ GameObject:
   - component: {fileID: 885501222}
   - component: {fileID: 885501221}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1170,7 +1201,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x
+  m_Text: 
 --- !u!222 &2040655732
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1190,6 +1221,7 @@ GameObject:
   - component: {fileID: 2047334021}
   - component: {fileID: 2047334023}
   - component: {fileID: 2047334022}
+  - component: {fileID: 2047334024}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1256,3 +1288,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047334020}
   m_CullTransparentMesh: 0
+--- !u!114 &2047334024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047334020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.6392157, g: 0.45098042, b: 0.29411766, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
