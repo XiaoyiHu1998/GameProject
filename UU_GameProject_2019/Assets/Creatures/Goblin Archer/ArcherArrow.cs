@@ -10,7 +10,7 @@ public class ArcherArrow : MonoBehaviour
     {
         if (target.gameObject.tag == "Player")
         {
-            HealthScript healthScript = target.GetComponent<HealthScript>();
+            HealthScript healthScript = GameObject.FindObjectOfType(typeof(HealthScript)) as HealthScript;
             healthScript.TakeDamage();
             Destroy(gameObject);
         }

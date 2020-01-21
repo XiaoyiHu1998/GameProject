@@ -37,7 +37,6 @@ public class CharacterControl : MonoBehaviour
     public string shopButton;
 
     private Weapon currentWeapon;
-    private bool[] weaponAcquired;
     public PlayerInventory inv;
 
     Vector3 moveDirection = Vector3.zero;
@@ -51,8 +50,6 @@ public class CharacterControl : MonoBehaviour
         inv = GetComponent<PlayerInventory>();
 
         currentWeapon = PlayerStats.currentWeapon;
-        weaponAcquired = new bool[InventoryStats.WeaponAcquired.Length];
-        weaponAcquired = InventoryStats.WeaponAcquired;
 
         SwordObject.SetActive(false);
         ShieldObject.SetActive(false);
@@ -67,12 +64,12 @@ public class CharacterControl : MonoBehaviour
 
         if (currentWeapon == Weapon.Sword)
         {
-            if (weaponAcquired[(int)currentWeapon])
+            if (InventoryStats.WeaponAcquired[(int)currentWeapon])
             {
                 SwordObject.SetActive(true);
                 ShieldObject.SetActive(true);
             }
-            if (weaponAcquired[(int)currentWeapon]) 
+            if (InventoryStats.WeaponAcquired[(int)currentWeapon]) 
                 BackBow.SetActive(true);
         }
         else if (currentWeapon == Weapon.Bow)
@@ -258,7 +255,7 @@ public class CharacterControl : MonoBehaviour
         currentWeapon++;
         if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
             currentWeapon = (Weapon)0;
-        while (!weaponAcquired[(int)currentWeapon]) //while weapon is unacquired, go to next weapon
+        while (!InventoryStats.WeaponAcquired[(int)currentWeapon]) //while weapon is unacquired, go to next weapon
         {
             currentWeapon++;
         }
