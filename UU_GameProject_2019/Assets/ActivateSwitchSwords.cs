@@ -13,6 +13,7 @@ public class ActivateSwitchSwords : MonoBehaviour
         temp = InventoryStats.WeaponAcquired;
         temp[(int)Weapon.Sword] = true;
         InventoryStats.WeaponAcquired = temp;
+        ShopStats.shopOpen = true;
     }
 
 }
