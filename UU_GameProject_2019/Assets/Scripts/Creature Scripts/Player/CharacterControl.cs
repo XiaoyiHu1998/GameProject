@@ -16,10 +16,17 @@ public class CharacterControl : MonoBehaviour
 
     public GameObject ProjectileEmitter;
     public GameObject BowObject;
+    public GameObject ArrowObject;
     public GameObject BombObject;
     public GameObject BoomerangObject;
     public GameObject SwordObject;
+    public GameObject ShieldObject;
     public GameObject BeamObject;
+
+    public GameObject BackBow;
+    public GameObject BackSword;
+    public GameObject BackShield;
+    public GameObject ArrowInHand;
 
     public string attackButton;
     public string switchButton;
@@ -110,10 +117,8 @@ public class CharacterControl : MonoBehaviour
         }
         if (Input.GetKeyDown(switchButton)) //switch weapon selection
         {
-            currentWeapon++;
-            if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
-                currentWeapon = (Weapon)0;
-            inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+            anim.SetTrigger("SwitchWeapon");
+            unmovableTimer = 1f;
         }
 
         if (Input.GetKeyDown(shopButton)) //attempt to purchase
@@ -146,7 +151,7 @@ public class CharacterControl : MonoBehaviour
 
     void UseBow() //shooting an arrows
     {
-        GameObject MyArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        GameObject MyArrow = Instantiate(ArrowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
     }
 
@@ -178,5 +183,54 @@ public class CharacterControl : MonoBehaviour
         }
 
         Destroy(newSpell, 1.0f);
+    }
+
+    void SwitchWeapon()
+    {
+        if (currentWeapon == Weapon.Sword)
+        {
+            SwordObject.SetActive(false);
+            BackSword.SetActive(true);
+            ShieldObject.SetActive(false);
+            BackShield.SetActive(true);
+        } else if (currentWeapon == Weapon.Bow)
+        {
+            ArrowObject.SetActive(false);
+            BackBow.SetActive(true);
+            ArrowInHand.SetActive(false);
+        } else if (currentWeapon == Weapon.Boomerang)
+        {
+
+        } else if (currentWeapon == Weapon.Bombs)
+        {
+
+        }
+
+        currentWeapon++;
+        if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
+            currentWeapon = (Weapon)0;
+        inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+
+        if (currentWeapon == Weapon.Sword)
+        {
+            SwordObject.SetActive(true);
+            BackSword.SetActive(false);
+            ShieldObject.SetActive(true);
+            BackShield.SetActive(false);
+        }
+        else if (currentWeapon == Weapon.Bow)
+        {
+            ArrowObject.SetActive(true);
+            BackBow.SetActive(false);
+            ArrowInHand.SetActive(true);
+        }
+        else if (currentWeapon == Weapon.Boomerang)
+        {
+
+        }
+        else if (currentWeapon == Weapon.Bombs)
+        {
+
+        }
     }
 }

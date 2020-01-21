@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider))]
-public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
+public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable
 {
     public GameObject ProjectileEmitter;
     public Vector3 ShootingForce;
@@ -25,7 +25,7 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunnable, IExplodable
 
         m_animator = GetComponent<Animator>();
         m_animator.SetBool("Running", true);
-        playerTrans = GameObject.Find("ThirdPersonController").transform;
+        playerTrans = GameObject.Find("Player").transform;
 
         SetNewTargetPosition();
     }
