@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Collider))]
 public class CharacterControl : MonoBehaviour
 {
     float speed = 4;
@@ -47,7 +50,7 @@ public class CharacterControl : MonoBehaviour
         anim = GetComponent<Animator>();
         inv = GetComponent<PlayerInventory>();
 
-        currentWeapon = playerStats.CurrentWeapon;
+        currentWeapon = PlayerStats.currentWeapon;
         weaponAcquired = new bool[InventoryStats.WeaponAcquired.Length];
         weaponAcquired = InventoryStats.WeaponAcquired;
 
@@ -64,8 +67,11 @@ public class CharacterControl : MonoBehaviour
 
         if (currentWeapon == Weapon.Sword)
         {
-            SwordObject.SetActive(true);
-            ShieldObject.SetActive(true);
+            if (weaponAcquired[(int)currentWeapon])
+            {
+                SwordObject.SetActive(true);
+                ShieldObject.SetActive(true);
+            }
             if (weaponAcquired[(int)currentWeapon]) 
                 BackBow.SetActive(true);
         }
@@ -80,9 +86,6 @@ public class CharacterControl : MonoBehaviour
 
     void Update()
     {
-        if (InventoryStats.WeaponAcquired[(int)Weapon.Sword]) { SwordObject.gameObject.GetComponent<Renderer>().enabled = true; }
-        else { SwordObject.gameObject.GetComponent<Renderer>().enabled = false; }
-
         Movement();
         GetInput();
     }
@@ -135,7 +138,7 @@ public class CharacterControl : MonoBehaviour
                 if (InventoryStats.Inventory[(int)currentWeapon] > 0 && InventoryStats.WeaponAcquired[(int)currentWeapon])
                 {
                     InventoryStats.Inventory[(int)currentWeapon]--;
-                    InventoryStats.AmmoCounters[(int)currentWeapon].text = "ammo: " + InventoryStats.Inventory[(int)currentWeapon].ToString();
+                    //InventoryStats.AmmoCounters[(int)currentWeapon].text = "ammo: " + InventoryStats.Inventory[(int)currentWeapon].ToString();
                     switch (currentWeapon)
                     {
                         case Weapon.Bow: UseBow(); break;
@@ -164,6 +167,7 @@ public class CharacterControl : MonoBehaviour
     void UseSword() //Swinging sword
     {
         anim.SetTrigger("Attack");
+        InventoryStats.Inventory[(int)currentWeapon]++;
         unmovableTimer = 1f;
     }
 
@@ -195,6 +199,7 @@ public class CharacterControl : MonoBehaviour
         rot = new Vector3(rot.x, rot.y, rot.z + 90);
         MyArrow.transform.rotation = Quaternion.Euler(rot);
 
+        MyArrow.GetComponent<ArrowScript>().SetOwner(inv);
         MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
         Destroy(MyArrow, 5);
     }
@@ -239,7 +244,7 @@ public class CharacterControl : MonoBehaviour
             BackShield.SetActive(true);
         } else if (currentWeapon == Weapon.Bow)
         {
-            ArrowObject.SetActive(false);
+            BowObject.SetActive(false);
             BackBow.SetActive(true);
             ArrowInHand.SetActive(false);
         } else if (currentWeapon == Weapon.Boomerang)
@@ -257,7 +262,7 @@ public class CharacterControl : MonoBehaviour
         {
             currentWeapon++;
         }
-        inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+        //inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
 
         if (currentWeapon == Weapon.Sword)
         {
@@ -268,7 +273,7 @@ public class CharacterControl : MonoBehaviour
         }
         else if (currentWeapon == Weapon.Bow)
         {
-            ArrowObject.SetActive(true);
+            BowObject.SetActive(true);
             BackBow.SetActive(false);
             ArrowInHand.SetActive(true);
         }

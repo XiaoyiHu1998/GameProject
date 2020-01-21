@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class ArrowScript : MonoBehaviour
 {
-    public ProjectileLaunchScript Owner;
+    public PlayerInventory Owner;
 
-    void Start()
-    {
-        Destroy(gameObject, 5f); //culling arrows that fail to hit a wall and fly off screen somewhere
-    }
-
-    void Update() 
-    {
-        
-    }
-
-    void OnCollisionEnter(Collision target)
+    void OnTriggerEnter(Collider target)
     {
         IShootable shootable = target.gameObject.GetComponent<IShootable>(); //Ishootable is the interface that tracks if something can interact with arrows in a special way
 
@@ -52,7 +42,7 @@ public class ArrowScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void SetOwner(ProjectileLaunchScript owner)
+    public void SetOwner(PlayerInventory owner)
     {
         Owner = owner;
     }

@@ -39,7 +39,7 @@ public class PlayerInventory : MonoBehaviour
         InventoryStats.Inventory[(int)lootedObject] += amount;
         if (InventoryStats.Inventory[(int)lootedObject] > InventoryStats.InventoryCaps[(int)lootedObject])
             InventoryStats.Inventory[(int)lootedObject] = InventoryStats.InventoryCaps[(int)lootedObject];
-        InventoryStats.AmmoCounters[(int)lootedObject].text = "ammo: " + InventoryStats.Inventory[(int)lootedObject].ToString();
+        //InventoryStats.AmmoCounters[(int)lootedObject].text = "ammo: " + InventoryStats.Inventory[(int)lootedObject].ToString();
     }
 
     public void lootHealth(int amount)
