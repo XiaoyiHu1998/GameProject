@@ -33,7 +33,8 @@ public class CharacterControl : MonoBehaviour
     public string weaponButton;
     public string shopButton;
 
-    public Weapon currentWeapon;
+    private Weapon currentWeapon;
+    private bool[] weaponAcquired;
     public PlayerInventory inv;
 
     Vector3 moveDirection = Vector3.zero;
@@ -45,6 +46,36 @@ public class CharacterControl : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         inv = GetComponent<PlayerInventory>();
+
+        currentWeapon = playerStats.CurrentWeapon;
+        weaponAcquired = new bool[InventoryStats.WeaponAcquired.Length];
+        weaponAcquired = InventoryStats.WeaponAcquired;
+
+        SwordObject.SetActive(false);
+        ShieldObject.SetActive(false);
+        BowObject.SetActive(false);
+        ArrowInHand.SetActive(false);
+        BackSword.SetActive(false);
+        BackShield.SetActive(false);
+        BackBow.SetActive(false);
+
+        if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
+            currentWeapon = (Weapon)0;
+
+        if (currentWeapon == Weapon.Sword)
+        {
+            SwordObject.SetActive(true);
+            ShieldObject.SetActive(true);
+            if (weaponAcquired[(int)currentWeapon]) 
+                BackBow.SetActive(true);
+        }
+        else if (currentWeapon == Weapon.Bow)
+        {
+            BackSword.SetActive(true);
+            BackShield.SetActive(true);
+            BowObject.SetActive(true);
+            ArrowInHand.SetActive(true);
+        }
     }
 
     void Update()
@@ -118,7 +149,7 @@ public class CharacterControl : MonoBehaviour
         if (Input.GetKeyDown(switchButton)) //switch weapon selection
         {
             anim.SetTrigger("SwitchWeapon");
-            unmovableTimer = 1f;
+            unmovableTimer = 0.9f;
         }
 
         if (Input.GetKeyDown(shopButton)) //attempt to purchase
@@ -151,8 +182,21 @@ public class CharacterControl : MonoBehaviour
 
     void UseBow() //shooting an arrows
     {
+        anim.SetTrigger("Shoot");
+        unmovableTimer = 0.9f;
+    }
+
+    void LaunchArrow()
+    {
         GameObject MyArrow = Instantiate(ArrowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        
+        //Change Rotation
+        Vector3 rot = MyArrow.transform.rotation.eulerAngles;
+        rot = new Vector3(rot.x, rot.y, rot.z + 90);
+        MyArrow.transform.rotation = Quaternion.Euler(rot);
+
         MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
+        Destroy(MyArrow, 5);
     }
 
     void UseBombs() //throwing a bomb
@@ -209,6 +253,10 @@ public class CharacterControl : MonoBehaviour
         currentWeapon++;
         if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
             currentWeapon = (Weapon)0;
+        while (!weaponAcquired[(int)currentWeapon]) //while weapon is unacquired, go to next weapon
+        {
+            currentWeapon++;
+        }
         inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
 
         if (currentWeapon == Weapon.Sword)
