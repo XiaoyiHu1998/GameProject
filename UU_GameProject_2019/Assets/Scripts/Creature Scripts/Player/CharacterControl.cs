@@ -80,7 +80,7 @@ public class CharacterControl : MonoBehaviour
 
     void Update()
     {
-        if (inv.WeaponAcquired[(int)Weapon.Sword]) { SwordObject.gameObject.GetComponent<Renderer>().enabled = true; }
+        if (InventoryStats.WeaponAcquired[(int)Weapon.Sword]) { SwordObject.gameObject.GetComponent<Renderer>().enabled = true; }
         else { SwordObject.gameObject.GetComponent<Renderer>().enabled = false; }
 
         Movement();
@@ -132,10 +132,10 @@ public class CharacterControl : MonoBehaviour
             }
             if (Input.GetKeyDown(weaponButton)) //attack action with the currently selected weapon
             {
-                if (inv.Inventory[(int)currentWeapon] > 0 && inv.WeaponAcquired[(int)currentWeapon])
+                if (InventoryStats.Inventory[(int)currentWeapon] > 0 && InventoryStats.WeaponAcquired[(int)currentWeapon])
                 {
-                    inv.Inventory[(int)currentWeapon]--;
-                    inv.AmmoCounters[(int)currentWeapon].text = "ammo: " + inv.Inventory[(int)currentWeapon].ToString();
+                    InventoryStats.Inventory[(int)currentWeapon]--;
+                    InventoryStats.AmmoCounters[(int)currentWeapon].text = "ammo: " + InventoryStats.Inventory[(int)currentWeapon].ToString();
                     switch (currentWeapon)
                     {
                         case Weapon.Bow: UseBow(); break;
@@ -154,7 +154,7 @@ public class CharacterControl : MonoBehaviour
 
         if (Input.GetKeyDown(shopButton)) //attempt to purchase
         {
-            if (inv.shopOpen)
+            if (ShopStats.shopOpen)
             {
                 inv.buyWeapon(currentWeapon);
             }
@@ -171,7 +171,7 @@ public class CharacterControl : MonoBehaviour
     {
         GameObject myBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         myBeam.gameObject.GetComponent<BeamScript>().SetOwner(this);
-        if (inv.playerHealth == inv.maxHealth) //sword beam if at full health
+        if (PlayerStats.playerHealth == PlayerStats.maxHealth) //sword beam if at full health
             myBeam.gameObject.GetComponent<BeamScript>().SetTimer(5f);
         else
         {

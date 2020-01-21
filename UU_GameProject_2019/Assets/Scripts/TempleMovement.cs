@@ -28,10 +28,8 @@ public class TempleMovement : MonoBehaviour
     void Update()
     {
         if (CheckLeftTile.leftTilePressed && CheckRightTile.rightTilePressed) { tilesPressed = true; }
-        if (tilesPressed) { SetToSpawnPosition(); SwitchCamera.activeCamera = "secondCamera"; ; }
-        else { SetToHidePosition(); SwitchCamera.activeCamera = "mainCamera"; }
-
-        if (Vector3.Distance(spawnPosition, transform.position) < 0.1f) { SwitchCamera.activeCamera = "mainCamera"; }
+        if (tilesPressed) { SetToSpawnPosition();; }
+        else { SetToHidePosition();}
     }
 
     /// <summary>
