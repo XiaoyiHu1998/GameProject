@@ -10,6 +10,7 @@ public class GoToSpawnScene : MonoBehaviour
     float timer;
     public Vector3 playerPosition;
     public Vector3 playerRotation;
+    public Vector3 questMarkPosition;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class GoToSpawnScene : MonoBehaviour
             }
             PlayerStats.playerPosition = playerPosition;
             PlayerStats.playerRotation = playerRotation;
+            PlayerStats.questMarkerPosition = questMarkPosition;
             InitializeGame();
             SceneManager.LoadScene(sceneName: "SpawnScene");
         }

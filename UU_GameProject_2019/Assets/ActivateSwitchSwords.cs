@@ -14,6 +14,7 @@ public class ActivateSwitchSwords : MonoBehaviour
         temp[(int)Weapon.Sword] = true;
         InventoryStats.WeaponAcquired = temp;
         ShopStats.shopOpen = true;
+        PlayerStats.questMarkerPosition = new Vector3(500, 120, 0);
     }
 
 }
