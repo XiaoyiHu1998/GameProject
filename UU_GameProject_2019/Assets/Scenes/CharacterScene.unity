@@ -10614,6 +10614,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 513220557776429997, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+        type: 3}
+      propertyPath: RespawnPosition.x
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 513220557776429997, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+        type: 3}
+      propertyPath: RespawnPosition.z
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7424676295703659441, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
         type: 3}
       propertyPath: m_Name
@@ -26507,7 +26517,7 @@ MonoBehaviour:
   AmmoPrices: 
   AmmoQuantity: 
   playerHealth: 6
-  maxHealth: 0
+  maxHealth: 6
   Money: 0
   shopOpen: 0
 --- !u!4 &1983708787
