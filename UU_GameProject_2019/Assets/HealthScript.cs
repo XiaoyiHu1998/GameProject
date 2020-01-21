@@ -13,6 +13,8 @@ public class HealthScript : MonoBehaviour
     public float lastHit;
     public float hitDuration;
 
+    public GameObject HealthBar;
+
     void Start()
     {
         if (!RetrieveStaticPosition())
@@ -23,6 +25,8 @@ public class HealthScript : MonoBehaviour
 
         if (!RetrieveStaticHealth())
             CurrentHealth = MaxHealth;
+
+        updateHealthBar();
     }
 
     public void TakeDamage() //call this from the enemy's script on collision
@@ -33,6 +37,7 @@ public class HealthScript : MonoBehaviour
             CurrentHealth--;
             if (CurrentHealth == 0)
                 Respawn();
+            updateHealthBar();
         }
     }
 
@@ -41,6 +46,11 @@ public class HealthScript : MonoBehaviour
         transform.position = RespawnPosition;
         transform.rotation = RespawnRotation;
         CurrentHealth = MaxHealth;
+    }
+
+    void updateHealthBar()
+    {
+        HealthBar.transform.localScale = new Vector3(CurrentHealth, 1, 1);
     }
 
     bool RetrieveStaticPosition()
