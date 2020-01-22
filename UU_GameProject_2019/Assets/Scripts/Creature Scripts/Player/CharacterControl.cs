@@ -270,6 +270,7 @@ public class CharacterControl : MonoBehaviour
         {
             currentWeapon++;
         }
+        PlayerStats.currentWeapon = currentWeapon;
         //inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
 
         if (currentWeapon == Weapon.Sword)
