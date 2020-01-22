@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MetalonMovement : MonoBehaviour
+public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable, IStunable
 {
     private Animator m_animator;
     private AnimationClip m_clip;
@@ -109,6 +109,26 @@ public class MetalonMovement : MonoBehaviour
     protected void SetNewTargetPosition()
     {
         targetPosition = new Vector3(Random.Range(xRange.x, xRange.y), transform.position.y, Random.Range(zRange.x, zRange.y));
+    }
+
+    public void getExploded()
+    {
+        TakeDamage();
+    }
+
+    public void getShot()
+    {
+        TakeDamage();
+    }
+
+    public void getStabbed()
+    {
+        TakeDamage();
+    }
+
+    public void getStunned()
+    {
+        TakeDamage();
     }
 
     public void TakeDamage()
