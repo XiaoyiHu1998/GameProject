@@ -60,24 +60,31 @@ public class CharacterControl : MonoBehaviour
         BackBow.SetActive(false);
 
         if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
-            currentWeapon = (Weapon)0;
+            currentWeapon = (Weapon)3;
 
         if (currentWeapon == Weapon.Sword)
         {
-            if (InventoryStats.WeaponAcquired[(int)currentWeapon])
+            if (InventoryStats.WeaponAcquired[3])
             {
                 SwordObject.SetActive(true);
                 ShieldObject.SetActive(true);
             }
-            if (InventoryStats.WeaponAcquired[(int)currentWeapon]) 
+            if (InventoryStats.WeaponAcquired[0])
                 BackBow.SetActive(true);
         }
         else if (currentWeapon == Weapon.Bow)
         {
-            BackSword.SetActive(true);
-            BackShield.SetActive(true);
-            BowObject.SetActive(true);
-            ArrowInHand.SetActive(true);
+            if (InventoryStats.WeaponAcquired[0])
+            {
+                BowObject.SetActive(true);
+                ArrowInHand.SetActive(true);
+            }
+            if (InventoryStats.WeaponAcquired[3])
+            {
+                BackSword.SetActive(true);
+                BackShield.SetActive(true);
+
+            }
         }
     }
 
@@ -236,14 +243,18 @@ public class CharacterControl : MonoBehaviour
         if (currentWeapon == Weapon.Sword)
         {
             SwordObject.SetActive(false);
-            BackSword.SetActive(true);
             ShieldObject.SetActive(false);
-            BackShield.SetActive(true);
+            if (InventoryStats.WeaponAcquired[3])
+            {
+                BackShield.SetActive(true);
+                BackSword.SetActive(true);
+            }
         } else if (currentWeapon == Weapon.Bow)
         {
             BowObject.SetActive(false);
-            BackBow.SetActive(true);
             ArrowInHand.SetActive(false);
+            if (InventoryStats.WeaponAcquired[0])
+                BackBow.SetActive(true);
         } else if (currentWeapon == Weapon.Boomerang)
         {
 
