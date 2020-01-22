@@ -5,9 +5,11 @@ using UnityEngine;
 public class ActivateSwitchSwords : MonoBehaviour
 {
     public GameObject sceneSword;
+    public GameObject playerSword;
 
     public void OnEnable()
     {
+        playerSword.SetActive(true);
         sceneSword.gameObject.GetComponent<Renderer>().enabled = false;
         bool[] temp = new bool[InventoryStats.WeaponAcquired.Length];
         temp = InventoryStats.WeaponAcquired;
