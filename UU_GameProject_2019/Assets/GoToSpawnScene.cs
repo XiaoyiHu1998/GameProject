@@ -24,7 +24,7 @@ public class GoToSpawnScene : MonoBehaviour
         page = book.currentPage;
         if(page == 4)
         {
-            while(timer < 1)
+            while(timer < 2)
             {
                 timer += Time.deltaTime;
             }
