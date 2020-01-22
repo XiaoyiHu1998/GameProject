@@ -10,8 +10,8 @@ public class ArcherArrow : MonoBehaviour
     {
         if (target.gameObject.tag == "Player")
         {
-            //CharacterControl Script = GameObject.FindObjectOfType(typeof(CharacterControl)) as CharacterControl;
-            //Script.TakeDamage();
+            HealthScript healthScript = GameObject.FindObjectOfType(typeof(HealthScript)) as HealthScript;
+            healthScript.TakeDamage();
             Destroy(gameObject);
         }
         else if (target.gameObject.tag == "Untagged")

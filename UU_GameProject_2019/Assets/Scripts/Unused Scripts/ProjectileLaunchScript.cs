@@ -183,7 +183,7 @@ public class ProjectileLaunchScript : MonoBehaviour
     {
         GameObject myArrow = Instantiate(BowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         myArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
-        myArrow.gameObject.GetComponent<ArrowScript>().SetOwner(this);
+        //myArrow.gameObject.GetComponent<ArrowScript>().SetOwner(this);
     }
 
     void UseBombs() //throwing a bomb
