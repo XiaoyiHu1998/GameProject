@@ -133,6 +133,7 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
 
     public void TakeDamage()
     {
+        print("took damage " + health);
         m_animator.SetBool("Run Forward", false);
         m_animator.SetBool("Walk Forward", false);
         health--;

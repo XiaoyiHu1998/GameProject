@@ -1759,6 +1759,7 @@ MonoBehaviour:
   weaponButton: r
   shopButton: g
   inv: {fileID: 0}
+  health: {fileID: 513220557776429997}
 --- !u!114 &7057252276754233158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3425,11 +3426,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8569513235195041804}
     m_Modifications:
-    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
-        type: 3}
-      propertyPath: m_Name
-      value: sword
-      objectReference: {fileID: 0}
     - target: {fileID: 3869689343789814372, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3485,6 +3481,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
+        type: 3}
+      propertyPath: m_Name
+      value: sword
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523, type: 3}
 --- !u!4 &129224835114361171 stripped
@@ -3506,16 +3507,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7422703967244649737}
     m_Modifications:
-    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
-        type: 3}
-      propertyPath: m_Name
-      value: sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3869689343789814372, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3571,6 +3562,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.454
       objectReference: {fileID: 0}
+    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
+        type: 3}
+      propertyPath: m_Name
+      value: sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523, type: 3}
 --- !u!4 &7430020066715738129 stripped
@@ -3592,11 +3593,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2899465536032127323}
     m_Modifications:
-    - target: {fileID: 4886548803010184518, guid: 39826d00e8e687a4a9e58088c9920efa,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow_InHand
-      objectReference: {fileID: 0}
     - target: {fileID: 8470105313186330453, guid: 39826d00e8e687a4a9e58088c9920efa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3651,6 +3647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886548803010184518, guid: 39826d00e8e687a4a9e58088c9920efa,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow_InHand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39826d00e8e687a4a9e58088c9920efa, type: 3}

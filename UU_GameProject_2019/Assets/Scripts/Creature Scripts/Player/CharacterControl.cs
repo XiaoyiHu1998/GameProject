@@ -38,6 +38,7 @@ public class CharacterControl : MonoBehaviour
 
     private Weapon currentWeapon;
     public PlayerInventory inv;
+    public HealthScript health;
 
     Vector3 moveDirection = Vector3.zero;
     CharacterController controller;
@@ -48,6 +49,7 @@ public class CharacterControl : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         inv = GetComponent<PlayerInventory>();
+        health = GetComponent<HealthScript>();
 
         currentWeapon = PlayerStats.currentWeapon;
 
@@ -179,7 +181,7 @@ public class CharacterControl : MonoBehaviour
     {
         GameObject myBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         myBeam.gameObject.GetComponent<BeamScript>().SetOwner(this);
-        if (PlayerStats.playerHealth == PlayerStats.maxHealth) //sword beam if at full health
+        if (health.CurrentHealth == health.MaxHealth) //sword beam if at full health
             myBeam.gameObject.GetComponent<BeamScript>().SetTimer(5f);
         else
         {

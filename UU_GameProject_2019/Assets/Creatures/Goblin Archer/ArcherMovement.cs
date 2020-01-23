@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider))]
-public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable
+public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable, IStabable
 {
     public GameObject ProjectileEmitter;
     public Vector3 ShootingForce;
