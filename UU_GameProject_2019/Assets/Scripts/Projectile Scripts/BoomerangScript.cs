@@ -93,6 +93,8 @@ public class BoomerangScript : MonoBehaviour
         if (target.gameObject.tag == "Player" && returning) 
         {
             Owner.inv.lootObject(Weapon.Boomerang, 1);
+            if (Owner.currentWeapon == Weapon.Boomerang)
+                Owner.BoomerangInHand.SetActive(true);
             Destroy(gameObject);
         }
 

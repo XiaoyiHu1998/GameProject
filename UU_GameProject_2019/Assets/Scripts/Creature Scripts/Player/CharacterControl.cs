@@ -17,26 +17,29 @@ public class CharacterControl : MonoBehaviour
     public Vector3 BombForce;
     public Vector3 ArrowForce;
 
+    //Emitter and Projectiles
     public GameObject ProjectileEmitter;
-    public GameObject BowObject;
     public GameObject ArrowObject;
     public GameObject BombObject;
     public GameObject BoomerangObject;
-    public GameObject SwordObject;
-    public GameObject ShieldObject;
     public GameObject BeamObject;
 
+    //Visual Object in player hand or on player back
+    public GameObject SwordObject;
+    public GameObject BowObject;
+    public GameObject ShieldObject;
     public GameObject BackBow;
     public GameObject BackSword;
     public GameObject BackShield;
     public GameObject ArrowInHand;
+    public GameObject BoomerangInHand;
 
     public string attackButton;
     public string switchButton;
     public string weaponButton;
     public string shopButton;
 
-    private Weapon currentWeapon;
+    public Weapon currentWeapon;
     public PlayerInventory inv;
     public HealthScript health;
 
@@ -53,6 +56,11 @@ public class CharacterControl : MonoBehaviour
 
         currentWeapon = PlayerStats.currentWeapon;
 
+        if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //Weapon becomes sword if currentweapon is not defined
+            currentWeapon = (Weapon)3;
+
+
+        //First set all objects false
         SwordObject.SetActive(false);
         ShieldObject.SetActive(false);
         BowObject.SetActive(false);
@@ -60,19 +68,26 @@ public class CharacterControl : MonoBehaviour
         BackSword.SetActive(false);
         BackShield.SetActive(false);
         BackBow.SetActive(false);
+        BoomerangInHand.SetActive(false);
 
-        if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //loop back to 0 when the selection goes OOB
-            currentWeapon = (Weapon)3;
-
+        //Secondly set objects on back true
+        if (InventoryStats.WeaponAcquired[0])
+            BackBow.SetActive(true);
+        if (InventoryStats.WeaponAcquired[3])
+        {
+            BackSword.SetActive(true);
+            BackShield.SetActive(true);
+        }
+        //Thirdly set according to current weapon, hand-obects true, and back-objects false
         if (currentWeapon == Weapon.Sword)
         {
             if (InventoryStats.WeaponAcquired[3])
             {
                 SwordObject.SetActive(true);
                 ShieldObject.SetActive(true);
+                BackSword.SetActive(false);
+                BackShield.SetActive(false);
             }
-            if (InventoryStats.WeaponAcquired[0])
-                BackBow.SetActive(true);
         }
         else if (currentWeapon == Weapon.Bow)
         {
@@ -80,13 +95,19 @@ public class CharacterControl : MonoBehaviour
             {
                 BowObject.SetActive(true);
                 ArrowInHand.SetActive(true);
+                BackBow.SetActive(false);
             }
-            if (InventoryStats.WeaponAcquired[3])
+        }
+        else if (currentWeapon == Weapon.Boomerang)
+        {
+            if (InventoryStats.WeaponAcquired[2])
             {
-                BackSword.SetActive(true);
-                BackShield.SetActive(true);
-
+                BoomerangInHand.SetActive(true);
             }
+        }
+        else if (currentWeapon == Weapon.Bombs)
+        {
+            
         }
     }
 
@@ -170,7 +191,7 @@ public class CharacterControl : MonoBehaviour
         }
     }
 
-    void UseSword() //Swinging sword
+    void UseSword() //Swinging sword animation, triggers ShootBeam()
     {
         anim.SetTrigger("Attack");
         InventoryStats.Inventory[(int)currentWeapon]++;
@@ -190,9 +211,9 @@ public class CharacterControl : MonoBehaviour
         }
     }
 
-    void UseBow() //shooting an arrows
+    void UseBow() //shooting arrow animation, triggers LaunchArrow()
     {
-        anim.SetTrigger("Shoot");
+        anim.SetTrigger("ShootArrow");
         unmovableTimer = 0.9f;
     }
 
@@ -216,7 +237,13 @@ public class CharacterControl : MonoBehaviour
         MyBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
     }
 
-    void UseBoomerang() //throwing the boomerang
+    void UseBoomerang() //throwing boomerang animation, triggers LaunchBoomerang()
+    {
+        anim.SetTrigger("ThrowBoomerang");
+        unmovableTimer = 0.8f;
+    }
+
+    void LaunchBoomerang()
     {
         GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
@@ -251,16 +278,19 @@ public class CharacterControl : MonoBehaviour
                 BackShield.SetActive(true);
                 BackSword.SetActive(true);
             }
-        } else if (currentWeapon == Weapon.Bow)
+        } 
+        else if (currentWeapon == Weapon.Bow)
         {
             BowObject.SetActive(false);
             ArrowInHand.SetActive(false);
             if (InventoryStats.WeaponAcquired[0])
                 BackBow.SetActive(true);
-        } else if (currentWeapon == Weapon.Boomerang)
+        } 
+        else if (currentWeapon == Weapon.Boomerang)
         {
-
-        } else if (currentWeapon == Weapon.Bombs)
+            BoomerangInHand.SetActive(false);
+        } 
+        else if (currentWeapon == Weapon.Bombs)
         {
 
         }
@@ -271,6 +301,8 @@ public class CharacterControl : MonoBehaviour
         while (!InventoryStats.WeaponAcquired[(int)currentWeapon]) //while weapon is unacquired, go to next weapon
         {
             currentWeapon++;
+            if ((int)currentWeapon >= 4) //Prevents infinite loop
+                break;
         }
         PlayerStats.currentWeapon = currentWeapon;
         //inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
@@ -290,7 +322,7 @@ public class CharacterControl : MonoBehaviour
         }
         else if (currentWeapon == Weapon.Boomerang)
         {
-
+            BoomerangInHand.SetActive(true);
         }
         else if (currentWeapon == Weapon.Bombs)
         {
