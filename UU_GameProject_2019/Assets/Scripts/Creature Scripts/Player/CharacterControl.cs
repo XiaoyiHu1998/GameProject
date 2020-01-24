@@ -6,12 +6,13 @@ using System;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(CharacterController))]
 public class CharacterControl : MonoBehaviour
 {
     float speed = 4;
     float rotSpeed = 80;
     float gravity = 8;
-    float unmovableTimer;      //The player cannot move while this is bigger than 0
+    float unmovableTimer; //The player cannot move while this is bigger than 0
 
     [SerializeField] float boomerangTravelDistance = 8;
     public Vector3 BombForce;
@@ -33,6 +34,7 @@ public class CharacterControl : MonoBehaviour
     public GameObject BackShield;
     public GameObject ArrowInHand;
     public GameObject BoomerangInHand;
+    public GameObject BombInHand;
 
     public string attackButton;
     public string switchButton;
@@ -53,7 +55,6 @@ public class CharacterControl : MonoBehaviour
         anim = GetComponent<Animator>();
         inv = GetComponent<PlayerInventory>();
         health = GetComponent<HealthScript>();
-
         currentWeapon = PlayerStats.currentWeapon;
 
         if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //Weapon becomes sword if currentweapon is not defined
@@ -66,48 +67,47 @@ public class CharacterControl : MonoBehaviour
         BowObject.SetActive(false);
         ArrowInHand.SetActive(false);
         BackSword.SetActive(false);
-        BackShield.SetActive(false);
+        BackShield.SetActive(true); //reversed
         BackBow.SetActive(false);
         BoomerangInHand.SetActive(false);
+        BombInHand.transform.localScale = new Vector3(0, 0, 0);  //  %$@#*  BombInHand.SetActive(false) doesn't work, as wel as with 'true'
 
         //Secondly set objects on back true
-        if (InventoryStats.WeaponAcquired[0])
+        if (InventoryStats.WeaponAcquired[(int)Weapon.Bow])
             BackBow.SetActive(true);
-        if (InventoryStats.WeaponAcquired[3])
-        {
+        if (InventoryStats.WeaponAcquired[(int)Weapon.Sword])
             BackSword.SetActive(true);
-            BackShield.SetActive(true);
-        }
+
         //Thirdly set according to current weapon, hand-obects true, and back-objects false
         if (currentWeapon == Weapon.Sword)
         {
-            if (InventoryStats.WeaponAcquired[3])
+            if (InventoryStats.WeaponAcquired[(int)Weapon.Sword])
             {
                 SwordObject.SetActive(true);
                 ShieldObject.SetActive(true);
                 BackSword.SetActive(false);
                 BackShield.SetActive(false);
             }
-        }
-        else if (currentWeapon == Weapon.Bow)
+        }else if (currentWeapon == Weapon.Bow)
         {
-            if (InventoryStats.WeaponAcquired[0])
+            if (InventoryStats.WeaponAcquired[(int)Weapon.Bow])
             {
                 BowObject.SetActive(true);
-                ArrowInHand.SetActive(true);
                 BackBow.SetActive(false);
+                DrawArrow(); //if you have arrows, set ArrowInHand.Active to true
             }
-        }
-        else if (currentWeapon == Weapon.Boomerang)
+        }else if (currentWeapon == Weapon.Boomerang)
         {
-            if (InventoryStats.WeaponAcquired[2])
+            if (InventoryStats.WeaponAcquired[(int)Weapon.Boomerang])
             {
                 BoomerangInHand.SetActive(true);
             }
-        }
-        else if (currentWeapon == Weapon.Bombs)
+        }else if (currentWeapon == Weapon.Bombs)
         {
-            
+            if (InventoryStats.WeaponAcquired[(int)Weapon.Bombs])
+            {
+                BombInHand.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
         }
     }
 
@@ -191,13 +191,13 @@ public class CharacterControl : MonoBehaviour
         }
     }
 
+
     void UseSword() //Swinging sword animation, triggers ShootBeam()
     {
         anim.SetTrigger("Attack");
         InventoryStats.Inventory[(int)currentWeapon]++;
-        unmovableTimer = 1f;
+        unmovableTimer = 1.0f;
     }
-
     void ShootBeam() //Shoots the hitbox for doing damage with the sword
     {
         GameObject myBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
@@ -211,16 +211,17 @@ public class CharacterControl : MonoBehaviour
         }
     }
 
-    void UseBow() //shooting arrow animation, triggers LaunchArrow()
+
+    void UseBow() //shooting arrow animation, triggers LaunchArrow() and then DrawArrow
     {
         anim.SetTrigger("ShootArrow");
         unmovableTimer = 0.9f;
     }
-
     void LaunchArrow()
     {
         GameObject MyArrow = Instantiate(ArrowObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
-        
+        ArrowInHand.SetActive(false);
+
         //Change Rotation
         Vector3 rot = MyArrow.transform.rotation.eulerAngles;
         rot = new Vector3(rot.x, rot.y, rot.z + 90);
@@ -230,26 +231,40 @@ public class CharacterControl : MonoBehaviour
         MyArrow.GetComponent<Rigidbody>().AddRelativeForce(ArrowForce);
         Destroy(MyArrow, 5);
     }
+    void DrawArrow()
+    {
+        if (InventoryStats.Inventory[(int)currentWeapon] > 0)
+            ArrowInHand.SetActive(true);
+    }
 
-    void UseBombs() //throwing a bomb
+
+    void UseBombs() //throwing bomb animation, triggers LaunchBomb()
+    {
+        anim.SetTrigger("ThrowBomb");
+        unmovableTimer = 1.0f;
+    }
+    void LaunchBomb()
     {
         GameObject MyBomb = Instantiate(BombObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
+        MyBomb.transform.rotation = BombObject.transform.rotation;
         MyBomb.GetComponent<Rigidbody>().AddRelativeForce(BombForce);
     }
+
 
     void UseBoomerang() //throwing boomerang animation, triggers LaunchBoomerang()
     {
         anim.SetTrigger("ThrowBoomerang");
         unmovableTimer = 0.8f;
     }
-
     void LaunchBoomerang()
     {
         GameObject MyBoomerang = Instantiate(BoomerangObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         MyBoomerang.transform.rotation = BoomerangObject.transform.rotation;
         MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetDestination(ProjectileEmitter.transform.position + (transform.forward * boomerangTravelDistance));
         MyBoomerang.gameObject.GetComponent<BoomerangScript>().SetOwner(this);
+        BoomerangInHand.SetActive(false);
     }
+
 
     //Creates particle effects for animations
     void OnEventFx(GameObject InEffect)
@@ -267,13 +282,14 @@ public class CharacterControl : MonoBehaviour
         Destroy(newSpell, 1.0f);
     }
 
+
     void SwitchWeapon()
     {
         if (currentWeapon == Weapon.Sword)
         {
             SwordObject.SetActive(false);
             ShieldObject.SetActive(false);
-            if (InventoryStats.WeaponAcquired[3])
+            if (InventoryStats.WeaponAcquired[(int)Weapon.Sword])
             {
                 BackShield.SetActive(true);
                 BackSword.SetActive(true);
@@ -283,7 +299,7 @@ public class CharacterControl : MonoBehaviour
         {
             BowObject.SetActive(false);
             ArrowInHand.SetActive(false);
-            if (InventoryStats.WeaponAcquired[0])
+            if (InventoryStats.WeaponAcquired[(int)Weapon.Bow])
                 BackBow.SetActive(true);
         } 
         else if (currentWeapon == Weapon.Boomerang)
@@ -292,7 +308,7 @@ public class CharacterControl : MonoBehaviour
         } 
         else if (currentWeapon == Weapon.Bombs)
         {
-
+            BombInHand.transform.localScale = new Vector3(0, 0, 0);
         }
 
         currentWeapon++;
@@ -318,7 +334,7 @@ public class CharacterControl : MonoBehaviour
         {
             BowObject.SetActive(true);
             BackBow.SetActive(false);
-            ArrowInHand.SetActive(true);
+            DrawArrow();
         }
         else if (currentWeapon == Weapon.Boomerang)
         {
@@ -326,7 +342,10 @@ public class CharacterControl : MonoBehaviour
         }
         else if (currentWeapon == Weapon.Bombs)
         {
-
+            if (InventoryStats.Inventory[(int)currentWeapon] > 0)
+            {
+                BombInHand.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            }
         }
     }
 }
