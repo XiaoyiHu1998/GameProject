@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class BombScript : MonoBehaviour, IExplodable, IBurnable
 {
-    public float fuseLength;
-    public float blastRadius;
+    [SerializeField] float fuseLength;
+    [SerializeField] float blastRadius;
+    public GameObject Explosion;
 
     float remainingFuse;
     bool hasExpoded; //this prevents an infinite loop where two bombs will cause eachother to explode repeatedly
@@ -25,20 +28,14 @@ public class BombScript : MonoBehaviour, IExplodable, IBurnable
         }
     }
 
-    public void getBurned() //bombs will cook off if they enter fire, this method comes from IBurnable
-    {
-        Explode();
-    }
-
-    public void getExploded() //bombs implement IExplodable to do sympathetic explosions
-    {
-        Explode();
-    }
-
     public void Explode()
     {
         if(!hasExpoded)
         {
+            GameObject newExplosion = Instantiate(Explosion, transform.position, transform.rotation) as GameObject;
+            newExplosion.transform.parent = transform;
+            Destroy(newExplosion, 1.0f);
+
             hasExpoded = true;
             Collider[] bombTargets = Physics.OverlapSphere(this.transform.position, blastRadius);
             for (int i = 0; i < bombTargets.Length; i++)
@@ -49,7 +46,17 @@ public class BombScript : MonoBehaviour, IExplodable, IBurnable
                     explodable.getExploded();
             }
 
-            Destroy(gameObject);
+            GetComponent<Renderer>().enabled = false;
+            Destroy(gameObject, 1.0f);
         }
+    }
+
+    public void getBurned() //bombs will cook off if they enter fire, this method comes from IBurnable
+    {
+        Explode();
+    }
+    public void getExploded() //bombs implement IExplodable to do sympathetic explosions
+    {
+        Explode();
     }
 }

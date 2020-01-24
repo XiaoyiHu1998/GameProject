@@ -269,9 +269,7 @@ public class CharacterControl : MonoBehaviour
     //Creates particle effects for animations
     void OnEventFx(GameObject InEffect)
     {
-        GameObject newSpell = Instantiate(InEffect);
-        newSpell.transform.position = transform.position;
-        newSpell.transform.rotation = transform.rotation;
+        GameObject newSpell = Instantiate(InEffect, transform.position, transform.rotation) as GameObject;
         newSpell.transform.parent = transform;
 
         if (newSpell.name == "fx_attack01(Clone)")

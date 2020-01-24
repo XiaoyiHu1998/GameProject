@@ -33,10 +33,9 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
     void Update()
     {
         relativePlayerPos = playerTrans.position;
-        if (stunnedTimer < 0) { m_animator.SetBool("Stunned", false); }
         stunnedTimer -= Time.deltaTime; // (stunnedTimer >= 0) == stunned,    (stunnedTimer < -1) == stunnable
 
-        if (m_animator.GetBool("Stunned")) { } //Do nothing
+        if (stunnedTimer >= 0) { } //Do nothing
         else if (Vector3.Distance(transform.position, relativePlayerPos) < fleeDistance)
         {
             Flee();
@@ -150,6 +149,15 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
         Destroy(gameObject, 4);
     }
 
+    //Creates particle effects for animations
+    void OnEventFx(GameObject InEffect)
+    {
+        GameObject newSpell = Instantiate(InEffect, transform.position, transform.rotation) as GameObject;
+        newSpell.transform.parent = transform;
+        newSpell.transform.localPosition = new Vector3(0, 1.666f, 0.555f);
+        Destroy(newSpell, 1.0f);
+    }
+
     public void getStabbed() { TakeDamage(); }
     public void getShot() { TakeDamage(); }
     public void getExploded() { TakeDamage(); }
@@ -157,8 +165,8 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
     {
         if (stunnedTimer <= -1f)
         {
-            m_animator.SetBool("Stunned", true);
-            stunnedTimer = 2f;
+            m_animator.SetTrigger("GetStunned");
+            stunnedTimer = 2.3f;
         }
     }
 }
