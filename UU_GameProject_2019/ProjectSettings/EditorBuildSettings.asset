@@ -29,4 +29,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SceneX2Y0.unity
     guid: 06eae89572ee65b49944325371d5d92e
+  - enabled: 1
+    path: Assets/Scenes/DungeonEntranceScene.unity
+    guid: 769fb1279e91a85428affa89073d1ab6
+  - enabled: 1
+    path: Assets/Scenes/BridgeScene.unity
+    guid: 6f6bf7de7e21ae844815407ec083efc8
+  - enabled: 1
+    path: Assets/Scenes/LoopScene.unity
+    guid: 54f2acef42c70ef48ae47cb35701289d
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: c705d7bfedfc503499ae185dc0c64f35
   m_configObjects: {}

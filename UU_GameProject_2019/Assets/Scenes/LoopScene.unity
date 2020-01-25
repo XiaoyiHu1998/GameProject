@@ -5177,7 +5177,6 @@ MonoBehaviour:
   playableDirector: {fileID: 170753127}
   fadeIn: {fileID: 0}
   tree: {fileID: 0}
-  player: {fileID: 0}
   looping: 0
 --- !u!65 &1155715962
 BoxCollider:
@@ -6279,7 +6278,6 @@ MonoBehaviour:
   playableDirector: {fileID: 170753127}
   fadeIn: {fileID: 1769425382}
   tree: {fileID: 1523256527}
-  player: {fileID: 577386671}
   looping: 1
 --- !u!65 &1368998815
 BoxCollider:
@@ -7640,7 +7638,6 @@ MonoBehaviour:
   playableDirector: {fileID: 170753127}
   fadeIn: {fileID: 1769425382}
   tree: {fileID: 1523256527}
-  player: {fileID: 577386671}
   looping: 2
 --- !u!65 &1664875465
 BoxCollider:
@@ -9175,7 +9172,6 @@ MonoBehaviour:
   playableDirector: {fileID: 170753127}
   fadeIn: {fileID: 1769425382}
   tree: {fileID: 1523256527}
-  player: {fileID: 577386671}
   looping: 3
 --- !u!65 &1938518640
 BoxCollider:
