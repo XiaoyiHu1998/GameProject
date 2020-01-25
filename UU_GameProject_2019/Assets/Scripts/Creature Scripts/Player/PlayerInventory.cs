@@ -36,6 +36,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void lootObject(Weapon lootedObject, int amount)
     {
+        InventoryStats.WeaponAcquired[(int)lootedObject] = true;
         InventoryStats.Inventory[(int)lootedObject] += amount;
         if (InventoryStats.Inventory[(int)lootedObject] > InventoryStats.InventoryCaps[(int)lootedObject])
             InventoryStats.Inventory[(int)lootedObject] = InventoryStats.InventoryCaps[(int)lootedObject];
