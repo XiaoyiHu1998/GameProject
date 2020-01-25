@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Collider))]
 public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable, IStabable
 {
     public GameObject ProjectileEmitter, MagicBolt, Clone;
@@ -15,25 +17,27 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
 
     protected Vector3 playerPos, relativePlayerPos;
     protected Vector2 xRange, zRange;
-    protected bool attacking, takingDamage, hittable, dying;
+    protected bool takingDamage, hittable, dying;
     protected float speed, RotateRadius;
     protected float timer, attackTimer, teleportTimer, damageTimer;
+    protected Transform playerTransform;
 
     void Start()
     {
         speed = 3;
-        RotateRadius = 4;
+        RotateRadius = 5;
         maxHealth = health;
         cloneCount = 0;
         hittable = true;
 
         m_animator = GetComponent<Animator>();
         m_animator.SetBool("idle_combat", true);
+        playerTransform = GameObject.Find("Player").transform;
     }
 
     void Update()
     {
-        playerPos = GameObject.Find("Player").transform.position;
+        playerPos = playerTransform.position;
         relativePlayerPos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
 
         //Looking at Player
@@ -49,7 +53,6 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
         else if (takingDamage)
         {
             hittable = false;
-            attacking = false;
             damageTimer += Time.deltaTime;
             m_animator.SetBool("damage_001", true);
 
@@ -73,18 +76,10 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
                 Teleport();
                 teleportTimer = 0;
             }
-            //Shooting projectile
-            else if (teleportTimer >= (teleportDelay * 1/3) + 0.8f && attacking)
-            {
-                m_animator.SetBool("attack_short_001", false);
-                ShootMagicBolt();
-                attacking = false;
-            }
             //Beginning attack animation
-            else if (teleportTimer >= (teleportDelay * 1/3) && teleportTimer < (teleportDelay * 1/3) + 0.8f)
+            else if (teleportTimer >= (teleportDelay * 1/3) && teleportTimer < (teleportDelay * 1/3) + 0.5f)
             {
-                m_animator.SetBool("attack_short_001", true);
-                attacking = true;
+                m_animator.SetTrigger("Attack");
             }
 
             teleportTimer += Time.deltaTime;
@@ -96,7 +91,7 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
             //Making clones
             for (int i = 1; i<=3; i++)
             {
-                if (health <= (maxHealth * (4 - i) / 8) && cloneCount < i) {CreateClone();}
+                if (health <= (maxHealth * (4 - i) / 8) && cloneCount < i) { CreateClone(); }
             }
 
             //Stop spinning fast
@@ -111,29 +106,21 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
                 timer += Time.deltaTime * 20;
                 hittable = false;
             }
-            //Shooting Projectile
-            else if (attackTimer >= (attackDelay * 2/3) + 0.8f && attacking)
-            {
-                m_animator.SetBool("attack_short_001", false);
-                attacking = false;
-                ShootMagicBolt();
-            }
             //Beginning attack animation
-            else if (attackTimer > (attackDelay * 2/3) && attackTimer < (attackDelay * 2/3) + 0.8f)
+            else if (attackTimer > (attackDelay * 2/3) && attackTimer < (attackDelay * 2/3) + 0.5f)
             {
-                m_animator.SetBool("attack_short_001", true);
-                attacking = true;
+                m_animator.SetTrigger("Attack");
             }
 
             attackTimer += Time.deltaTime;
             timer += Time.deltaTime;
-            transform.position = new Vector3((relativePlayerPos.x + Mathf.Sin(timer / 2) * RotateRadius), relativePlayerPos.y, ((relativePlayerPos.z + Mathf.Cos(timer / 2) * RotateRadius)));
+            transform.position = new Vector3((24 + Mathf.Sin(timer / 2) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos(timer / 2) * RotateRadius)));
 
             //Transform the clones
             for (int i = 0; i < cloneCount; i++)
             {
                 float piRotation = Mathf.PI * (2 * (i + 1)) / (cloneCount + 1);    //One clone = 2/2;     Two clones = 2/3, 4/3;     Three clones = 2/4, 4/4, 6/4
-                CloneList[i].transform.position = new Vector3((relativePlayerPos.x + Mathf.Sin((timer / 2) + piRotation) * RotateRadius), relativePlayerPos.y, ((relativePlayerPos.z + Mathf.Cos((timer / 2) + piRotation) * RotateRadius)));
+                CloneList[i].transform.position = new Vector3((24 + Mathf.Sin((timer / 2) + piRotation) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos((timer / 2) + piRotation) * RotateRadius)));
                 CloneList[i].transform.rotation = Quaternion.Lerp(CloneList[i].transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - CloneList[i].transform.position, Vector3.up).eulerAngles), Time.deltaTime * speed);
             }
         }
@@ -141,10 +128,10 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
 
     void Teleport()
     {
-        zRange = new Vector2(8, 20);
-        xRange = new Vector2(14, 31);
+        zRange = new Vector2(9, 24);
+        xRange = new Vector2(15, 33);
         transform.position = new Vector3(Random.Range(xRange.x, xRange.y), transform.position.y, Random.Range(zRange.x, zRange.y));
-        while (Vector3.Distance(transform.position, relativePlayerPos) < 6)
+        while (Vector3.Distance(transform.position, relativePlayerPos) < 4)
         {
             transform.position = new Vector3(Random.Range(xRange.x, xRange.y), transform.position.y, Random.Range(zRange.x, zRange.y));
         }
@@ -174,15 +161,8 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
         if (hittable)
         {
             health--;
-
-            if (health <= 0)
-            {
-                Die();
-            }
-            else
-            {
-                takingDamage = true;
-            }
+            if (health <= 0) { Die(); }
+            else { takingDamage = true; }
         }
     }
 
@@ -198,20 +178,8 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
         Destroy(gameObject, 5);
     }
 
-    public void getStabbed()
-    {
-        TakeDamage();
-    }
-    public void getShot()
-    {
-        TakeDamage();
-    }
-    public void getExploded()
-    {
-        TakeDamage();
-    }
-    public void getStunned()
-    {
-        TakeDamage();
-    }
+    public void getStabbed() { TakeDamage(); }
+    public void getShot() { TakeDamage(); }
+    public void getExploded() { TakeDamage(); }
+    public void getStunned() { TakeDamage(); }
 }

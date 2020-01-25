@@ -14,9 +14,14 @@ public class HealthScript : MonoBehaviour
     public float hitDuration;
 
     public GameObject HealthBar;
+    private Animator anim;
+    private CharacterControl charcontrol;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+        charcontrol = GetComponent<CharacterControl>();
+
         if (!RetrieveStaticPosition())
             RespawnPosition = transform.position; //use default value if import was unsuccesful
 
@@ -33,6 +38,9 @@ public class HealthScript : MonoBehaviour
     {
         if (Time.time - hitDuration >= lastHit)
         {
+            anim.SetTrigger("TakeDamage");
+            charcontrol.unmovableTimer = 1.0f;
+
             lastHit = Time.time;
             CurrentHealth--;
             if (CurrentHealth == 0)

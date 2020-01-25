@@ -12,7 +12,7 @@ public class CharacterControl : MonoBehaviour
     float speed = 4;
     float rotSpeed = 80;
     float gravity = 8;
-    float unmovableTimer; //The player cannot move while this is bigger than 0
+    public float unmovableTimer; //The player cannot move while this is bigger than 0
 
     [SerializeField] float boomerangTravelDistance = 8;
     public Vector3 BombForce;
