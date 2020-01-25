@@ -8,10 +8,15 @@ public class NextScene : MonoBehaviour
 {
     protected float timer;
     protected bool nextScene;
+    protected int[] loopOrder;
+    protected Vector3 playerLoopPosition;
     public Vector3 playerPosition;
     public Vector3 playerRotation;
     public string sceneName;
     public PlayableDirector playableDirector;
+    public PlayableDirector fadeIn;
+    public GameObject tree;
+    public int looping;
     
     private void OnTriggerEnter(Collider collision)
     {
@@ -25,9 +30,12 @@ public class NextScene : MonoBehaviour
     {
         timer = 0;
         nextScene = false;
+        loopOrder = new int[3]{2,3,1};
+        PlayerStats.loopStage = 0;
+        playerLoopPosition = new Vector3(21, 0, 4);
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (nextScene)
         {
@@ -36,7 +44,16 @@ public class NextScene : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > 1)
             {
-                SceneManager.LoadScene(sceneName: sceneName);
+                if (looping < 1)
+                {
+                    SceneManager.LoadScene(sceneName: sceneName);
+                }
+                else
+                {
+                    GameObject.Find("Player").transform.position = playerLoopPosition;
+                    fadeIn.Play();
+                    HandleLoop();
+                }
             }
         }
     }
@@ -50,5 +67,25 @@ public class NextScene : MonoBehaviour
     {
         PlayerStats.playerPosition = playerPosition;
         PlayerStats.playerRotation = playerRotation;
+    }
+
+    void HandleLoop()
+    {
+        if (looping == loopOrder[PlayerStats.loopStage])
+        {
+            PlayerStats.loopStage += 1;
+            tree.SetActive(false);
+            if (PlayerStats.loopStage > loopOrder.Length - 1)
+            {
+                SavePlayer();
+                SceneManager.LoadScene(sceneName: sceneName);
+            }
+        }
+        else
+        {
+            PlayerStats.loopStage = 0;
+            tree.SetActive(true);
+        }
+        nextScene = false;
     }
 }
