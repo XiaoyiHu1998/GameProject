@@ -2313,7 +2313,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &276914105
 RectTransform:
@@ -4105,11 +4105,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 7375090970734941693, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7451551607411632856, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
         type: 3}
       propertyPath: m_SlopeLimit
@@ -4118,6 +4113,11 @@ PrefabInstance:
     - target: {fileID: -7656981495031725657, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
         type: 3}
       propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375090970734941693, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8569513235195041804, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
@@ -10858,7 +10858,9 @@ MonoBehaviour:
   shopPanel: {fileID: 135750555}
   openShopButton: {fileID: 0}
   closeShopButton: {fileID: 413913022}
+  purchaseButton1: {fileID: 0}
   animationSpeed: 1
+  playerInventory: {fileID: 0}
 --- !u!4 &1412253013
 Transform:
   m_ObjectHideFlags: 0
@@ -18470,7 +18472,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &2133061821
 RectTransform:

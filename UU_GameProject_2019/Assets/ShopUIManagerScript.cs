@@ -7,14 +7,21 @@ public class ShopUIManagerScript : MonoBehaviour
 {
     public RectTransform shopPanel;
 
-    public Button openShopButton, closeShopButton;
+    public Button openShopButton, closeShopButton, purchaseButton1;
 
     public float animationSpeed;
+
+    //public Weapon bow;
+
+    public PlayerInventory playerInventory;
 
     public void Awake()
     {
         openShopButton.onClick.AddListener(OpenShop);
         closeShopButton.onClick.AddListener(CloseShop);
+        purchaseButton1.onClick.AddListener(PurchaseArrows);
+
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
     }
 
     public void OpenShop()
@@ -25,5 +32,11 @@ public class ShopUIManagerScript : MonoBehaviour
     public void CloseShop()
     {
         shopPanel.DOAnchorPos(new Vector2(0, 600), animationSpeed);
+    }
+
+    public void PurchaseArrows()
+    {
+        //Debug.Log("test");
+        playerInventory.buyWeapon(Weapon.Bow);
     }
 }

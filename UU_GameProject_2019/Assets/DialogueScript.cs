@@ -27,6 +27,7 @@ public class DialogueScript : MonoBehaviour
     public void OpenDialogue()
     {
         instructies.text = "";
+        //instructies.text = DialogueStats.Hints[0];
         dialoguePanel.DOAnchorPos(new Vector2(0, -420), opencloseSpeed);
         openDialogueButton2.DOAnchorPos(new Vector2(0, 700), opencloseSpeed).SetDelay(animationOffset);
         
@@ -53,11 +54,12 @@ public class DialogueScript : MonoBehaviour
 
     IEnumerator TypeSentence()
     {
-        foreach (char letter in sentences[sentenceIndex].ToCharArray())
-        {
-            instructies.text += letter;
-            yield return new WaitForSeconds(typeSpeed);
-        }
+        //instructies.text = DialogueStats.Hints[0];
+         foreach (char letter in sentences[sentenceIndex].ToCharArray())
+         {
+             instructies.text += letter;
+             yield return new WaitForSeconds(typeSpeed);
+         }
     }
 
     public void PlayNextSentence()
@@ -73,6 +75,7 @@ public class DialogueScript : MonoBehaviour
         else
         {
             instructies.text = "";
+            
         }
     }
 }
