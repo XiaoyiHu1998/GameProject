@@ -8,6 +8,7 @@ public class TempleMovement : MonoBehaviour
     protected GameObject sand;
     protected float delta, speed;
     public bool tilesPressed;
+    public GameObject fire;
     
     // Setting initial variables.
     void Start()
@@ -27,7 +28,7 @@ public class TempleMovement : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (CheckLeftTile.leftTilePressed && CheckRightTile.rightTilePressed) { tilesPressed = true; }
+        if (CheckTilePress.leftTilePressed && CheckTilePress.rightTilePressed) { tilesPressed = true; }
         if (tilesPressed) { SetToSpawnPosition();; }
         else { SetToHidePosition();}
     }
@@ -39,6 +40,11 @@ public class TempleMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, spawnPosition, speed * Time.deltaTime);
         sand.transform.position = Vector3.MoveTowards(sand.transform.position, new Vector3(sand.transform.position.x, 0, sand.transform.position.z), speed * Time.deltaTime);
+        if(Vector3.Distance(transform.position, spawnPosition) < 0.2f)
+        {
+            fire.SetActive(true);
+            sand.SetActive(false);
+        }
     }
 
     /// <summary>
