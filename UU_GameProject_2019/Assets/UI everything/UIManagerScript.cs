@@ -33,20 +33,20 @@ public class UIManagerScript : MonoBehaviour
 
     public void Continue()
     {
-        MainOpeningPanel.DOAnchorPos(new Vector2(0, -450), animationSpeed).SetDelay(buttonDelay);
+        MainOpeningPanel.DOAnchorPos(new Vector2(0, -900), animationSpeed).SetDelay(buttonDelay);
         MenuPanel.DOAnchorPos(Vector2.zero, animationSpeed).SetDelay(animationDelay).SetDelay(animationDelay + buttonDelay);  
     }
 
     public void OpenOptions()
     {
-        MenuPanel.DOAnchorPos(new Vector2(850, 0), animationSpeed).SetDelay(0.5f); ;
+        MenuPanel.DOAnchorPos(new Vector2(2200, 0), animationSpeed).SetDelay(0.5f); ;
         OptionsPanel.DOAnchorPos(Vector2.zero, animationSpeed).SetDelay(0.5f);
     }
 
     public void CloseOptions()
     {
         MenuPanel.DOAnchorPos(Vector2.zero, animationSpeed);
-        OptionsPanel.DOAnchorPos(new Vector2(-850, 0), animationSpeed);
+        OptionsPanel.DOAnchorPos(new Vector2(-2200, 0), animationSpeed);
     }
 
     /*
@@ -60,12 +60,12 @@ public class UIManagerScript : MonoBehaviour
     public void CloseLevels()
     {
         MenuPanel.DOAnchorPos(Vector2.zero, animationSpeed).SetDelay(animationDelay);
-        LevelsPanel.DOAnchorPos(new Vector2(0, 450), animationSpeed);
+        LevelsPanel.DOAnchorPos(new Vector2(0, 900), animationSpeed);
     }
 
     public void QuitGame()
     {
-        MenuPanel.DOAnchorPos(new Vector2(850, 0), animationSpeed).SetDelay(0.5f);
+        MenuPanel.DOAnchorPos(new Vector2(2200, 0), animationSpeed).SetDelay(0.5f);
         MainOpeningPanel.DOAnchorPos(Vector2.zero, animationSpeed).SetDelay(animationDelay);
 
     }
