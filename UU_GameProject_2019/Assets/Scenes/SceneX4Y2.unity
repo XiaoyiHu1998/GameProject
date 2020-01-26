@@ -576,6 +576,9 @@ MonoBehaviour:
   playerRotation: {x: 0, y: -90, z: 0}
   sceneName: SpawnScene
   playableDirector: {fileID: 1153813636}
+  fadeIn: {fileID: 0}
+  tree: {fileID: 0}
+  looping: 0
 --- !u!1001 &94133281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6763,7 +6766,8 @@ AudioSource:
   m_GameObject: {fileID: 1672673003}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a489a6cd1e472354e8779830648d1f65,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 618292b342ea9f24f8e4118aa3094867, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

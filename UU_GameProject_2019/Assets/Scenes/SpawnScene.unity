@@ -908,6 +908,9 @@ MonoBehaviour:
   playerRotation: {x: 0, y: 90, z: 0}
   sceneName: SceneX4Y2
   playableDirector: {fileID: 1579266464}
+  fadeIn: {fileID: 0}
+  tree: {fileID: 0}
+  looping: 0
 --- !u!65 &128397235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4147,7 +4150,8 @@ AudioSource:
   m_GameObject: {fileID: 807108488}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: a489a6cd1e472354e8779830648d1f65,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 970641819c4f1e147b84167fa186b414, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -4554,6 +4558,9 @@ MonoBehaviour:
   playerRotation: {x: 0, y: 0, z: 0}
   sceneName: TopSpawnScene
   playableDirector: {fileID: 1579266464}
+  fadeIn: {fileID: 0}
+  tree: {fileID: 0}
+  looping: 0
 --- !u!1 &859274063
 GameObject:
   m_ObjectHideFlags: 0
@@ -9562,6 +9569,9 @@ MonoBehaviour:
   playerRotation: {x: 0, y: 0, z: 0}
   sceneName: StartingCaveScene
   playableDirector: {fileID: 1579266464}
+  fadeIn: {fileID: 0}
+  tree: {fileID: 0}
+  looping: 0
 --- !u!65 &1630278213
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/TopSpawnScene.unity
     guid: d3f219372fe867e4cb40014b9c76efa3
   - enabled: 1
+    path: Assets/Scenes/ForestScene.unity
+    guid: 19ab9f7f671830f4faeded4592cce76a
+  - enabled: 1
     path: Assets/Scenes/OrangeScene.unity
     guid: 5fb144160fe9cfa4bbd5ce898fa0e30b
   - enabled: 1
