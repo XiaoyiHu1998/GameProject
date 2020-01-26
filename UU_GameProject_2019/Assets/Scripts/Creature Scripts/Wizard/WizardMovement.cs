@@ -17,7 +17,7 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
 
     protected Vector3 playerPos, relativePlayerPos;
     protected Vector2 xRange, zRange;
-    protected bool takingDamage, hittable, dying;
+    protected bool attacked, takingDamage, hittable, dying;
     protected float speed, RotateRadius;
     protected float timer, attackTimer, teleportTimer, damageTimer;
     protected Transform playerTransform;
@@ -75,10 +75,12 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
             {
                 Teleport();
                 teleportTimer = 0;
+                attacked = false;
             }
             //Beginning attack animation
-            else if (teleportTimer >= (teleportDelay * 1/3) && teleportTimer < (teleportDelay * 1/3) + 0.5f)
+            else if (teleportTimer >= (teleportDelay * 1/3) && !attacked)
             {
+                attacked = true;
                 m_animator.SetTrigger("Attack");
             }
 
@@ -98,6 +100,7 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
             if (attackTimer > attackDelay + 2f)
             {
                 attackTimer = 0;
+                attacked = false;
                 hittable = true;
             }
             //Spin really fast
@@ -107,8 +110,9 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
                 hittable = false;
             }
             //Beginning attack animation
-            else if (attackTimer > (attackDelay * 2/3) && attackTimer < (attackDelay * 2/3) + 0.5f)
+            else if (attackTimer > (attackDelay * 2/3) && !attacked)
             {
+                attacked = true;
                 m_animator.SetTrigger("Attack");
             }
 
