@@ -1357,8 +1357,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {x: 4, y: 0, z: 15}
   playerRotation: {x: 0, y: 90, z: 0}
-  sceneName: SceneX4Y2
+  sceneName: ForestScene
   playableDirector: {fileID: 1579266464}
+  fadeIn: {fileID: 0}
+  tree: {fileID: 0}
+  looping: 0
 --- !u!65 &218909048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1785,6 +1788,9 @@ MonoBehaviour:
   playerRotation: {x: 0, y: 0, z: 0}
   sceneName: OrangeScene
   playableDirector: {fileID: 1579266464}
+  fadeIn: {fileID: 0}
+  tree: {fileID: 0}
+  looping: 0
 --- !u!1001 &328065141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6804,6 +6810,9 @@ MonoBehaviour:
   playerRotation: {x: 0, y: -180, z: 0}
   sceneName: SpawnScene
   playableDirector: {fileID: 1579266464}
+  fadeIn: {fileID: 0}
+  tree: {fileID: 0}
+  looping: 0
 --- !u!65 &1463993142
 BoxCollider:
   m_ObjectHideFlags: 0
