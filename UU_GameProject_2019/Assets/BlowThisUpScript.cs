@@ -8,4 +8,14 @@ public class BlowThisUpScript : MonoBehaviour, IExplodable
     {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter(Collider target)
+    {
+        BombScript bomb = target.gameObject.GetComponent<BombScript>();
+
+        if (bomb != null)
+        {
+            bomb.Explode();
+        }
+    }
 }
