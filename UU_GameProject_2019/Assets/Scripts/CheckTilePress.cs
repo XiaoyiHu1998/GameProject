@@ -18,7 +18,10 @@ public class CheckTilePress : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.name == "Player")
-        { tilePress = true; }
+        {
+            tilePress = true;
+            tileSound.Play();
+        }
     }
 
     // Setting initial variables.
@@ -39,7 +42,6 @@ public class CheckTilePress : MonoBehaviour
        if (tilePress && (Vector3.Distance(transform.position, pressedPosition) > 0.1f) && (Vector3.Distance(transform.position, player.transform.position) < 2f))
        {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, transform.position.y - 0.15f, transform.position.z), speed * Time.deltaTime);
-            tileSound.Play();
             if (transform.position.x < 20)
             { leftTilePressed = true; }
             else { rightTilePressed = true; }
