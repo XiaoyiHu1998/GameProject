@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    public GameObject InventoryCursor;
+    public Text[] AmmoCounters = new Text[Enum.GetNames(typeof(Weapon)).Length];
+
+    void Start()
+    {
+        for (int i = 0; i < Enum.GetNames(typeof(Weapon)).Length; i++)
+            AmmoCounters[i].text = "ammo: " + InventoryStats.Inventory[i].ToString();
+    }
+
     void OnCollisionEnter(Collision target) //picking up health and ammo drops
     {
         ItemDropScript lootDrop = target.gameObject.GetComponent<ItemDropScript>();
@@ -40,7 +49,7 @@ public class PlayerInventory : MonoBehaviour
         InventoryStats.Inventory[(int)lootedObject] += amount;
         if (InventoryStats.Inventory[(int)lootedObject] > InventoryStats.InventoryCaps[(int)lootedObject])
             InventoryStats.Inventory[(int)lootedObject] = InventoryStats.InventoryCaps[(int)lootedObject];
-        //InventoryStats.AmmoCounters[(int)lootedObject].text = "ammo: " + InventoryStats.Inventory[(int)lootedObject].ToString();
+        AmmoCounters[(int)lootedObject].text = "ammo: " + InventoryStats.Inventory[(int)lootedObject].ToString();
     }
 
     public void lootHealth(int amount)
@@ -60,7 +69,7 @@ public class PlayerInventory : MonoBehaviour
             InventoryStats.Money -= ShopStats.WeaponPrices[(int)weapon];
             InventoryStats.WeaponAcquired[(int)weapon] = true;
             lootObject(weapon, InventoryStats.AmmoQuantity[(int)weapon]);
-            InventoryStats.AmmoCounters[(int)weapon].text = "ammo: " + InventoryStats.Inventory[(int)weapon].ToString();
+            AmmoCounters[(int)weapon].text = "ammo: " + InventoryStats.Inventory[(int)weapon].ToString();
         }
 
         else if (InventoryStats.Money >= ShopStats.AmmoPrices[(int)weapon] && InventoryStats.Inventory[(int)weapon] < InventoryStats.InventoryCaps[(int)weapon] && InventoryStats.InventoryCaps[(int)weapon] > 1)
