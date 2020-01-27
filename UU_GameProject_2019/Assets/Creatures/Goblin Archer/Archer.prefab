@@ -648,7 +648,7 @@ MonoBehaviour:
     type: 3}
   healthAmount: 2
   moneyAmount: 100
-  weaponAmount: 1
+  weaponAmount: 10
   weaponType: 0
 --- !u!1 &2910369483233908281
 GameObject:
@@ -1091,11 +1091,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2910369483234003457}
     m_Modifications:
-    - target: {fileID: 8761165923221937294, guid: 1d27c928bdada484f98ed60020737292,
-        type: 3}
-      propertyPath: m_Name
-      value: arrow
-      objectReference: {fileID: 0}
     - target: {fileID: 8761165923221569710, guid: 1d27c928bdada484f98ed60020737292,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1150,6 +1145,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -101.67876
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761165923221937294, guid: 1d27c928bdada484f98ed60020737292,
+        type: 3}
+      propertyPath: m_Name
+      value: arrow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d27c928bdada484f98ed60020737292, type: 3}

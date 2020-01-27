@@ -147,7 +147,7 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
     {
         m_animator.SetTrigger("Die");
         //GetComponent<DropScript>().DropHealth();
-        //GetComponent<DropScript>().DropAmmo();
+        //GetComponent<DropScript>().DropMoney();
         //GetComponent<DropScript>().DropWeapon();
         Destroy(gameObject, 4);
     }

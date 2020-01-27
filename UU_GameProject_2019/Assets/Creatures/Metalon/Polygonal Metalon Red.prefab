@@ -438,6 +438,7 @@ GameObject:
   - component: {fileID: 4989125400251531238}
   - component: {fileID: 1110870049}
   - component: {fileID: -7138126141315752227}
+  - component: {fileID: -6291221989910380822}
   m_Layer: 0
   m_Name: Polygonal Metalon Red
   m_TagString: Untagged
@@ -541,6 +542,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-6291221989910380822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987997753778706627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed367d8ce6ea164c93b2c69c2f52297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DroppedHealth: {fileID: 3542044669272293826, guid: ff3274e811bb02e4a83f9a47139d5c79,
+    type: 3}
+  DroppedMoney: {fileID: 7159039781279247732, guid: 796af7418a3b97d4b80f1b88e50b716e,
+    type: 3}
+  DroppedWeapon: {fileID: 7632241553721446104, guid: 3c99b9e32f005a44481c8d843c67c373,
+    type: 3}
+  healthAmount: 2
+  moneyAmount: 999
+  weaponAmount: 1
+  weaponType: 2
 --- !u!1 &4988024537981382711
 GameObject:
   m_ObjectHideFlags: 0

@@ -186,6 +186,9 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
     void Die()
     {
         m_animator.SetTrigger("Die");
+        //GetComponent<DropScript>().DropHealth();
+        //GetComponent<DropScript>().DropMoney();
+        //GetComponent<DropScript>().DropWeapon();
         Destroy(gameObject, 1);
     }
 }
