@@ -5,7 +5,7 @@ using UnityEngine;
 public class LoadStats : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         transform.position = PlayerStats.playerPosition;
         transform.rotation = Quaternion.Euler(PlayerStats.playerRotation);

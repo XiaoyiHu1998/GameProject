@@ -17627,11 +17627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e477439b5f15da34cb9692a2b4cb7343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressedPosition: {x: 0, y: 0, z: 0}
-  originalPosition: {x: 0, y: 0, z: 0}
-  originalArrowPosition: {x: 0, y: 0, z: 0}
-  leftArrow: {fileID: 0}
-  speed: 0
 --- !u!64 &1227811609
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20261,7 +20256,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: a489a6cd1e472354e8779830648d1f65,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3e3ba31d88ea49544b20000f2f1ff068, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f49b5964b2cd911439a43da82c53608c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -20274,7 +20269,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -24931,7 +24926,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: a489a6cd1e472354e8779830648d1f65,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3e3ba31d88ea49544b20000f2f1ff068, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f49b5964b2cd911439a43da82c53608c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -24944,7 +24939,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
