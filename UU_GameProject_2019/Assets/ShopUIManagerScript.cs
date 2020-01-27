@@ -31,7 +31,7 @@ public class ShopUIManagerScript : MonoBehaviour
 
     public void CloseShop()
     {
-        shopPanel.DOAnchorPos(new Vector2(0, 600), animationSpeed);
+        shopPanel.DOAnchorPos(new Vector2(0, 1000), animationSpeed);
     }
 
     public void PurchaseArrows()
