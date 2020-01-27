@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+
 public class ShopUIManagerScript : MonoBehaviour
 {
     public RectTransform shopPanel;
 
-    public Button openShopButton, closeShopButton, purchaseButton1;
+    public Button openShopButton, closeShopButton, purchaseButton1, purchaseButton2;
 
     public float animationSpeed;
 
     //public Weapon bow;
 
-    public PlayerInventory playerInventory;
+    private PlayerInventory playerInventory;
 
     public void Awake()
     {
         openShopButton.onClick.AddListener(OpenShop);
         closeShopButton.onClick.AddListener(CloseShop);
         purchaseButton1.onClick.AddListener(PurchaseArrows);
-
-        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        purchaseButton2.onClick.AddListener(PurchaseBombs);
     }
 
     public void OpenShop()
@@ -36,7 +36,14 @@ public class ShopUIManagerScript : MonoBehaviour
 
     public void PurchaseArrows()
     {
-        //Debug.Log("test");
+        Debug.Log("button test");
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
         playerInventory.buyWeapon(Weapon.Bow);
+    }
+
+    public void PurchaseBombs()
+    {
+        PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
+        playerInventory.buyWeapon(Weapon.Bombs);
     }
 }
