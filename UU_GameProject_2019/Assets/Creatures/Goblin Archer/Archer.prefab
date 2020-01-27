@@ -533,6 +533,7 @@ GameObject:
   - component: {fileID: 4872877936084126045}
   - component: {fileID: -8992263869996754820}
   - component: {fileID: 8366116851935404936}
+  - component: {fileID: 6723132540976638094}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -627,6 +628,28 @@ MonoBehaviour:
   detectionArea: 12
   fleeDistance: 5
   health: 4
+--- !u!114 &6723132540976638094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2910369483233908279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed367d8ce6ea164c93b2c69c2f52297, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DroppedHealth: {fileID: 3542044669272293826, guid: ff3274e811bb02e4a83f9a47139d5c79,
+    type: 3}
+  DroppedMoney: {fileID: 7159039781279247732, guid: 796af7418a3b97d4b80f1b88e50b716e,
+    type: 3}
+  DroppedWeapon: {fileID: 7632241553721446104, guid: 3c99b9e32f005a44481c8d843c67c373,
+    type: 3}
+  healthAmount: 2
+  moneyAmount: 100
+  weaponAmount: 1
+  weaponType: 0
 --- !u!1 &2910369483233908281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,6 +1091,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2910369483234003457}
     m_Modifications:
+    - target: {fileID: 8761165923221937294, guid: 1d27c928bdada484f98ed60020737292,
+        type: 3}
+      propertyPath: m_Name
+      value: arrow
+      objectReference: {fileID: 0}
     - target: {fileID: 8761165923221569710, guid: 1d27c928bdada484f98ed60020737292,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1122,11 +1150,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -101.67876
-      objectReference: {fileID: 0}
-    - target: {fileID: 8761165923221937294, guid: 1d27c928bdada484f98ed60020737292,
-        type: 3}
-      propertyPath: m_Name
-      value: arrow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d27c928bdada484f98ed60020737292, type: 3}

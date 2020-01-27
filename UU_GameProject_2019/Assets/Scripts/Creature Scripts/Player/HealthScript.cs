@@ -40,7 +40,7 @@ public class HealthScript : MonoBehaviour
 
             lastHit = Time.time;
             PlayerStats.playerHealth--;
-            if (PlayerStats.playerHealth == 0)
+            if (PlayerStats.playerHealth <= 0)
                 Respawn();
             updateHealthBar();
         }
