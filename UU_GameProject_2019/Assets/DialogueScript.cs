@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class DialogueScript : MonoBehaviour
 {
@@ -24,9 +25,24 @@ public class DialogueScript : MonoBehaviour
         closeDialogueButton.onClick.AddListener(CloseDialogue);
     }
 
+    void Start()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string SceneName = currentScene.name;
+        
+        if (SceneName == "SpawnScene")
+        {
+            instructies.text = DialogueStats.Hints[6];
+        }
+        if (SceneName == "TopSpawnScene")
+        {
+            instructies.text = DialogueStats.Hints[7];
+        }
+    }
+
     public void OpenDialogue()
     {
-        instructies.text = "";
+        //instructies.text = "";
         //instructies.text = DialogueStats.Hints[0];
         dialoguePanel.DOAnchorPos(new Vector2(0, -420), opencloseSpeed);
         openDialogueButton2.DOAnchorPos(new Vector2(0, 700), opencloseSpeed).SetDelay(animationOffset);

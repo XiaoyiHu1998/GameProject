@@ -15,6 +15,8 @@ public static class DialogueStats
         tempHints[1] = "hallo2";
         tempHints[2] = "hallo3";
         tempHints[22] = "22";
+        tempHints[6] = "dit is de spawn scene";
+        tempHints[7] = "top of spawn scene zin";
 
         Hints = tempHints;
     }
