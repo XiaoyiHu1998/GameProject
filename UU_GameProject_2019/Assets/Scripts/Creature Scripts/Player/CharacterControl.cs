@@ -209,7 +209,7 @@ public class CharacterControl : MonoBehaviour
         else
         {
             myBeam.gameObject.GetComponent<BeamScript>().SetTimer(0.05f);
-            myBeam.gameObject.GetComponent<Renderer>().enabled = false; //short invisible beam only representing melee hit if not
+            myBeam.gameObject.GetComponentInChildren<Renderer>().enabled = false; //short invisible beam only representing melee hit if not
         }
     }
 
@@ -346,6 +346,10 @@ public class CharacterControl : MonoBehaviour
             {
                 BombInHand.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             }
+        }
+        else //Put inventory cursor somewhere unseen
+        {
+            inv.InventoryCursor.transform.localPosition = new Vector3(-300, 500, 0);
         }
     }
 }

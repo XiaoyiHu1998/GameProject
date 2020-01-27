@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Collider))]
@@ -10,34 +11,38 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
     public Vector3 ShootingForce;
     public float attackDelay, teleportDelay;
     public int health;
-    private List<GameObject> CloneList = new List<GameObject>(3);
+    public GameObject FireRing;
+    public PlayableDirector cutscene;
 
+    private List<GameObject> CloneList = new List<GameObject>(3);
     private int maxHealth, cloneCount;
     private Animator m_animator;
 
     protected Vector3 playerPos, relativePlayerPos;
     protected Vector2 xRange, zRange;
-    protected bool attacked, takingDamage, hittable, dying;
+    protected bool nonAttacking, attacked, takingDamage, hittable, dying;
     protected float speed, RotateRadius;
     protected float timer, attackTimer, teleportTimer, damageTimer;
-    protected Transform playerTransform;
+    protected GameObject player;
 
     void Start()
     {
         speed = 3;
-        RotateRadius = 7;
+        RotateRadius = 6.5f;
         maxHealth = health;
         cloneCount = 0;
-        hittable = true;
+        hittable = false;
+        nonAttacking = true;
+        FireRing.SetActive(false);
 
         m_animator = GetComponent<Animator>();
         m_animator.SetBool("idle_combat", true);
-        playerTransform = GameObject.Find("Player").transform;
+        player = GameObject.Find("Player");
     }
 
     void Update()
     {
-        playerPos = playerTransform.position;
+        playerPos = player.transform.position;
         relativePlayerPos = new Vector3(playerPos.x, transform.position.y, playerPos.z);
 
         //Looking at Player
@@ -48,6 +53,17 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
 
         //Dying Animation
         if (dying) { }
+
+        //Waiting for player to approach
+        else if (nonAttacking)
+        {
+            if (Vector3.Distance(transform.position, relativePlayerPos) < 6)
+            {
+                nonAttacking = false;
+                hittable = true;
+                Teleport();
+            }
+        }
 
         //Taking Damage Animation
         else if (takingDamage)
@@ -70,64 +86,41 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
         //Teleporting around
         else if (health > maxHealth / 2)
         {
-            //Teleport
-            if (teleportTimer > teleportDelay)
-            {
-                Teleport();
-                teleportTimer = 0;
-                attacked = false;
-            }
-            //Beginning attack animation
-            else if (teleportTimer >= (teleportDelay * 1/3) && !attacked)
-            {
-                attacked = true;
-                m_animator.SetTrigger("Attack");
-            }
-
-            teleportTimer += Time.deltaTime;
+            TeleportPhase();
         }
 
         //Rotating around the player
         else if (health <= maxHealth / 2)
         {
-            //Making clones
-            for (int i = 1; i<=3; i++)
+            if (!FireRing.active)
             {
-                if (health <= (maxHealth * (4 - i) / 8) && cloneCount < i) { CreateClone(); }
+                FireRing.SetActive(true);
+                CharacterController cc = player.GetComponent<CharacterController>();
+                cc.enabled = false;
+                player.transform.position = new Vector3(23.5f, 0, 16.5f);
+                cc.enabled = true;
             }
-
-            //Stop spinning fast
-            if (attackTimer > attackDelay + 2f)
-            {
-                attackTimer = 0;
-                attacked = false;
-                hittable = true;
-            }
-            //Spin really fast
-            else if (attackTimer > attackDelay)
-            {
-                timer += Time.deltaTime * 20;
-                hittable = false;
-            }
-            //Beginning attack animation
-            else if (attackTimer > (attackDelay * 2/3) && !attacked)
-            {
-                attacked = true;
-                m_animator.SetTrigger("Attack");
-            }
-
-            attackTimer += Time.deltaTime;
-            timer += Time.deltaTime;
-            transform.position = new Vector3((23 + Mathf.Sin(timer / 2) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos(timer / 2) * RotateRadius)));
-
-            //Transform the clones
-            for (int i = 0; i < cloneCount; i++)
-            {
-                float piRotation = Mathf.PI * (2 * (i + 1)) / (cloneCount + 1);    //One clone = 2/2;     Two clones = 2/3, 4/3;     Three clones = 2/4, 4/4, 6/4
-                CloneList[i].transform.position = new Vector3((23 + Mathf.Sin((timer / 2) + piRotation) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos((timer / 2) + piRotation) * RotateRadius)));
-                CloneList[i].transform.rotation = Quaternion.Lerp(CloneList[i].transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - CloneList[i].transform.position, Vector3.up).eulerAngles), Time.deltaTime * speed);
-            }
+            RotatePhase();
         }
+    }
+
+    void TeleportPhase()
+    {
+        //Teleport
+        if (teleportTimer > teleportDelay)
+        {
+            Teleport();
+            teleportTimer = 0;
+            attacked = false;
+        }
+        //Beginning attack animation
+        else if (teleportTimer >= (teleportDelay * 1 / 3) && !attacked)
+        {
+            attacked = true;
+            m_animator.SetTrigger("Attack");
+        }
+
+        teleportTimer += Time.deltaTime;
     }
 
     void Teleport()
@@ -138,6 +131,47 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
         while (Vector3.Distance(transform.position, relativePlayerPos) < 4)
         {
             transform.position = new Vector3(Random.Range(xRange.x, xRange.y), transform.position.y, Random.Range(zRange.x, zRange.y));
+        }
+    }
+
+    void RotatePhase()
+    {
+        //Making clones
+        for (int i = 1; i <= 3; i++)
+        {
+            if (health <= (maxHealth * (4 - i) / 8) && cloneCount < i) { CreateClone(); }
+        }
+
+        //Stop spinning fast
+        if (attackTimer > attackDelay + 2f)
+        {
+            attackTimer = 0;
+            attacked = false;
+            hittable = true;
+        }
+        //Spin really fast
+        else if (attackTimer > attackDelay)
+        {
+            timer += Time.deltaTime * 20;
+            hittable = false;
+        }
+        //Beginning attack animation
+        else if (attackTimer > (attackDelay * 2 / 3) && !attacked)
+        {
+            attacked = true;
+            m_animator.SetTrigger("Attack");
+        }
+
+        attackTimer += Time.deltaTime;
+        timer += Time.deltaTime;
+        transform.position = new Vector3((23.5f + Mathf.Sin(timer / 2) * RotateRadius), relativePlayerPos.y, ((16.5f + Mathf.Cos(timer / 2) * RotateRadius)));
+
+        //Transform the clones
+        for (int i = 0; i < cloneCount; i++)
+        {
+            float piRotation = Mathf.PI * (2 * (i + 1)) / (cloneCount + 1);    //One clone = 2/2;     Two clones = 2/3, 4/3;     Three clones = 2/4, 4/4, 6/4
+            CloneList[i].transform.position = new Vector3((23.5f + Mathf.Sin((timer / 2) + piRotation) * RotateRadius), relativePlayerPos.y, ((16.5f + Mathf.Cos((timer / 2) + piRotation) * RotateRadius)));
+            CloneList[i].transform.rotation = Quaternion.Lerp(CloneList[i].transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - CloneList[i].transform.position, Vector3.up).eulerAngles), Time.deltaTime * speed);
         }
     }
 
@@ -179,6 +213,8 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
             Animator clone_animator = CloneList[j].GetComponent<Animator>();
             clone_animator.SetTrigger("dead");
         }
+        cutscene.Play();
+        FireRing.SetActive(false);
         Destroy(gameObject, 5);
     }
 
