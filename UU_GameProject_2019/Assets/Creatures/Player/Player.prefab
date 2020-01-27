@@ -107,7 +107,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Unavailable
 --- !u!1 &1238732375737741636
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +465,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Unavailable
 --- !u!1 &3930319350065642454
 GameObject:
   m_ObjectHideFlags: 0
@@ -1068,7 +1068,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Unavailable
 --- !u!1 &6982020750438294152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,6 +1810,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 548c422860fb77442b8e9a4429401331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InventoryCursor: {fileID: 8863588371296489039}
+  AmmoCounters:
+  - {fileID: 8357439361036993347}
+  - {fileID: 3493667917409876564}
+  - {fileID: 5188654145909729004}
+  - {fileID: 2008229912456760062}
 --- !u!114 &-4672743612241402253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,7 +2573,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Unavailable
 --- !u!1 &7752305657969118157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,14 +3545,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2719892683296007137}
     m_Modifications:
-    - target: {fileID: 135746, guid: 14b667d1781974149876d5a4568eac0e, type: 3}
-      propertyPath: m_Name
-      value: BombInHand
-      objectReference: {fileID: 0}
-    - target: {fileID: 135746, guid: 14b667d1781974149876d5a4568eac0e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 448554, guid: 14b667d1781974149876d5a4568eac0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3603,6 +3601,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 135746, guid: 14b667d1781974149876d5a4568eac0e, type: 3}
+      propertyPath: m_Name
+      value: BombInHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 135746, guid: 14b667d1781974149876d5a4568eac0e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14b667d1781974149876d5a4568eac0e, type: 3}
 --- !u!4 &3491361971190827874 stripped
@@ -3624,11 +3630,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8569513235195041804}
     m_Modifications:
-    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
-        type: 3}
-      propertyPath: m_Name
-      value: sword
-      objectReference: {fileID: 0}
     - target: {fileID: 3869689343789814372, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3684,6 +3685,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
+        type: 3}
+      propertyPath: m_Name
+      value: sword
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523, type: 3}
 --- !u!4 &129224835114361171 stripped
@@ -3705,16 +3711,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7422703967244649737}
     m_Modifications:
-    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
-        type: 3}
-      propertyPath: m_Name
-      value: sword
-      objectReference: {fileID: 0}
-    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3869689343789814372, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3770,6 +3766,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -8.454
       objectReference: {fileID: 0}
+    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
+        type: 3}
+      propertyPath: m_Name
+      value: sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3865267992400921896, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2e05fc9d39cdf4d93d1e6e5b87b523, type: 3}
 --- !u!4 &7430020066715738129 stripped
@@ -3791,14 +3797,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7864861600603603019}
     m_Modifications:
-    - target: {fileID: 135746, guid: c0949864e81bacb43bbcb27a11dc0bbf, type: 3}
-      propertyPath: m_Name
-      value: BombInOffHand
-      objectReference: {fileID: 0}
-    - target: {fileID: 135746, guid: c0949864e81bacb43bbcb27a11dc0bbf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 448554, guid: c0949864e81bacb43bbcb27a11dc0bbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3855,6 +3853,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 135746, guid: c0949864e81bacb43bbcb27a11dc0bbf, type: 3}
+      propertyPath: m_Name
+      value: BombInOffHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 135746, guid: c0949864e81bacb43bbcb27a11dc0bbf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0949864e81bacb43bbcb27a11dc0bbf, type: 3}
 --- !u!4 &6342354411577890615 stripped
@@ -3870,11 +3876,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2899465536032127323}
     m_Modifications:
-    - target: {fileID: 4886548803010184518, guid: 39826d00e8e687a4a9e58088c9920efa,
-        type: 3}
-      propertyPath: m_Name
-      value: Arrow_InHand
-      objectReference: {fileID: 0}
     - target: {fileID: 8470105313186330453, guid: 39826d00e8e687a4a9e58088c9920efa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3929,6 +3930,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886548803010184518, guid: 39826d00e8e687a4a9e58088c9920efa,
+        type: 3}
+      propertyPath: m_Name
+      value: Arrow_InHand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39826d00e8e687a4a9e58088c9920efa, type: 3}

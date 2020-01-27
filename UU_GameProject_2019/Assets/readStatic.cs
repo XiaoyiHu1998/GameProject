@@ -21,7 +21,6 @@ public class readStatic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InventoryCursor = InventoryStats.InventoryCursor;
         Inventory = InventoryStats.Inventory;
         InventoryCaps = InventoryStats.InventoryCaps;
         WeaponAcquired = InventoryStats.WeaponAcquired;

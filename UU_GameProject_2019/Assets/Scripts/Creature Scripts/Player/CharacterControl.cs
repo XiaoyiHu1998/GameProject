@@ -57,6 +57,8 @@ public class CharacterControl : MonoBehaviour
         health = GetComponent<HealthScript>();
         currentWeapon = PlayerStats.currentWeapon;
 
+        inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+
         if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //Weapon becomes sword if currentweapon is not defined
             currentWeapon = (Weapon)3;
 
@@ -165,7 +167,7 @@ public class CharacterControl : MonoBehaviour
                 if (InventoryStats.Inventory[(int)currentWeapon] > 0 && InventoryStats.WeaponAcquired[(int)currentWeapon])
                 {
                     InventoryStats.Inventory[(int)currentWeapon]--;
-                    //InventoryStats.AmmoCounters[(int)currentWeapon].text = "ammo: " + InventoryStats.Inventory[(int)currentWeapon].ToString();
+                    inv.AmmoCounters[(int)currentWeapon].text = "ammo: " + InventoryStats.Inventory[(int)currentWeapon].ToString();
                     switch (currentWeapon)
                     {
                         case Weapon.Bow: UseBow(); break;
@@ -319,7 +321,7 @@ public class CharacterControl : MonoBehaviour
                 break;
         }
         PlayerStats.currentWeapon = currentWeapon;
-        //inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
+        inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
 
         if (currentWeapon == Weapon.Sword)
         {

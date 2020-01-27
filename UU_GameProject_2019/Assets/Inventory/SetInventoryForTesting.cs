@@ -89,8 +89,6 @@ public class SetInventoryForTesting : MonoBehaviour
         ShopStats.WeaponPrices = WeaponPrices;
         ShopStats.AmmoPrices = AmmoPrices;
         InventoryStats.AmmoQuantity = AmmoQuantity;
-        
-        InventoryStats.InventoryCursor = InventoryCursor;
 
         PlayerStats.playerHealth = playerHealth;
         PlayerStats.maxHealth = maxHealth;
