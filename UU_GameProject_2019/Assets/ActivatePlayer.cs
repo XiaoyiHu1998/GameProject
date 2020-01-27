@@ -8,6 +8,6 @@ public class ActivatePlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        player.SetActive(true);
+        player.SetActive(false);
     }
 }
