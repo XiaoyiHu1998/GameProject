@@ -4105,6 +4105,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7375090970734941693, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7451551607411632856, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
         type: 3}
       propertyPath: m_SlopeLimit
@@ -4113,11 +4118,6 @@ PrefabInstance:
     - target: {fileID: -7656981495031725657, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
         type: 3}
       propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7375090970734941693, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
-        type: 3}
-      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8569513235195041804, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
@@ -13430,6 +13430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneSword: {fileID: 1161300924}
   playerSword: {fileID: 577386678}
+  player: {fileID: 577386671}
 --- !u!1 &1785084309
 GameObject:
   m_ObjectHideFlags: 0

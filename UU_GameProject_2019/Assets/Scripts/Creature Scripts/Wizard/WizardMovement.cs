@@ -25,7 +25,7 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
     void Start()
     {
         speed = 3;
-        RotateRadius = 5;
+        RotateRadius = 7;
         maxHealth = health;
         cloneCount = 0;
         hittable = true;
@@ -132,8 +132,8 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
 
     void Teleport()
     {
-        zRange = new Vector2(9, 24);
-        xRange = new Vector2(15, 33);
+        zRange = new Vector2(10, 22);
+        xRange = new Vector2(17, 31);
         transform.position = new Vector3(Random.Range(xRange.x, xRange.y), transform.position.y, Random.Range(zRange.x, zRange.y));
         while (Vector3.Distance(transform.position, relativePlayerPos) < 4)
         {

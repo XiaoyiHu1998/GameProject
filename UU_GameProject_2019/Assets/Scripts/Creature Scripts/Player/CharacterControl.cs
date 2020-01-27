@@ -212,7 +212,7 @@ public class CharacterControl : MonoBehaviour
     }
 
 
-    void UseBow() //shooting arrow animation, triggers LaunchArrow() and then DrawArrow
+    void UseBow() //shooting arrow animation, triggers LaunchArrow() and then DrawArrow()
     {
         anim.SetTrigger("ShootArrow");
         unmovableTimer = 0.9f;

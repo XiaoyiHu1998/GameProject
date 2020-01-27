@@ -15605,8 +15605,8 @@ MonoBehaviour:
     type: 3}
   Clone: {fileID: 6324016847400469001, guid: 56f91a7bf042f7b4084466e63b37bfb1, type: 3}
   ShootingForce: {x: 500, y: 0, z: 0}
-  attackDelay: 4
-  teleportDelay: 4
+  attackDelay: 5
+  teleportDelay: 6
   health: 8
 --- !u!1 &5702385985902823536
 GameObject:

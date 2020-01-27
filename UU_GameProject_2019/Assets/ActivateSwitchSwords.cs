@@ -6,6 +6,8 @@ public class ActivateSwitchSwords : MonoBehaviour
 {
     public GameObject sceneSword;
     public GameObject playerSword;
+    public GameObject player;
+    private CharacterControl playerScript;
 
     public void OnEnable()
     {
@@ -15,6 +17,10 @@ public class ActivateSwitchSwords : MonoBehaviour
         temp = InventoryStats.WeaponAcquired;
         temp[(int)Weapon.Sword] = true;
         InventoryStats.WeaponAcquired = temp;
+        InventoryStats.Inventory[(int)Weapon.Sword] = 1;
+        PlayerStats.currentWeapon = Weapon.Sword;
+        playerScript = player.GetComponent<CharacterControl>();
+        playerScript.currentWeapon = Weapon.Sword;
         ShopStats.shopOpen = true;
         PlayerStats.questMarkerPosition = new Vector3(500, 120, 0);
     }
