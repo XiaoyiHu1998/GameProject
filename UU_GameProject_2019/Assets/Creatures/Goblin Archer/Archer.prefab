@@ -626,7 +626,7 @@ MonoBehaviour:
   attackDelay: 4
   detectionArea: 12
   fleeDistance: 5
-  health: 3
+  health: 4
 --- !u!1 &2910369483233908281
 GameObject:
   m_ObjectHideFlags: 0

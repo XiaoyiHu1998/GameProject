@@ -14080,6 +14080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilesPressed: 0
+  fire: {fileID: 0}
 --- !u!1 &773606543 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000012794338952, guid: b37206dfe6186374398267e26322b759,
@@ -19465,6 +19466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70284a2122a64d04d90f759b711b1c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSound: {fileID: 0}
 --- !u!1 &1372265475
 GameObject:
   m_ObjectHideFlags: 0

@@ -1780,7 +1780,7 @@ MonoBehaviour:
   BombObject: {fileID: 135746, guid: 427122d040ed89d478b714642b9f6d46, type: 3}
   BoomerangObject: {fileID: 8691787459760621690, guid: ff9b5a648a951eb489d1d9995d7f311c,
     type: 3}
-  BeamObject: {fileID: 8018546882065626431, guid: 730a168bfea94b24c87cd6cfe9e2a63b,
+  BeamObject: {fileID: 8215200122404925608, guid: 45d14acb31919d845ba2f91346fbbc29,
     type: 3}
   SwordObject: {fileID: 7425150268697212765}
   BowObject: {fileID: 652937938734443546}
