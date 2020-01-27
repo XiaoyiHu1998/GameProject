@@ -104,5 +104,9 @@ public class GoToSpawnScene : MonoBehaviour
 
         // the shop can't be accessed 
         ShopStats.shopOpen = false;
+
+        // player health
+        PlayerStats.playerHealth = 6;
+        PlayerStats.maxHealth = 6;
     }
 }
