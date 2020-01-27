@@ -118,13 +118,13 @@ public class WizardMovement : MonoBehaviour, IShootable, IExplodable, IStunable,
 
             attackTimer += Time.deltaTime;
             timer += Time.deltaTime;
-            transform.position = new Vector3((24 + Mathf.Sin(timer / 2) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos(timer / 2) * RotateRadius)));
+            transform.position = new Vector3((23 + Mathf.Sin(timer / 2) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos(timer / 2) * RotateRadius)));
 
             //Transform the clones
             for (int i = 0; i < cloneCount; i++)
             {
                 float piRotation = Mathf.PI * (2 * (i + 1)) / (cloneCount + 1);    //One clone = 2/2;     Two clones = 2/3, 4/3;     Three clones = 2/4, 4/4, 6/4
-                CloneList[i].transform.position = new Vector3((24 + Mathf.Sin((timer / 2) + piRotation) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos((timer / 2) + piRotation) * RotateRadius)));
+                CloneList[i].transform.position = new Vector3((23 + Mathf.Sin((timer / 2) + piRotation) * RotateRadius), relativePlayerPos.y, ((16 + Mathf.Cos((timer / 2) + piRotation) * RotateRadius)));
                 CloneList[i].transform.rotation = Quaternion.Lerp(CloneList[i].transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - CloneList[i].transform.position, Vector3.up).eulerAngles), Time.deltaTime * speed);
             }
         }
