@@ -28,9 +28,6 @@ public class HealthScript : MonoBehaviour
         if (!RetrieveStaticRotation())
             RespawnRotation = transform.rotation;
 
-        if (!RetrieveStaticHealth())
-            CurrentHealth = MaxHealth;
-
         updateHealthBar();
     }
 
@@ -42,8 +39,8 @@ public class HealthScript : MonoBehaviour
             charcontrol.unmovableTimer = 1.0f;
 
             lastHit = Time.time;
-            CurrentHealth--;
-            if (CurrentHealth == 0)
+            PlayerStats.playerHealth--;
+            if (PlayerStats.playerHealth == 0)
                 Respawn();
             updateHealthBar();
         }
@@ -53,12 +50,12 @@ public class HealthScript : MonoBehaviour
     {
         transform.position = RespawnPosition;
         transform.rotation = RespawnRotation;
-        CurrentHealth = MaxHealth;
+        PlayerStats.playerHealth = PlayerStats.maxHealth;
     }
 
-    void updateHealthBar()
+    public void updateHealthBar()
     {
-        HealthBar.transform.localScale = new Vector3(CurrentHealth, 1, 1);
+        HealthBar.transform.localScale = new Vector3(PlayerStats.playerHealth, 1, 1);
     }
 
     bool RetrieveStaticPosition()
@@ -74,14 +71,6 @@ public class HealthScript : MonoBehaviour
         bool importComplete = false;
         //receive the rotation for this scene entry from the static quest/location script here
         //RespawnRotation = <yourcodehere>
-        return importComplete;
-    }
-
-    bool RetrieveStaticHealth()
-    {
-        bool importComplete = false;
-        //receive the player's curent health from the static quest/location script here
-        //CurrentHealth = <yourcodehere>
         return importComplete;
     }
 }

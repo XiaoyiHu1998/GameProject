@@ -57,11 +57,10 @@ public class CharacterControl : MonoBehaviour
         health = GetComponent<HealthScript>();
         currentWeapon = PlayerStats.currentWeapon;
 
-        inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
-
         if (!Enum.IsDefined(typeof(Weapon), currentWeapon)) //Weapon becomes sword if currentweapon is not defined
             currentWeapon = (Weapon)3;
 
+        inv.InventoryCursor.transform.localPosition = new Vector3(0, 300 - 100 * (int)currentWeapon, 0);
 
         //First set all objects false
         SwordObject.SetActive(false);

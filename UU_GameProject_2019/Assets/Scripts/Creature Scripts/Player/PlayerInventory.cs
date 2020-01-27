@@ -7,11 +7,17 @@ public class PlayerInventory : MonoBehaviour
 {
     public GameObject InventoryCursor;
     public Text[] AmmoCounters = new Text[Enum.GetNames(typeof(Weapon)).Length];
+    public Text MoneyCounter;
+
+    public HealthScript healthScript;
 
     void Start()
     {
         for (int i = 0; i < Enum.GetNames(typeof(Weapon)).Length; i++)
             AmmoCounters[i].text = "ammo: " + InventoryStats.Inventory[i].ToString();
+        MoneyCounter.text = "Gold: " + InventoryStats.Money.ToString();
+
+        healthScript = GetComponent<HealthScript>();
     }
 
     void OnCollisionEnter(Collision target) //picking up health and ammo drops
@@ -55,11 +61,13 @@ public class PlayerInventory : MonoBehaviour
     public void lootHealth(int amount)
     {
         PlayerStats.playerHealth += amount;
+        healthScript.updateHealthBar();
     }
 
     public void lootMoney(int amount)
     {
         InventoryStats.Money += amount;
+        MoneyCounter.text = "Gold: " + InventoryStats.Money.ToString();
     }
 
     public void buyWeapon(Weapon weapon)
