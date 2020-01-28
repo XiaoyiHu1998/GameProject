@@ -8,21 +8,17 @@ using UnityEngine;
 public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable, IStabable
 {
     public GameObject ProjectileEmitter;
-    public Vector3 ShootingForce;
+    Animator m_animator;
+    [SerializeField] Vector2 zRange, xRange;
+    Vector3 relativePlayerPos, targetPosition;
+    [SerializeField] Vector3 ShootingForce;
     [SerializeField] float speed, idleTime, attackDelay, detectionArea, fleeDistance;
-    public int health;
-
-    private Animator m_animator;
-    private Vector2 zRange, xRange;
-    private Vector3 relativePlayerPos, targetPosition;
     float idleTimer, attackTimer, stunnedTimer;
-    protected Transform playerTrans;
+    Transform playerTrans;
+    public int health;
 
     void Start()
     {
-        zRange = new Vector2(8, 20);
-        xRange = new Vector2(14, 31);
-
         m_animator = GetComponent<Animator>();
         m_animator.SetBool("Running", true);
         playerTrans = GameObject.Find("Player").transform;
