@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossScene.unity
     guid: c705d7bfedfc503499ae185dc0c64f35
+  - enabled: 1
+    path: Assets/Scenes/CreditsScene.unity
+    guid: e171487ec4cf68e428f89491bb56ca9c
   m_configObjects: {}
