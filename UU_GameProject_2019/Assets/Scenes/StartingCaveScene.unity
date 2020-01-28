@@ -13662,6 +13662,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 577386670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &577386675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7425150268697212765, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 577386670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &577386676
 Animator:
   serializedVersion: 3
@@ -18518,12 +18524,6 @@ PrefabInstance:
 --- !u!1 &1003495289 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7424676295703659441, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1003495288}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1003495290 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7425150268697212765, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
     type: 3}
   m_PrefabInstance: {fileID: 1003495288}
   m_PrefabAsset: {fileID: 0}
@@ -33403,7 +33403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneSword: {fileID: 1161300924}
-  playerSword: {fileID: 1003495290}
+  playerSword: {fileID: 577386675}
   player: {fileID: 577386671}
 --- !u!1 &1785084309
 GameObject:
