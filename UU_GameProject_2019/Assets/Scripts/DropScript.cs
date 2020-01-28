@@ -14,19 +14,19 @@ public class DropScript : MonoBehaviour
 
     public void DropHealth()
     {
-        GameObject healthDrop = Instantiate(DroppedHealth, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation) as GameObject;
+        GameObject healthDrop = Instantiate(DroppedHealth, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation) as GameObject;
         healthDrop.GetComponent<HealthDropScript>().amount = healthAmount;
     }
 
     public void DropMoney()
     {
-        GameObject moneyDrop = Instantiate(DroppedMoney, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation) as GameObject;
+        GameObject moneyDrop = Instantiate(DroppedMoney, new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z), transform.rotation) as GameObject;
         moneyDrop.GetComponent<MoneyDropScript>().amount = moneyAmount;
     }
 
     public void DropWeapon()
     {
-        GameObject weaponDrop = Instantiate(DroppedWeapon, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation) as GameObject;
+        GameObject weaponDrop = Instantiate(DroppedWeapon, new Vector3(transform.position.x, transform.position.y + 4, transform.position.z), transform.rotation) as GameObject;
         weaponDrop.GetComponent<ItemDropScript>().amount = weaponAmount;
         weaponDrop.GetComponent<ItemDropScript>().weapon = weaponType;
     }
