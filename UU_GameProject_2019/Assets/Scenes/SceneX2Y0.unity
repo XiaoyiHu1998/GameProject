@@ -2257,6 +2257,16 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8586693570827013501, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 195.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586693570827013501, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 434.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6036202113200152585, guid: c5bd945d92de27b4a9ee7cc2146bab6f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
