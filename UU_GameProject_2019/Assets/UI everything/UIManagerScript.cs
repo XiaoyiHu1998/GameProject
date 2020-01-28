@@ -19,7 +19,6 @@ public class UIManagerScript : MonoBehaviour
     {
         button_Options.onClick.AddListener(OpenOptions);
         button_OptionsToMenu.onClick.AddListener(CloseOptions);
-       // button_Levels.onClick.AddListener(OpenLevels);
         button_LevelsToMenu.onClick.AddListener(CloseLevels);
         button_Continue.onClick.AddListener(Continue);
         button_Quit.onClick.AddListener(QuitGame);
@@ -49,14 +48,6 @@ public class UIManagerScript : MonoBehaviour
         OptionsPanel.DOAnchorPos(new Vector2(-2200, 0), animationSpeed);
     }
 
-    /*
-    public void OpenLevels()
-    {
-        levelsbutton.DOPunchScale(new Vector3(0.5f, 0.5f, 0), 0.2f, 2, 1);
-        MenuPanel.DOAnchorPos(new Vector2(-850, 0), animationSpeed).SetDelay(0.5f); ;
-        LevelsPanel.DOAnchorPos(Vector2.zero, animationSpeed).SetDelay(animationDelay);
-    }*/
-
     public void CloseLevels()
     {
         MenuPanel.DOAnchorPos(Vector2.zero, animationSpeed).SetDelay(animationDelay);
@@ -72,7 +63,6 @@ public class UIManagerScript : MonoBehaviour
 
     public void PlayGame()
     {
-        //MenuPanel.DOScale(0.01f, 0.5f);
         fadeObject1.DOFade(0, fadeTime);
         fadeObject2.DOFade(0, fadeTime);
         fadeObject3.DOFade(0, fadeTime);
@@ -81,7 +71,6 @@ public class UIManagerScript : MonoBehaviour
         fadeObject6.DOFade(0, fadeTime);
         fadeObject7.DOFade(0, fadeTime);
         fadeObject8.DOFade(0, fadeTime);
-        //SceneManager.LoadScene("SpawnScene");
         Time.timeScale = 1f;
     }
 

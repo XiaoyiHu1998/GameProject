@@ -8641,29 +8641,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructies: {fileID: 1716691726}
-  sentences:
-  - test zin 1
-  - test zin 2
-  - test zin 3
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  sentences: []
   typeSpeed: 0.02
-  playNextSentenceButton: {fileID: 882726018}
   openDialogueButton: {fileID: 1375920048}
   closeDialogueButton: {fileID: 2129338135}
   opencloseSpeed: 0.75
@@ -9005,7 +8984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 500}
+  m_AnchoredPosition: {x: 0, y: 480}
   m_SizeDelta: {x: 507.9, y: 95.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375920048

@@ -19,6 +19,8 @@ public class changeButtonImage : MonoBehaviour
 
     public void ChangeImage()
     {
+        //when the button is pressed, the sprite changes to a second image of the button to create the effect of the button being pressed down
+
         if (buttonToBeChanged.image.sprite == firstSprite)
         {
             buttonToBeChanged.image.sprite = secondSprite;
@@ -34,6 +36,8 @@ public class changeButtonImage : MonoBehaviour
 
     void Update()
     {
+        //the button returns up after a short time
+
         if (IsPressed)
         {
             timer += Time.deltaTime;

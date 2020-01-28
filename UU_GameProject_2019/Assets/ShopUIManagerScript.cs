@@ -12,8 +12,6 @@ public class ShopUIManagerScript : MonoBehaviour
 
     public float animationSpeed;
 
-    //public Weapon bow;
-
     private PlayerInventory playerInventory;
 
     public void Awake()
@@ -36,13 +34,14 @@ public class ShopUIManagerScript : MonoBehaviour
 
     public void PurchaseArrows()
     {
-        Debug.Log("button test");
+        //purchase arrows from the PlayerInventory script
         PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
         playerInventory.buyWeapon(Weapon.Bow);
     }
 
     public void PurchaseBombs()
     {
+        //purchase bombs from the PlayerInventory script
         PlayerInventory playerInventory = FindObjectOfType<PlayerInventory>();
         playerInventory.buyWeapon(Weapon.Bombs);
     }

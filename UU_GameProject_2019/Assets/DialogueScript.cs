@@ -10,9 +10,10 @@ public class DialogueScript : MonoBehaviour
     public Text instructies;
     public string[] sentences;
     private int sentenceIndex;
+    private int hintIndex;
     public float typeSpeed;
 
-    public Button playNextSentenceButton, openDialogueButton, closeDialogueButton;
+    public Button /*playNextSentenceButton,*/ openDialogueButton, closeDialogueButton;
 
     public float opencloseSpeed, animationOffset;
 
@@ -20,7 +21,7 @@ public class DialogueScript : MonoBehaviour
 
     public void Awake()
     {
-        playNextSentenceButton.onClick.AddListener(PlayNextSentence);
+        //playNextSentenceButton.onClick.AddListener(PlayNextSentence);
         openDialogueButton.onClick.AddListener(OpenDialogue);
         closeDialogueButton.onClick.AddListener(CloseDialogue);
     }
@@ -32,18 +33,46 @@ public class DialogueScript : MonoBehaviour
         
         if (SceneName == "SpawnScene")
         {
-            instructies.text = DialogueStats.Hints[6];
+            instructies.text = DialogueStats.Hints[0];
         }
         if (SceneName == "TopSpawnScene")
         {
-            instructies.text = DialogueStats.Hints[7];
+            instructies.text = DialogueStats.Hints[1];
         }
+        if (SceneName == "ForestScene")
+        {
+            instructies.text = DialogueStats.Hints[1];
+        }
+        if (SceneName == "OrangeScene")
+        {
+            instructies.text = DialogueStats.Hints[1];
+        }
+        if (SceneName == "SceneX4Y2")
+        {
+            instructies.text = DialogueStats.Hints[1];
+        }
+        if (SceneName == "BridgeScene")
+        {
+            instructies.text = DialogueStats.Hints[3];
+        }
+        if (SceneName == "SceneX2Y0")
+        {
+            instructies.text = DialogueStats.Hints[2];
+        }
+        if (SceneName == "DungeonEntranceScene")
+        {
+            instructies.text = DialogueStats.Hints[4];
+        }
+        if (SceneName == "LoopScene")
+        {
+            instructies.text = DialogueStats.Hints[5];
+        }
+
     }
 
     public void OpenDialogue()
     {
         //instructies.text = "";
-        //instructies.text = DialogueStats.Hints[0];
         dialoguePanel.DOAnchorPos(new Vector2(0, -420), opencloseSpeed);
         openDialogueButton2.DOAnchorPos(new Vector2(0, 700), opencloseSpeed).SetDelay(animationOffset);
         
@@ -56,31 +85,31 @@ public class DialogueScript : MonoBehaviour
     public void CloseDialogue()
     {
         dialoguePanel.DOAnchorPos(new Vector2(0, -750), opencloseSpeed);
-        openDialogueButton2.DOAnchorPos(new Vector2(0, 500), opencloseSpeed).SetDelay(animationOffset);
+        openDialogueButton2.DOAnchorPos(new Vector2(0, 480), opencloseSpeed).SetDelay(animationOffset);
         openDialogueButton.interactable = true;
     }
 
     public void Update()
-    {
+    {/*
         if (instructies.text == sentences[sentenceIndex])
         {
             playNextSentenceButton.interactable = true;
-        }
+        }*/
     }
 
     IEnumerator TypeSentence()
     {
-        //instructies.text = DialogueStats.Hints[0];
-         foreach (char letter in sentences[sentenceIndex].ToCharArray())
-         {
+        foreach (char letter in sentences[sentenceIndex].ToCharArray())
+        {
              instructies.text += letter;
              yield return new WaitForSeconds(typeSpeed);
          }
+        //creates a fluid animation where a sentence appears letter for letter
     }
 
     public void PlayNextSentence()
     {
-        playNextSentenceButton.interactable = false;
+        //playNextSentenceButton.interactable = false;
 
         if (sentenceIndex < sentences.Length - 1)
         {
