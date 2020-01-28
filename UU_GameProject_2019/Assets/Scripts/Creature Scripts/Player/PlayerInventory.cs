@@ -72,21 +72,19 @@ public class PlayerInventory : MonoBehaviour
 
     public void buyWeapon(Weapon weapon)
     {
-        Debug.Log("test 3");
         if (InventoryStats.Money >= ShopStats.WeaponPrices[(int)weapon] && !InventoryStats.WeaponAcquired[(int)weapon])
         {
             InventoryStats.Money -= ShopStats.WeaponPrices[(int)weapon];
             InventoryStats.WeaponAcquired[(int)weapon] = true;
             lootObject(weapon, InventoryStats.AmmoQuantity[(int)weapon]);
             AmmoCounters[(int)weapon].text = "ammo: " + InventoryStats.Inventory[(int)weapon].ToString();
-            Debug.Log("test 1");
         }
 
         else if (InventoryStats.Money >= ShopStats.AmmoPrices[(int)weapon] && InventoryStats.Inventory[(int)weapon] < InventoryStats.InventoryCaps[(int)weapon] && InventoryStats.InventoryCaps[(int)weapon] > 1)
         {
             InventoryStats.Money -= ShopStats.AmmoPrices[(int)weapon];
             lootObject(weapon, InventoryStats.AmmoQuantity[(int)weapon]);
-            Debug.Log("test 2");
         }
+        MoneyCounter.text = "Gold: " + InventoryStats.Money.ToString();
     }
 }
