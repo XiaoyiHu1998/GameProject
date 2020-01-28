@@ -914,6 +914,11 @@ PrefabInstance:
       propertyPath: xRange.y
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4989125400251531238, guid: 8ca512b67aa89934bb7fb0312d7834e4,
+        type: 3}
+      propertyPath: maxHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: -6291221989910380822, guid: 8ca512b67aa89934bb7fb0312d7834e4,
         type: 3}
       propertyPath: dropHealth
@@ -8225,6 +8230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: zRange.x
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989125400251531238, guid: 8ca512b67aa89934bb7fb0312d7834e4,
+        type: 3}
+      propertyPath: maxHeight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -6291221989910380822, guid: 8ca512b67aa89934bb7fb0312d7834e4,
         type: 3}

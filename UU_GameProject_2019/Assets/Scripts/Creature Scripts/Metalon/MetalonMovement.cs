@@ -96,8 +96,8 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
 
     void MoveRush()
     {
-        transform.position = Vector3.MoveTowards(transform.position, relativePlayerPos, (speed * 4) * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - transform.position, Vector3.up).eulerAngles), Time.deltaTime * speed / 2);
+        transform.position = Vector3.MoveTowards(transform.position, relativePlayerPos, (speed * 2) * Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Quaternion.LookRotation(relativePlayerPos - transform.position, Vector3.up).eulerAngles).normalized, Time.deltaTime * speed / 2);
 
         m_animator.SetBool("Walk Forward", false);
         m_animator.SetBool("Run Forward", true);
