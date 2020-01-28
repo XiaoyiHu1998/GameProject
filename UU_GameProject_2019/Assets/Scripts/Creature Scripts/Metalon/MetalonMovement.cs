@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
 public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable, IStunable
 {
-    private Animator m_animator;
-    private AnimationClip m_clip;
-    protected Vector2 zRange, xRange;
-    protected Vector3 playerPos, relativePlayerPos, targetPosition;
+    Animator m_animator;
+    [SerializeField] Vector2 zRange, xRange;
+    Vector3 playerPos, relativePlayerPos, targetPosition;
     bool moving, attacking;
     float idleTime, speed, timer, rotatingSpeed, detectionArea;
     float AngleDifference, AngleDifference2, AngleDifferenceTarget;
-    protected Vector3 hornPosition;
+    Vector3 hornPosition;
     string MyName;
     public int health;
 
-    public Transform playerTransform;
-    public Transform hornTransform;
+    Transform playerTransform;
+    Transform hornTransform;
 
     void OnTriggerEnter(Collider target)
     {
@@ -29,8 +30,6 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
 
     void Start()
     {
-        zRange = new Vector2(10, 23);
-        xRange = new Vector2(13, 36);
         idleTime = 4f;
         speed = 1;
         detectionArea = 8;
@@ -135,7 +134,7 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
     void MoveDestination()
     {
         timer = 0;
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed* Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(Quaternion.LookRotation(targetPosition - transform.position, Vector3.up).eulerAngles), Time.deltaTime* speed);
 
     m_animator.SetBool("Run Forward", false);
@@ -147,25 +146,10 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
         targetPosition = new Vector3(Random.Range(xRange.x, xRange.y), transform.position.y, Random.Range(zRange.x, zRange.y));
     }
 
-    public void getExploded()
-    {
-        TakeDamage();
-    }
-
-    public void getShot()
-    {
-        TakeDamage();
-    }
-
-    public void getStabbed()
-    {
-        TakeDamage();
-    }
-
-    public void getStunned()
-    {
-        TakeDamage();
-    }
+    public void getExploded() { TakeDamage(); }
+    public void getShot() { TakeDamage(); }
+    public void getStabbed() { TakeDamage(); }
+    public void getStunned() { TakeDamage(); }
 
     public void TakeDamage()
     {
