@@ -74,6 +74,6 @@ public class PopUpMenu : MonoBehaviour
 
     public void ExitGame()
     {
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("MenuBackgroundScene");
     }
 }
