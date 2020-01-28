@@ -19,15 +19,11 @@ public class PopUpMenu : MonoBehaviour
 
     public float closeDelay;
 
-   // Scene currentScene = SceneManager.GetActiveScene();
-   // string sceneName = currentScene.name;
-
     public void Awake()
     {
         //On click events for the pop up menu buttons
 
         ResumeButton.onClick.AddListener(ResumeGame);
-        //GoToSettingsButton.onClick.AddListener(OpenSettings);
         ExitGameButton.onClick.AddListener(ExitGame);
         
     }
@@ -75,7 +71,6 @@ public class PopUpMenu : MonoBehaviour
         PopUpPanel.DOScale(1f, 0.5f);
 
     }
-
 
     public void ExitGame()
     {
