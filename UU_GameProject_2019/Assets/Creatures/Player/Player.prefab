@@ -2300,7 +2300,7 @@ MonoBehaviour:
   ArrowInHand: {fileID: 2608002073013268469}
   BoomerangInHand: {fileID: 1107880766385288142}
   BombInHand: {fileID: 3491361971191136522}
-  attackButton: e
+  attackButton: p
   switchButton: f
   weaponButton: r
   shopButton: g
@@ -2369,7 +2369,7 @@ MonoBehaviour:
   MaxHealth: 6
   CurrentHealth: 6
   lastHit: 0
-  hitDuration: 5
+  hitDuration: 2
   HealthBar: {fileID: 6388231639003962004}
 --- !u!65 &6557245871780976113
 BoxCollider:
