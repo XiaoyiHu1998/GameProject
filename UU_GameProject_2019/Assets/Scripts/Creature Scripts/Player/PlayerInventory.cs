@@ -61,6 +61,8 @@ public class PlayerInventory : MonoBehaviour
     public void lootHealth(int amount)
     {
         PlayerStats.playerHealth += amount;
+        if (PlayerStats.playerHealth > PlayerStats.maxHealth)
+            PlayerStats.playerHealth = PlayerStats.maxHealth;
         healthScript.updateHealthBar();
     }
 
