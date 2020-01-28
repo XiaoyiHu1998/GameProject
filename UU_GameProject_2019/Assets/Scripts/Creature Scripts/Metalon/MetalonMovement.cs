@@ -15,6 +15,7 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
     Vector3 hornPosition;
     string MyName;
     public int health;
+    public float maxHeight;
 
     Transform playerTransform;
     Transform hornTransform;
@@ -47,8 +48,8 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
 
     void Update()
     {
-        if (transform.position.y >= 1)
-            transform.position = new Vector3(transform.position.x, 0.5f, hornTransform.position.z);
+        if (transform.position.y >= maxHeight)
+            transform.position = new Vector3(transform.position.x, maxHeight - 0.5f, hornTransform.position.z);
 
         playerPos = playerTransform.position;
         hornPosition = hornTransform.position;
