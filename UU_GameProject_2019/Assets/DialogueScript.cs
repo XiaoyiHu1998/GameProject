@@ -45,11 +45,11 @@ public class DialogueScript : MonoBehaviour
         }
         if (SceneName == "OrangeScene")
         {
-            instructies.text = DialogueStats.Hints[1];
+            instructies.text = DialogueStats.Hints[2];
         }
         if (SceneName == "SceneX4Y2")
         {
-            instructies.text = DialogueStats.Hints[1];
+            instructies.text = DialogueStats.Hints[6];
         }
         if (SceneName == "BridgeScene")
         {
@@ -57,7 +57,7 @@ public class DialogueScript : MonoBehaviour
         }
         if (SceneName == "SceneX2Y0")
         {
-            instructies.text = DialogueStats.Hints[2];
+            instructies.text = DialogueStats.Hints[1];
         }
         if (SceneName == "DungeonEntranceScene")
         {
