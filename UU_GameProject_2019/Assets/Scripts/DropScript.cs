@@ -7,10 +7,20 @@ public class DropScript : MonoBehaviour
     public GameObject DroppedHealth;
     public GameObject DroppedMoney;
     public GameObject DroppedWeapon;
+    public bool dropHealth;
+    public bool dropMoney;
+    public bool dropWeapon;
     public int healthAmount;
     public int moneyAmount;
     public int weaponAmount;
     public Weapon weaponType;
+
+    public void DropItems()
+    {
+        if (dropHealth) { DropHealth(); }
+        if (dropMoney) { DropMoney(); }
+        if (dropWeapon) { DropWeapon(); }
+    }
 
     public void DropHealth()
     {
