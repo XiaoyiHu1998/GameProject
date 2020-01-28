@@ -38,13 +38,9 @@ public static class InventoryStats
 
         AmmoQuantity = new int[Enum.GetNames(typeof(Weapon)).Length];
 
-        AmmoQuantity[(int)Weapon.Bow] = 20;
-        AmmoQuantity[(int)Weapon.Bombs] = 8;
+        AmmoQuantity[(int)Weapon.Bow] = 10;
+        AmmoQuantity[(int)Weapon.Bombs] = 4;
         AmmoQuantity[(int)Weapon.Boomerang] = 1;
         AmmoQuantity[(int)Weapon.Sword] = 1;
-
     }
-
-
-
 }

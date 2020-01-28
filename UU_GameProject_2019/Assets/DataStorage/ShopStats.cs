@@ -21,10 +21,8 @@ public static class ShopStats
                 AmmoPrices = new int[Enum.GetNames(typeof(Weapon)).Length];
 
                 AmmoPrices[(int)Weapon.Bow] = 10;
-                AmmoPrices[(int)Weapon.Bombs] = 50;
+                AmmoPrices[(int)Weapon.Bombs] = 20;
                 AmmoPrices[(int)Weapon.Boomerang] = 0;
                 AmmoPrices[(int)Weapon.Sword] = 0;
     }
-
-    
 }

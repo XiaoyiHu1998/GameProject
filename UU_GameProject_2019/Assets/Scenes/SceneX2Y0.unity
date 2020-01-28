@@ -4620,7 +4620,7 @@ PrefabInstance:
     - target: {fileID: 2910369483234003479, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.32
+      value: 24.5
       objectReference: {fileID: 0}
     - target: {fileID: 2910369483234003479, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
@@ -4630,7 +4630,7 @@ PrefabInstance:
     - target: {fileID: 2910369483234003479, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.657827
+      value: 18.33
       objectReference: {fileID: 0}
     - target: {fileID: 2910369483234003479, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
@@ -4670,6 +4670,51 @@ PrefabInstance:
     - target: {fileID: 2910369483234003479, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8366116851935404936, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: xRange.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8366116851935404936, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: zRange.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8366116851935404936, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: zRange.y
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8366116851935404936, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: xRange.y
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723132540976638094, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: dropMoney
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723132540976638094, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: moneyAmount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723132540976638094, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: weaponAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723132540976638094, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: healthAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723132540976638094, guid: 709594b5f60cb604abf08a9999e5ad3d,
+        type: 3}
+      propertyPath: dropHealth
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
