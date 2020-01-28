@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthScript : MonoBehaviour
 {
@@ -22,11 +23,9 @@ public class HealthScript : MonoBehaviour
         anim = GetComponent<Animator>();
         charcontrol = GetComponent<CharacterControl>();
 
-        if (!RetrieveStaticPosition())
-            RespawnPosition = transform.position; //use default value if import was unsuccesful
+        RespawnPosition = PlayerStats.playerPosition;
 
-        if (!RetrieveStaticRotation())
-            RespawnRotation = transform.rotation;
+        RespawnRotation = Quaternion.Euler(PlayerStats.playerRotation);
 
         updateHealthBar();
     }
@@ -48,29 +47,12 @@ public class HealthScript : MonoBehaviour
 
     void Respawn()
     {
-        transform.position = RespawnPosition;
-        transform.rotation = RespawnRotation;
+        SceneManager.LoadScene(sceneName: SceneManager.GetActiveScene().name);
         PlayerStats.playerHealth = PlayerStats.maxHealth;
     }
 
     public void updateHealthBar()
     {
         HealthBar.transform.localScale = new Vector3(PlayerStats.playerHealth, 1, 1);
-    }
-
-    bool RetrieveStaticPosition()
-    {
-        bool importComplete = false;
-        //receive the location for this scene entry from the static quest/location script here
-        //RespawnPosition = <yourcodehere>
-        return importComplete;
-    }
-
-    bool RetrieveStaticRotation()
-    {
-        bool importComplete = false;
-        //receive the rotation for this scene entry from the static quest/location script here
-        //RespawnRotation = <yourcodehere>
-        return importComplete;
     }
 }
