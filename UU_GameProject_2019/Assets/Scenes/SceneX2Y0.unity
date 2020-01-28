@@ -4685,12 +4685,12 @@ PrefabInstance:
     - target: {fileID: 8366116851935404936, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
       propertyPath: zRange.y
-      value: 35
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 8366116851935404936, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
       propertyPath: xRange.y
-      value: 21
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6723132540976638094, guid: 709594b5f60cb604abf08a9999e5ad3d,
         type: 3}
