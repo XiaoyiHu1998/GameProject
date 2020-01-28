@@ -14,6 +14,7 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
     [SerializeField] Vector3 ShootingForce;
     [SerializeField] float speed, idleTime, attackDelay, detectionArea, fleeDistance;
     float idleTimer, attackTimer, stunnedTimer;
+    bool dying;
     Transform playerTrans;
     public int health;
 
@@ -22,6 +23,7 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
         m_animator = GetComponent<Animator>();
         m_animator.SetBool("Running", true);
         playerTrans = GameObject.Find("Player").transform;
+        dying = false;
 
         SetNewTargetPosition();
     }
@@ -31,7 +33,8 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
         relativePlayerPos = playerTrans.position;
         stunnedTimer -= Time.deltaTime; // (stunnedTimer >= 0) == stunned,    (stunnedTimer < -1) == stunnable
 
-        if (stunnedTimer >= 0) { } //Do nothing
+        if (dying) { } //Do nothing
+        else if (stunnedTimer >= 0) { } //Do nothing
         else if (Vector3.Distance(transform.position, relativePlayerPos) < fleeDistance)
         {
             Flee();
@@ -141,9 +144,15 @@ public class ArcherMovement : MonoBehaviour, IShootable, IStunable, IExplodable,
 
     void Die()
     {
-        m_animator.SetTrigger("Die");
-        GetComponent<DropScript>().DropItems();
-        Destroy(gameObject, 4);
+        if (!dying)
+        {
+            m_animator.SetTrigger("Die");
+            dying = true;
+            GetComponent<DropScript>().DropItems();
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().useGravity = false;
+            Destroy(gameObject, 4);
+        }
     }
 
     //Creates particle effects for animations

@@ -9,9 +9,8 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
     Animator m_animator;
     [SerializeField] Vector2 zRange, xRange;
     Vector3 playerPos, relativePlayerPos, targetPosition;
-    bool moving, attacking;
-    float idleTime, speed, timer, rotatingSpeed, detectionArea;
-    float AngleDifference, AngleDifference2, AngleDifferenceTarget;
+    bool moving, attacking, dying;
+    float idleTime, speed, timer, rotatingSpeed, detectionArea, AngleDifference;
     Vector3 hornPosition;
     string MyName;
     public int health;
@@ -35,6 +34,7 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
         speed = 1;
         detectionArea = 8;
         moving = true;
+        dying = false;
 
         m_animator = GetComponent<Animator>();
         MyName = (this.gameObject).name;
@@ -56,14 +56,12 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
         float hornDistanceX = hornPosition.x - transform.position.x;
         float hornDistanceZ = hornPosition.z - transform.position.z;
         relativePlayerPos = new Vector3(playerPos.x - hornDistanceX, transform.position.y, playerPos.z - hornDistanceZ);
-
-        //The first is only positive, the second also negative and the third is the difference with the targetPosition, not with the playerPositiom
         AngleDifference = Quaternion.Angle(Quaternion.Euler(Quaternion.LookRotation(playerPos - transform.position, Vector3.up).eulerAngles), transform.rotation);
-        AngleDifference2 = Vector3.SignedAngle(playerPos - transform.position, transform.forward, Vector3.up);
-        AngleDifferenceTarget = Vector3.SignedAngle(targetPosition - transform.position, transform.forward, Vector3.up);
+
+        if (dying) { } //Do nothing
 
         //Attacking the player
-        if (Vector3.Distance(transform.position, relativePlayerPos) < 1)
+        else if (Vector3.Distance(transform.position, relativePlayerPos) < 1)
             MoveAttack();
 
         //Rushing towards the player if the player is in front
@@ -170,8 +168,14 @@ public class MetalonMovement : MonoBehaviour, IExplodable, IShootable, IStabable
 
     void Die()
     {
-        m_animator.SetTrigger("Die");
-        GetComponent<DropScript>().DropItems();
-        Destroy(gameObject, 1);
+        if (!dying)
+        {
+            m_animator.SetTrigger("Die");
+            dying = true;
+            GetComponent<DropScript>().DropItems();
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().useGravity = false;
+            Destroy(gameObject, 1);
+        }
     }
 }
