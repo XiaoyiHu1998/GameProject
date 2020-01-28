@@ -203,7 +203,7 @@ public class CharacterControl : MonoBehaviour
     {
         GameObject myBeam = Instantiate(BeamObject, ProjectileEmitter.transform.position, ProjectileEmitter.transform.rotation) as GameObject;
         myBeam.gameObject.GetComponent<BeamScript>().SetOwner(this);
-        if (health.CurrentHealth == health.MaxHealth) //sword beam if at full health
+        if (PlayerStats.playerHealth == PlayerStats.maxHealth) //sword beam if at full health
             myBeam.gameObject.GetComponent<BeamScript>().SetTimer(5f);
         else
         {
