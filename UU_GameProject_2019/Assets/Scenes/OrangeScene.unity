@@ -568,7 +568,7 @@ Transform:
   - {fileID: 99678837}
   - {fileID: 1848016517}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &121745691
 PrefabInstance:
@@ -1310,7 +1310,7 @@ RectTransform:
   - {fileID: 133924598}
   - {fileID: 2022676486}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4304,7 +4304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &870093967
 RectTransform:
   m_ObjectHideFlags: 0

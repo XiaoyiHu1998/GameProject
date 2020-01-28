@@ -11,7 +11,7 @@ public static class InventoryStats
 
     public static int[] AmmoQuantity;
 
-    public static int Money = 999999;
+    public static int Money = 0;
 
     static InventoryStats()
     {
