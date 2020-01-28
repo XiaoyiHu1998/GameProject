@@ -20151,7 +20151,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Arrow x20: 20 gold \n"
+  m_Text: "Arrow x10: 10 gold \n"
 --- !u!222 &1214982943
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -32315,7 +32315,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bomb x8: 25 gold '
+  m_Text: 'Bomb x4: 20 gold '
 --- !u!222 &1676402418
 CanvasRenderer:
   m_ObjectHideFlags: 0
